@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FORGE</title>
+<style>
+/* NO external fonts - everything self-contained so it works on any website */
+
+html { background-color: #0e1020; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background-color: #0e1020;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  padding: 0;
+}
+
+.app {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 40px 16px 80px;
+  background-color: #0e1020;
+}
+
+/* ── HEADER ── */
+.header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.header-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6b7494;
+  margin-bottom: 10px;
+}
+
+.logo {
+  font-size: 44px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.header-sub {
+  font-size: 14px;
+  color: #6b7494;
+}
+
+/* ── TABS ── */
+.tab-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+  background-color: #181b2e;
+  border-radius: 16px;
+  padding: 6px;
+  margin-bottom: 14px;
+}
+
+.tab {
+  padding: 13px 8px;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7494;
+  transition: all 0.18s;
+  user-select: none;
+  border: none;
+  background: transparent;
+}
+
+.tab:hover { color: #ffffff; background-color: #222640; }
+.tab.active-push { background-color: #6c5ce7; color: #ffffff; }
+.tab.active-pull { background-color: #3d9fd4; color: #ffffff; }
+.tab.active-arms { background-color: #e07840; color: #ffffff; }
+
+/* ── COMMAND BAR ── */
+.command-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+#cmd {
+  flex: 1;
+  background-color: #181b2e;
+  border: 1.5px solid #252945;
+  border-radius: 14px;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 14px 18px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#cmd:focus { border-color: #6c5ce7; }
+#cmd::placeholder { color: #3a3f60; font-size: 14px; font-weight: 400; }
+
+#go-btn {
+  background-color: #6c5ce7;
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 22px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+}
+
+#go-btn:hover { opacity: 0.88; }
+#go-btn:active { opacity: 0.75; }
+
+/* ── IDLE ── */
+.idle-state {
+  background-color: #181b2e;
+  border-radius: 20px;
+  padding: 52px 24px;
+  text-align: center;
+  border: 1.5px solid #252945;
+}
+
+.idle-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #4a5170;
+  margin-bottom: 8px;
+}
+
+.idle-hint {
+  font-size: 14px;
+  color: #3a3f60;
+  margin-bottom: 28px;
+}
+
+.idle-hints {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.idle-chip {
+  padding: 9px 22px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  border: none;
+}
+
+.idle-chip:hover { opacity: 0.85; }
+.idle-chip.push { background-color: rgba(108,92,231,0.18); color: #a89cf8; }
+.idle-chip.pull { background-color: rgba(61,159,212,0.18); color: #7dd0f8; }
+.idle-chip.arms { background-color: rgba(224,120,64,0.18); color: #f8a87d; }
+
+/* ── WORKOUT ── */
+.workout { display: none; }
+.workout.show { display: block; animation: rise 0.3s ease forwards; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Header card */
+.wo-header-card {
+  background-color: #181b2e;
+  border-radius: 20px;
+  padding: 22px 20px 20px;
+  margin-bottom: 10px;
+  border: 1.5px solid #252945;
+}
+
+.wo-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.wo-title {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 14px;
+  line-height: 1.1;
+}
+
+.wo-chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.wo-chip {
+  background-color: #222640;
+  border-radius: 50px;
+  padding: 5px 13px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6b7494;
+}
+
+/* Rounds */
+.rounds {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.round {
+  background-color: #181b2e;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1.5px solid #252945;
+}
+
+.round-head {
+  padding: 15px 18px 12px;
+  border-bottom: 1px solid #252945;
+}
+
+.round-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.round-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+.round-meta {
+  font-size: 12px;
+  color: #6b7494;
+  margin-top: 3px;
+}
+
+.round-body { padding: 2px 0; }
+
+/* Exercise rows */
+.ex {
+  display: flex;
+  align-items: center;
+  padding: 13px 18px;
+  gap: 12px;
+  border-bottom: 1px solid rgba(37,41,69,0.7);
+}
+
+.ex:last-child { border-bottom: none; }
+
+.ex-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ex-name {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+.ex-scheme {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7494;
+  white-space: nowrap;
+  background-color: #222640;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+.badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 6px;
+  margin-left: 6px;
+  flex-shrink: 0;
+}
+
+.badge-heavy   { background-color: rgba(245,200,74,0.15);  color: #f5c84a; }
+.badge-hiit    { background-color: rgba(61,159,212,0.15);  color: #7dd0f8; }
+.badge-must    { background-color: rgba(74,201,138,0.12);  color: #4ac98a; }
+.badge-burnout { background-color: rgba(245,90,74,0.15);   color: #f57a4a; }
+
+/* Circuit */
+.round-circuit { border-color: rgba(74,201,138,0.25); }
+.round-circuit .round-label { color: #4ac98a; }
+
+.circuit-intro {
+  margin: 10px 18px 4px;
+  padding: 10px 14px;
+  background-color: rgba(74,201,138,0.07);
+  border-radius: 10px;
+  font-size: 13px;
+  color: #6b7494;
+  font-weight: 500;
+}
+
+.circuit-intro strong { color: #4ac98a; }
+
+/* Rules card */
+.rules-card {
+  background-color: #181b2e;
+  border-radius: 18px;
+  border: 1.5px solid #252945;
+  padding: 16px 18px;
+  margin-bottom: 12px;
+}
+
+.rules-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #6b7494;
+  margin-bottom: 12px;
+}
+
+.rules-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.rule-item {
+  background-color: #1e2235;
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.rule-label {
+  font-size: 11px;
+  color: #4a5170;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.rule-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* Regen */
+.regen-btn {
+  width: 100%;
+  background-color: #181b2e;
+  border: 1.5px solid #252945;
+  border-radius: 16px;
+  color: #6b7494;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.15s;
+  margin-bottom: 10px;
+}
+
+.regen-btn:hover { border-color: #6c5ce7; color: #ffffff; }
+
+.session-count {
+  text-align: center;
+  font-size: 12px;
+  color: #3a3f60;
+  margin-bottom: 20px;
+}
+
+/* color helpers */
+.c-push { color: #a89cf8; }
+.c-pull { color: #7dd0f8; }
+.c-arms { color: #f8a87d; }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="header">
+    <div class="header-eyebrow">Garage Workout System</div>
+    <div class="logo">FORGE</div>
+    <div class="header-sub">Push · Pull · Arms</div>
+  </div>
+
+  <div class="tab-row">
+    <button class="tab" id="tab-push" onclick="quickCmd('push')">Push Day</button>
+    <button class="tab" id="tab-pull" onclick="quickCmd('pull')">Pull Day</button>
+    <button class="tab" id="tab-arms" onclick="quickCmd('arms')">Arms Day</button>
+  </div>
+
+  <div class="command-bar">
+    <input id="cmd" type="text" placeholder="Or type push / pull / arms..." autocomplete="off" spellcheck="false" />
+    <button id="go-btn" onclick="handleInput()">Go</button>
+  </div>
+
+  <div class="idle-state" id="idle">
+    <div class="idle-title">Ready when you are</div>
+    <div class="idle-hint">Select a workout type above</div>
+    <div class="idle-hints">
+      <button class="idle-chip push" onclick="quickCmd('push')">Push</button>
+      <button class="idle-chip pull" onclick="quickCmd('pull')">Pull</button>
+      <button class="idle-chip arms" onclick="quickCmd('arms')">Arms</button>
+    </div>
+  </div>
+
+  <div class="workout" id="workout"></div>
+
+</div>
+<script>
+const PUSH = {
+  heavyLower: [
+    { name: 'Sandbag Front Squat', scheme: '3–4×10–12', badge: 'heavy', must: true },
+    { name: 'Sandbag Back Squat', scheme: '3–4×10–12', badge: 'heavy', must: true },
+    { name: 'Sandbag Walking Lunges', scheme: '3–4×10–12/leg', badge: 'heavy', must: true },
+    { name: 'Sandbag Zercher Squat', scheme: '3–4×10–12', badge: 'heavy' },
+  ],
+  heavyUpper: [
+    { name: 'DB Incline Press', scheme: '3–4×10–12', badge: 'heavy', must: true },
+    { name: 'DB Flat Chest Press', scheme: '3–4×10–12', badge: 'heavy', must: true },
+    { name: 'Dips', scheme: '3–4×10–12', badge: 'heavy', must: true },
+    { name: 'DB Overhead Press', scheme: '3–4×10–12', badge: 'heavy' },
+    { name: 'DB Arnold Press', scheme: '3–4×10–12', badge: 'heavy' },
+  ],
+  hiitLower: [
+    { name: 'Slam Ball Squat Jumps', scheme: '3×15–20', badge: 'hiit' },
+    { name: 'KB Goblet Squat', scheme: '3×15–20', badge: 'hiit' },
+    { name: 'Alternating DB Reverse Lunges', scheme: '3×15–20/leg', badge: 'hiit' },
+    { name: 'Jump Squats', scheme: '3×15–20', badge: 'hiit' },
+    { name: 'Sandbag Lateral Lunge', scheme: '3×15–20/leg', badge: 'hiit' },
+    { name: 'KB Single Arm Front Squat', scheme: '3×15–20/side', badge: 'hiit' },
+  ],
+  hiitUpper: [
+    { name: 'DB Push Press', scheme: '3×15–20', badge: 'hiit' },
+    { name: 'Ring Tricep Extension', scheme: '3×15–20', badge: 'hiit' },
+    { name: 'DB Lateral Raise', scheme: '3×15–20', badge: 'hiit' },
+    { name: 'DB Front Raise', scheme: '3×15–20', badge: 'hiit' },
+    { name: 'Tyson Push-Ups', scheme: '3×15–20', badge: 'hiit' },
+    { name: 'Pike Push-Ups', scheme: '3×15–20', badge: 'hiit' },
+    { name: 'Dive Bomber Push-Ups', scheme: '3×15–20', badge: 'hiit' },
+    { name: 'Slam Ball Chest Pass (wall)', scheme: '3×15–20', badge: 'hiit' },
+    { name: 'DB Skull Crushers', scheme: '3×15–20', badge: 'hiit' },
+  ],
+};
+
+const PULL = {
+  heavyHinge: [
+    { name: 'DB RDL', scheme: '3–4×10–12', badge: 'heavy', must: true },
+    { name: 'Single Leg DB RDL', scheme: '3–4×10–12/leg', badge: 'heavy', must: true },
+    { name: 'Sandbag Clean', scheme: '3–4×4–6', badge: 'heavy', must: true },
+    { name: 'Sandbag Shoulder Slam', scheme: '3–4×10 (5/side)', badge: 'heavy', must: true },
+    { name: 'KB Clean', scheme: '3–4×10–12/side', badge: 'heavy', must: true },
+  ],
+  heavyUpper: [
+    { name: 'Weighted Pull-Ups', scheme: '3–4×10–12', badge: 'heavy', must: true },
+    { name: 'Gorilla Row', scheme: '3–4×10–12/side', badge: 'heavy', must: true },
+    { name: 'DB Bent Over Row', scheme: '3–4×10–12', badge: 'heavy', must: true },
+    { name: 'Ring Rows', scheme: '3–4×10–12', badge: 'heavy', must: true },
+    { name: 'DB Chest Supported Row', scheme: '3–4×10–12', badge: 'heavy' },
+  ],
+  hiitLower: [
+    { name: 'KB Swing', scheme: '3×15–20', badge: 'hiit' },
+    { name: 'DB Snatch', scheme: '3×15–20/side', badge: 'hiit' },
+    { name: 'KB Single Arm Swing', scheme: '3×15–20/side', badge: 'hiit' },
+    { name: 'Sandbag Rotational Slam', scheme: '3×10 (5/side)', badge: 'hiit' },
+    { name: 'KB Deadlift High Pull', scheme: '3×15–20', badge: 'hiit' },
+  ],
+  hiitUpper: [
+    { name: 'Ring Row Hold Negatives', scheme: '3×15–20', badge: 'hiit' },
+    { name: 'DB Face Pulls', scheme: '3×15–20', badge: 'hiit' },
+    { name: 'Banded Pull-Aparts', scheme: '3×15–20', badge: 'hiit' },
+    { name: 'Inverted Row', scheme: '3×15–20', badge: 'hiit' },
+    { name: 'KB Renegade Row', scheme: '3×15–20/side', badge: 'hiit' },
+    { name: 'TRX / Ring Bicep Curl', scheme: '3×15–20', badge: 'hiit' },
+  ],
+};
+
+const ARMS_PROGRAM = [
+  { label: 'Giant Set A — Shoulder Width', exercises: [
+    { name: 'DB Lateral Raise', scheme: '15–20 reps', badge: 'must' },
+    { name: 'DB Leaning Lateral Raise', scheme: '15–20/side', badge: 'must' },
+    { name: 'DB Upright Row', scheme: '12–15 reps', badge: 'must' },
+    { name: '10 sec rest, repeat', scheme: '×3', badge: '' },
+  ]},
+  { label: 'Giant Set B — Rear Delt + Pulling Balance', exercises: [
+    { name: 'DB Bent Over Rear Delt Fly', scheme: '15–20 reps', badge: 'must' },
+    { name: 'DB Face Pull', scheme: '15–20 reps', badge: 'must' },
+    { name: 'Ring Row — wide grip', scheme: '12–15 reps', badge: 'must' },
+    { name: '15 sec rest, repeat', scheme: '×3', badge: '' },
+  ]},
+  { label: 'Giant Set C — Bicep Width + Peak', exercises: [
+    { name: 'DB Wide-Grip Curl (supinated)', scheme: '12–15 reps', badge: 'must' },
+    { name: 'DB Incline Curl (long head stretch)', scheme: '12–15 reps', badge: 'must' },
+    { name: 'DB Hammer Curl (brachialis width)', scheme: '12–15 reps', badge: 'must' },
+    { name: '10 sec rest, repeat', scheme: '×3', badge: '' },
+  ]},
+  { label: 'Drop Set — Tricep Long Head', exercises: [
+    { name: 'DB Overhead Tricep Extension', scheme: '12→10→8 drop wt', badge: 'burnout' },
+    { name: 'Skull Crushers', scheme: '12→10→8 drop wt', badge: 'burnout' },
+    { name: 'Tricep Dips (BW)', scheme: 'to failure', badge: 'burnout' },
+  ]},
+  { label: 'Burnout Finisher — 8 min AMRAP', exercises: [
+    { name: 'DB Lateral Raise ×15–20', scheme: 'continuous', badge: 'burnout' },
+    { name: 'DB Wide-Grip Curl ×15', scheme: 'continuous', badge: 'burnout' },
+    { name: 'DB Hammer Curl ×12', scheme: 'continuous', badge: 'burnout' },
+    { name: 'Tricep Push-Down (band) ×15–20', scheme: 'continuous', badge: 'burnout' },
+  ]},
+];
+
+const CARDIO_BLOCKS = [
+  { machine: 'Assault Bike + SkiErg', protocol: '10 min EMOM', work: [
+    'Minute 1–2: Assault Bike — max effort sprint',
+    'Minute 3–4: SkiErg — 250m hard pull',
+    'Minute 5: Slam Ball Slams ×15',
+    'Minute 6–7: Assault Bike — 20 sec on / 10 sec off ×4',
+    'Minute 8–9: SkiErg arms-only 30 sec on / 30 off',
+    'Minute 10: All-out Assault Bike to failure',
+  ]},
+  { machine: 'SkiErg + Battle Rope', protocol: '12 min Circuit', work: [
+    '40 sec SkiErg max effort — 20 sec rest',
+    '40 sec Battle Rope alternating waves — 20 sec rest',
+    '40 sec Battle Rope slams — 20 sec rest',
+    '40 sec SkiErg arms only — 20 sec rest',
+    'Repeat 3 rounds',
+  ]},
+  { machine: 'Assault Bike', protocol: '15 min Tabata Ladder', work: [
+    'Rounds 1–3: 20 sec sprint / 10 sec rest',
+    'Rounds 4–6: 30 sec sprint / 15 sec rest',
+    'Rounds 7–9: 40 sec sprint / 20 sec rest',
+    'Final: 60 sec all-out, no rest',
+  ]},
+  { machine: 'SkiErg + Slam Ball', protocol: '10 min AMRAP', work: [
+    '10 Slam Ball ground slams',
+    '10 cal SkiErg sprint',
+    '5 Slam Ball rotational slams/side',
+    'Rest 20 sec — repeat',
+  ]},
+];
+
+function rand(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+const BADGE = {
+  heavy:   '<span class="badge badge-heavy">Heavy</span>',
+  hiit:    '<span class="badge badge-hiit">HIIT</span>',
+  must:    '<span class="badge badge-must">Focus</span>',
+  burnout: '<span class="badge badge-burnout">Burnout</span>',
+  '': '',
+};
+
+const DOT_COLOR = { push: '#6c5ce7', pull: '#3d9fd4', arms: '#e07840', circuit: '#4ac98a' };
+
+function exRow(ex, type) {
+  return `<div class="ex">
+    <div class="ex-dot" style="background-color:${DOT_COLOR[type]||DOT_COLOR.circuit};opacity:0.75"></div>
+    <div class="ex-name">${ex.name}${BADGE[ex.badge]||''}</div>
+    <div class="ex-scheme">${ex.scheme}</div>
+  </div>`;
+}
+
+function round(num, desc, exs, type) {
+  const lc = { push:'#a89cf8', pull:'#7dd0f8', arms:'#f8a87d' }[type];
+  return `<div class="round">
+    <div class="round-head">
+      <div class="round-label" style="color:${lc}">Round ${num}</div>
+      <div class="round-title">${desc}</div>
+      <div class="round-meta">3–4 sets · 60–90 sec rest</div>
+    </div>
+    <div class="round-body">${exs.map(e=>exRow(e,type)).join('')}</div>
+  </div>`;
+}
+
+function circuit() {
+  const b = rand(CARDIO_BLOCKS);
+  return `<div class="round round-circuit">
+    <div class="round-head">
+      <div class="round-label">Round 5 · Circuit</div>
+      <div class="round-title">${b.protocol}</div>
+      <div class="round-meta">Continuous — no rest between exercises</div>
+    </div>
+    <div class="round-body">
+      <div class="circuit-intro">Equipment: <strong>${b.machine}</strong></div>
+      ${b.work.map(w=>`<div class="ex"><div class="ex-dot" style="background-color:#4ac98a;opacity:0.75"></div><div class="ex-name">${w}</div><div class="ex-scheme"></div></div>`).join('')}
+    </div>
+  </div>`;
+}
+
+function header(type, title, chips) {
+  const ec = { push:'c-push', pull:'c-pull', arms:'c-arms' }[type];
+  const label = { push:'Push Day', pull:'Pull Day', arms:'Arms Day' }[type];
+  return `<div class="wo-header-card">
+    <div class="wo-eyebrow ${ec}">${label}</div>
+    <div class="wo-title">${title}</div>
+    <div class="wo-chips">${chips.map(c=>`<div class="wo-chip">${c}</div>`).join('')}</div>
+  </div>`;
+}
+
+function rules(type) {
+  const items = type !== 'arms'
+    ? [['Heavy sets','3–4 × 10–12'],['HIIT sets','3 × 15–20'],['Set rest','60–90 sec'],['Round rest','2 min']]
+    : [['Moderate','12–15 reps'],['Burnout','15–20 reps'],['Giant set rest','10–15 sec'],['Block rest','90 sec']];
+  return `<div class="rules-card">
+    <div class="rules-title">Rules</div>
+    <div class="rules-grid">${items.map(([l,v])=>`<div class="rule-item"><div class="rule-label">${l}</div><div class="rule-value">${v}</div></div>`).join('')}</div>
+  </div>`;
+}
+
+function buildPush() {
+  const hl1=rand(PUSH.heavyLower.filter(e=>e.must)), hl2=rand(PUSH.heavyLower.filter(e=>e.name!==hl1.name));
+  const hu1=rand(PUSH.heavyUpper.filter(e=>e.must)), hu2=rand(PUSH.heavyUpper.filter(e=>e.name!==hu1.name));
+  const hiU1=rand(PUSH.hiitUpper), hiU2=rand(PUSH.hiitUpper.filter(e=>e.name!==hiU1.name));
+  const hiL1=rand(PUSH.hiitLower), hiL2=rand(PUSH.hiitLower.filter(e=>e.name!==hiL1.name));
+  return header('push','Strength + Power',['35–45 min','5 rounds','3–4 sets','2 min round rest'])
+    + '<div class="rounds">'
+    + round(1,'Heavy Lower + High Intensity Upper',[hl1,hiU1],'push')
+    + round(2,'Heavy Upper + High Intensity Lower',[hu1,hiL1],'push')
+    + round(3,'Heavy Lower + High Intensity Lower',[hl2,hiL2],'push')
+    + round(4,'Heavy Upper + High Intensity Upper',[hu2,hiU2],'push')
+    + circuit()
+    + '</div>';
+}
+
+function buildPull() {
+  const hh1=rand(PULL.heavyHinge.filter(e=>e.must)), hh2=rand(PULL.heavyHinge.filter(e=>e.name!==hh1.name));
+  const hu1=rand(PULL.heavyUpper.filter(e=>e.must)), hu2=rand(PULL.heavyUpper.filter(e=>e.name!==hu1.name));
+  const hiL1=rand(PULL.hiitLower), hiL2=rand(PULL.hiitLower.filter(e=>e.name!==hiL1.name));
+  const hiU1=rand(PULL.hiitUpper), hiU2=rand(PULL.hiitUpper.filter(e=>e.name!==hiU1.name));
+  return header('pull','Hinge + Pull',['35–45 min','5 rounds','3–4 sets','2 min round rest'])
+    + '<div class="rounds">'
+    + round(1,'Heavy Hinge + High Intensity Upper',[hh1,hiU1],'pull')
+    + round(2,'Heavy Upper + High Intensity Lower',[hu1,hiL1],'pull')
+    + round(3,'Heavy Hinge + High Intensity Lower',[hh2,hiL2],'pull')
+    + round(4,'Heavy Upper + High Intensity Upper',[hu2,hiU2],'pull')
+    + circuit()
+    + '</div>';
+}
+
+function buildArms() {
+  const blocks = ARMS_PROGRAM.map(b => `<div class="round">
+    <div class="round-head">
+      <div class="round-label" style="color:#f8a87d">Block</div>
+      <div class="round-title">${b.label}</div>
+    </div>
+    <div class="round-body">${b.exercises.map(e=>exRow(e,'arms')).join('')}</div>
+  </div>`).join('');
+  return header('arms','Width + Peak',['~30 min','Giant Sets','Drop Sets','Burnout'])
+    + '<div class="rounds">' + blocks + '</div>';
+}
+
+// Each type tracks its own count and saved HTML independently
+const counts = {
+  push: parseInt(localStorage.getItem('forge_count_push')||'0'),
+  pull: parseInt(localStorage.getItem('forge_count_pull')||'0'),
+  arms: parseInt(localStorage.getItem('forge_count_arms')||'0'),
+};
+const saved = {
+  push: localStorage.getItem('forge_saved_push') || null,
+  pull: localStorage.getItem('forge_saved_pull') || null,
+  arms: localStorage.getItem('forge_saved_arms') || null,
+};
+let activeType = localStorage.getItem('forge_active') || null;
+
+function setTabs(type) {
+  ['push','pull','arms'].forEach(t => {
+    document.getElementById('tab-'+t).className = 'tab' + (t===type ? ' active-'+t : '');
+  });
+  const colors = { push:'#6c5ce7', pull:'#3d9fd4', arms:'#e07840' };
+  document.getElementById('go-btn').style.backgroundColor = colors[type] || '#6c5ce7';
+}
+
+function showWorkout(type, html) {
+  const wo   = document.getElementById('workout');
+  const idle = document.getElementById('idle');
+  setTabs(type);
+  activeType = type;
+  localStorage.setItem('forge_active', type);
+  wo.innerHTML = html;
+  idle.style.display = 'none';
+  wo.classList.remove('show');
+  wo.style.display = 'none';
+  void wo.offsetWidth;
+  wo.style.display = 'block';
+  wo.classList.add('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function generate(type) {
+  counts[type]++;
+  let inner = '';
+  if (type==='push') inner = buildPush();
+  else if (type==='pull') inner = buildPull();
+  else if (type==='arms') inner = buildArms();
+  else return;
+
+  const label = type.charAt(0).toUpperCase() + type.slice(1);
+  const html = inner
+    + rules(type)
+    + `<button class="regen-btn" onclick="regen()">↺ New ${label} Workout</button>`
+    + `<div class="session-count">Session #${counts[type]}</div>`;
+
+  saved[type] = html;
+  localStorage.setItem('forge_saved_'+type, html);
+  localStorage.setItem('forge_count_'+type, counts[type]);
+  showWorkout(type, html);
+}
+
+// Tab tap — show saved workout if exists, otherwise generate fresh
+function quickCmd(type) {
+  document.getElementById('cmd').value = '';
+  if (saved[type]) {
+    showWorkout(type, saved[type]);
+  } else {
+    generate(type);
+  }
+}
+
+// Regenerate button — only rebuilds the current type
+function regen() {
+  if (activeType) generate(activeType);
+}
+
+function handleInput() {
+  const val = document.getElementById('cmd').value.trim().toLowerCase();
+  if (['push','pull','arms'].includes(val)) { generate(val); document.getElementById('cmd').value = ''; }
+  else { document.getElementById('cmd').style.borderColor = '#f57a4a'; setTimeout(()=>document.getElementById('cmd').style.borderColor='#252945',700); }
+}
+
+document.getElementById('cmd').addEventListener('keydown', e => { if (e.key==='Enter') handleInput(); });
+
+// On load — restore last viewed workout if there was one
+if (activeType && saved[activeType]) {
+  showWorkout(activeType, saved[activeType]);
+}
+</script>
+</body>
+</html>

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -14,13 +15,13 @@ body {
   min-height: 100vh;
 }
 .app { max-width: 500px; margin: 0 auto; padding: 40px 16px 80px; background-color: #0e1020; }
- 
+
 /* HEADER */
 .header { text-align: center; margin-bottom: 28px; }
 .header-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #6b7494; margin-bottom: 10px; }
 .logo { font-size: 44px; font-weight: 800; color: #ffffff; letter-spacing: -0.02em; margin-bottom: 6px; }
 .header-sub { font-size: 14px; color: #6b7494; }
- 
+
 /* MAIN NAV TABS */
 .nav-row { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 5px; background-color: #181b2e; border-radius: 16px; padding: 5px; margin-bottom: 14px; }
 .nav-tab { padding: 11px 6px; border-radius: 11px; text-align: center; cursor: pointer; font-size: 13px; font-weight: 600; color: #6b7494; transition: all 0.18s; border: none; background: transparent; }
@@ -28,16 +29,18 @@ body {
 .nav-tab.active-push { background-color: #6c5ce7; color: #ffffff; }
 .nav-tab.active-pull { background-color: #3d9fd4; color: #ffffff; }
 .nav-tab.active-arms { background-color: #e07840; color: #ffffff; }
+.nav-tab.active-upper { background-color: #e84393; color: #ffffff; }
+.nav-tab.active-lower { background-color: #27ae60; color: #ffffff; }
 .nav-tab.active-gear { background-color: #4ac98a; color: #0e1020; }
- 
+
 /* COMMAND BAR */
 .command-bar { display: flex; gap: 8px; margin-bottom: 24px; }
-#cmd { flex: 1; background-color: #181b2e; border: 1.5px solid #252945; border-radius: 14px; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 500; padding: 14px 18px; outline: none; transition: border-color 0.2s; }
+#cmd { flex: 1; background-color: #181b2e; border: 1.5px solid #252945; border-radius: 14px; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, ‘Segoe UI’, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 500; padding: 14px 18px; outline: none; transition: border-color 0.2s; }
 #cmd:focus { border-color: #6c5ce7; }
 #cmd::placeholder { color: #3a3f60; font-size: 14px; font-weight: 400; }
 #go-btn { background-color: #6c5ce7; color: #ffffff; border: none; border-radius: 14px; font-family: inherit; font-size: 15px; font-weight: 700; padding: 14px 22px; cursor: pointer; transition: opacity 0.15s; white-space: nowrap; }
 #go-btn:hover { opacity: 0.88; }
- 
+
 /* IDLE */
 .idle-state { background-color: #181b2e; border-radius: 20px; padding: 52px 24px; text-align: center; border: 1.5px solid #252945; }
 .idle-title { font-size: 20px; font-weight: 700; color: #4a5170; margin-bottom: 8px; }
@@ -48,18 +51,18 @@ body {
 .idle-chip.push { background-color: rgba(108,92,231,0.18); color: #a89cf8; }
 .idle-chip.pull { background-color: rgba(61,159,212,0.18); color: #7dd0f8; }
 .idle-chip.arms { background-color: rgba(224,120,64,0.18); color: #f8a87d; }
- 
+
 /* WORKOUT */
 .workout { display: none; }
 .workout.show { display: block; animation: rise 0.3s ease forwards; }
 @keyframes rise { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
- 
+
 .wo-header-card { background-color: #181b2e; border-radius: 20px; padding: 22px 20px 20px; margin-bottom: 10px; border: 1.5px solid #252945; }
 .wo-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 6px; }
 .wo-title { font-size: 34px; font-weight: 800; letter-spacing: -0.02em; color: #ffffff; margin-bottom: 14px; line-height: 1.1; }
 .wo-chips { display: flex; gap: 6px; flex-wrap: wrap; }
 .wo-chip { background-color: #222640; border-radius: 50px; padding: 5px 13px; font-size: 12px; font-weight: 500; color: #6b7494; }
- 
+
 .rounds { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
 .round { background-color: #181b2e; border-radius: 18px; overflow: hidden; border: 1.5px solid #252945; }
 .round-head { padding: 15px 18px 12px; border-bottom: 1px solid #252945; }
@@ -67,104 +70,104 @@ body {
 .round-title { font-size: 16px; font-weight: 700; color: #ffffff; line-height: 1.3; }
 .round-meta { font-size: 12px; color: #6b7494; margin-top: 3px; }
 .round-body { padding: 2px 0; }
- 
+
 .ex { display: flex; align-items: center; padding: 13px 18px; gap: 12px; border-bottom: 1px solid rgba(37,41,69,0.7); }
 .ex:last-child { border-bottom: none; }
 .ex-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 .ex-name { flex: 1; font-size: 15px; font-weight: 500; color: #ffffff; line-height: 1.3; }
 .ex-scheme { font-size: 12px; font-weight: 600; color: #6b7494; white-space: nowrap; background-color: #222640; padding: 4px 10px; border-radius: 8px; }
- 
+
 .badge { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; margin-left: 6px; flex-shrink: 0; }
 .badge-heavy   { background-color: rgba(245,200,74,0.15); color: #f5c84a; }
 .badge-hiit    { background-color: rgba(61,159,212,0.15); color: #7dd0f8; }
 .badge-must    { background-color: rgba(74,201,138,0.12); color: #4ac98a; }
 .badge-burnout { background-color: rgba(245,90,74,0.15);  color: #f57a4a; }
- 
+
 .round-circuit { border-color: rgba(74,201,138,0.25); }
 .round-circuit .round-label { color: #4ac98a; }
 .circuit-intro { margin: 10px 18px 4px; padding: 10px 14px; background-color: rgba(74,201,138,0.07); border-radius: 10px; font-size: 13px; color: #6b7494; font-weight: 500; }
 .circuit-intro strong { color: #4ac98a; }
- 
+
 .rules-card { background-color: #181b2e; border-radius: 18px; border: 1.5px solid #252945; padding: 16px 18px; margin-bottom: 12px; }
 .rules-title { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #6b7494; margin-bottom: 12px; }
 .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .rule-item { background-color: #1e2235; border-radius: 12px; padding: 10px 12px; }
 .rule-label { font-size: 11px; color: #4a5170; font-weight: 500; margin-bottom: 2px; }
 .rule-value { font-size: 14px; font-weight: 700; color: #ffffff; }
- 
+
 .regen-btn { width: 100%; background-color: #181b2e; border: 1.5px solid #252945; border-radius: 16px; color: #6b7494; font-family: inherit; font-size: 15px; font-weight: 600; padding: 16px; cursor: pointer; transition: all 0.15s; margin-bottom: 10px; }
 .regen-btn:hover { border-color: #6c5ce7; color: #ffffff; }
 .session-count { text-align: center; font-size: 12px; color: #3a3f60; margin-bottom: 20px; }
- 
+
 /* ── EQUIPMENT TAB ── */
 .gear-panel { display: none; }
 .gear-panel.show { display: block; animation: rise 0.3s ease forwards; }
- 
+
 .gear-section { background-color: #181b2e; border-radius: 18px; border: 1.5px solid #252945; padding: 18px; margin-bottom: 10px; overflow: hidden; }
 .gear-section-title { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #4ac98a; margin-bottom: 14px; }
- 
+
 /* Swipeable row wrapper */
 .swipe-row { position: relative; overflow: hidden; border-bottom: 1px solid rgba(37,41,69,0.6); }
 .swipe-row:last-child { border-bottom: none; }
- 
+
 /* Delete button — revealed on swipe LEFT */
 .swipe-delete {
-  position: absolute;
-  right: 0; top: 0; bottom: 0;
-  width: 72px;
-  background-color: #c0392b;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer; flex-direction: column; gap: 2px; user-select: none;
+position: absolute;
+right: 0; top: 0; bottom: 0;
+width: 72px;
+background-color: #c0392b;
+display: flex; align-items: center; justify-content: center;
+cursor: pointer; flex-direction: column; gap: 2px; user-select: none;
 }
- 
+
 /* Edit button — revealed on swipe RIGHT */
 .swipe-edit {
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 72px;
-  background-color: #2980b9;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer; flex-direction: column; gap: 2px; user-select: none;
+position: absolute;
+left: 0; top: 0; bottom: 0;
+width: 72px;
+background-color: #2980b9;
+display: flex; align-items: center; justify-content: center;
+cursor: pointer; flex-direction: column; gap: 2px; user-select: none;
 }
- 
+
 .swipe-delete-x, .swipe-edit-icon { font-size: 20px; color: #fff; font-weight: 700; line-height: 1; }
 .swipe-delete-label, .swipe-edit-label { font-size: 10px; color: rgba(255,255,255,0.85); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
- 
+
 /* The sliding content */
 .swipe-content {
-  position: relative;
-  transform: translateX(0);
-  transition: transform 0.25s cubic-bezier(0.25,0.46,0.45,0.94);
-  background-color: #181b2e;
-  z-index: 1;
-  will-change: transform;
+position: relative;
+transform: translateX(0);
+transition: transform 0.25s cubic-bezier(0.25,0.46,0.45,0.94);
+background-color: #181b2e;
+z-index: 1;
+will-change: transform;
 }
 .swipe-content.swiped-left  { transform: translateX(-72px); }
 .swipe-content.swiped-right { transform: translateX(72px); }
- 
+
 /* Edit Modal */
 .modal-overlay {
-  display: none;
-  position: fixed; inset: 0;
-  background: rgba(0,0,0,0.7);
-  z-index: 9999;
-  align-items: flex-end;
-  justify-content: center;
+display: none;
+position: fixed; inset: 0;
+background: rgba(0,0,0,0.7);
+z-index: 9999;
+align-items: flex-end;
+justify-content: center;
 }
 .modal-overlay.show { display: flex; animation: modalIn 0.25s ease forwards; }
 @keyframes modalIn { from { opacity:0; } to { opacity:1; } }
- 
+
 .modal-sheet {
-  background: #181b2e;
-  border-radius: 20px 20px 0 0;
-  border: 1.5px solid #252945;
-  width: 100%;
-  max-width: 500px;
-  padding: 24px 20px 40px;
-  animation: sheetUp 0.3s cubic-bezier(0.22,1,0.36,1) forwards;
+background: #181b2e;
+border-radius: 20px 20px 0 0;
+border: 1.5px solid #252945;
+width: 100%;
+max-width: 500px;
+padding: 24px 20px 40px;
+animation: sheetUp 0.3s cubic-bezier(0.22,1,0.36,1) forwards;
 }
 @keyframes sheetUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
- 
+
 .modal-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 20px; }
 .modal-close { float: right; background: none; border: none; color: #6b7494; font-size: 22px; cursor: pointer; line-height: 1; margin-top: -2px; }
 .modal-field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
@@ -173,30 +176,30 @@ body {
 .modal-input:focus { border-color: #3d9fd4; }
 .modal-save { width: 100%; background: #3d9fd4; color: #fff; border: none; border-radius: 14px; font-family: inherit; font-size: 15px; font-weight: 700; padding: 15px; cursor: pointer; margin-top: 6px; }
 .modal-save:hover { opacity: 0.88; }
- 
+
 /* Gear item inside swipe */
 .gear-item { display: flex; align-items: center; justify-content: space-between; padding: 11px 0; }
 .gear-item-left { display: flex; flex-direction: column; gap: 2px; flex: 1; }
 .gear-item-name { font-size: 15px; font-weight: 500; color: #ffffff; }
 .gear-item-desc { font-size: 12px; color: #6b7494; }
- 
+
 /* Toggle switch */
 .toggle { position: relative; width: 44px; height: 26px; flex-shrink: 0; }
 .toggle input { opacity: 0; width: 0; height: 0; }
 .toggle-slider { position: absolute; cursor: pointer; inset: 0; background-color: #252945; border-radius: 26px; transition: 0.2s; }
-.toggle-slider:before { position: absolute; content: ''; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: #6b7494; border-radius: 50%; transition: 0.2s; }
+.toggle-slider:before { position: absolute; content: ‘’; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: #6b7494; border-radius: 50%; transition: 0.2s; }
 .toggle input:checked + .toggle-slider { background-color: #4ac98a; }
 .toggle input:checked + .toggle-slider:before { transform: translateX(18px); background-color: #ffffff; }
- 
+
 .gear-save-btn { width: 100%; background-color: #4ac98a; color: #0e1020; border: none; border-radius: 14px; font-family: inherit; font-size: 15px; font-weight: 700; padding: 16px; cursor: pointer; transition: opacity 0.15s; margin-top: 8px; }
 .gear-save-btn:hover { opacity: 0.88; }
- 
+
 /* Gear sub-nav */
 .gear-subnav { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px; background-color: #181b2e; border-radius: 14px; padding: 5px; margin-bottom: 16px; }
 .gear-subbtn { padding: 10px 6px; border-radius: 10px; text-align: center; cursor: pointer; font-size: 13px; font-weight: 600; color: #6b7494; border: none; background: transparent; transition: all 0.15s; font-family: inherit; }
 .gear-subbtn:hover { color: #fff; background-color: #222640; }
 .gear-subbtn.active { background-color: #4ac98a; color: #0e1020; }
- 
+
 /* Exercise list items — also swipeable */
 .ex-list-item { display: flex; align-items: flex-start; gap: 12px; padding: 13px 0; }
 .ex-list-info { flex: 1; }
@@ -208,100 +211,91 @@ body {
 .tag-arms  { background: rgba(224,120,64,0.15);  color: #f8a87d; }
 .tag-heavy { background: rgba(245,200,74,0.12);  color: #f5c84a; }
 .tag-hiit  { background: rgba(74,201,138,0.12);  color: #4ac98a; }
- 
+
 .custom-gear-empty { font-size: 13px; color: #4a5170; padding: 4px 0 8px; }
 .custom-gear-tag-name { font-size: 15px; font-weight: 500; color: #ffffff; }
- 
+
 .gear-notice { background-color: rgba(74,201,138,0.08); border: 1px solid rgba(74,201,138,0.2); border-radius: 12px; padding: 12px 16px; font-size: 13px; color: #6b7494; margin-bottom: 16px; line-height: 1.5; }
 .gear-notice strong { color: #4ac98a; }
- 
+
 /* Hint text */
 .swipe-hint { font-size: 11px; color: #3a3f60; text-align: right; margin-bottom: 8px; letter-spacing: 0.05em; }
- 
+
 .c-push { color: #a89cf8; }
 .c-pull { color: #7dd0f8; }
 .c-arms { color: #f8a87d; }
- 
+.c-upper { color: #f070b0; }
+.c-lower { color: #4ac98a; }
+
 /* Weight input on exercises */
 .weight-input {
-  background: #1e2235;
-  border: 1.5px solid #252945;
-  border-radius: 8px;
-  color: #4ac98a;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 4px 8px;
-  width: 72px;
-  outline: none;
-  text-align: center;
-  margin-left: 8px;
-  flex-shrink: 0;
+background: #1e2235;
+border: 1.5px solid #252945;
+border-radius: 8px;
+color: #4ac98a;
+font-family: inherit;
+font-size: 13px;
+font-weight: 600;
+padding: 4px 8px;
+width: 72px;
+outline: none;
+text-align: center;
+margin-left: 8px;
+flex-shrink: 0;
 }
 .weight-input:focus { border-color: #4ac98a; }
 .weight-input::placeholder { color: #3a3f60; font-size: 11px; }
- 
+
 /* Progress entries */
 .progress-entry {
-  background: #181b2e;
-  border-radius: 14px;
-  border: 1.5px solid #252945;
-  padding: 14px 16px;
-  margin-bottom: 8px;
+background: #181b2e;
+border-radius: 14px;
+border: 1.5px solid #252945;
+padding: 14px 16px;
+margin-bottom: 8px;
 }
 .progress-ex-name { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 8px; }
 .progress-log-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6px 0;
-  border-bottom: 1px solid rgba(37,41,69,0.5);
-  font-size: 13px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 6px 0;
+border-bottom: 1px solid rgba(37,41,69,0.5);
+font-size: 13px;
 }
 .progress-log-row:last-child { border-bottom: none; }
 .progress-log-date { color: #6b7494; font-size: 11px; }
 .progress-log-vals { color: #fff; font-weight: 600; }
 .progress-tag { display:inline-block; padding:2px 8px; border-radius:5px; font-size:10px; font-weight:700; text-transform:uppercase; margin-right:6px; }
- 
-/* Zoom */
-.zoomed .app { transform-origin: top left; }
-.zoom-btn-active { background: #6c5ce7 !important; color: #fff !important; }
+
 </style>
 </head>
 <body>
 <div class="app">
- 
+
   <div class="header">
     <div class="header-eyebrow">Garage Workout System</div>
     <div class="logo">FORGE</div>
-    <div class="header-sub">Push · Pull · Arms</div>
+    <div class="header-sub">Full Body Program</div>
   </div>
- 
+
   <!-- Nav tabs -->
-  <div class="nav-row" style="grid-template-columns:1fr 1fr 1fr 1fr 1fr;">
+
+  <div class="nav-row" style="grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr 1fr;">
     <button class="nav-tab" id="tab-push" onclick="quickCmd('push')">Push</button>
     <button class="nav-tab" id="tab-pull" onclick="quickCmd('pull')">Pull</button>
     <button class="nav-tab" id="tab-arms" onclick="quickCmd('arms')">Arms</button>
+    <button class="nav-tab" id="tab-upper" onclick="quickCmd('upper')">Upper</button>
+    <button class="nav-tab" id="tab-lower" onclick="quickCmd('lower')">Lower</button>
     <button class="nav-tab" id="tab-progress" onclick="showProgress()">📈</button>
     <button class="nav-tab" id="tab-gear" onclick="showGear()">⚙</button>
   </div>
- 
-  <!-- Zoom bar -->
-  <div id="zoom-bar" style="display:flex;align-items:center;justify-content:space-between;background:#181b2e;border-radius:14px;padding:10px 16px;margin-bottom:14px;border:1.5px solid #252945;">
-    <span style="font-size:12px;color:#6b7494;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;">📍 Zoom for viewing from afar</span>
-    <div style="display:flex;gap:6px;">
-      <button onclick="setZoom(1)" id="zoom-1" style="background:#222640;border:none;border-radius:8px;color:#6b7494;font-size:13px;font-weight:700;padding:6px 12px;cursor:pointer;">1×</button>
-      <button onclick="setZoom(1.4)" id="zoom-2" style="background:#222640;border:none;border-radius:8px;color:#6b7494;font-size:13px;font-weight:700;padding:6px 12px;cursor:pointer;">1.4×</button>
-      <button onclick="setZoom(1.8)" id="zoom-3" style="background:#222640;border:none;border-radius:8px;color:#6b7494;font-size:13px;font-weight:700;padding:6px 12px;cursor:pointer;">1.8×</button>
-      <button onclick="setZoom(2.2)" id="zoom-4" style="background:#222640;border:none;border-radius:8px;color:#6b7494;font-size:13px;font-weight:700;padding:6px 12px;cursor:pointer;">2.2×</button>
-    </div>
-  </div>
- 
+
   <div class="command-bar">
     <input id="cmd" type="text" placeholder="Or type push / pull / arms..." autocomplete="off" spellcheck="false" />
     <button id="go-btn" onclick="handleInput()">Go</button>
   </div>
- 
+
   <div class="idle-state" id="idle">
     <div class="idle-title">Ready when you are</div>
     <div class="idle-hint">Select a workout type above</div>
@@ -311,10 +305,11 @@ body {
       <button class="idle-chip arms" onclick="quickCmd('arms')">Arms</button>
     </div>
   </div>
- 
+
   <div class="workout" id="workout"></div>
- 
+
   <!-- PROGRESS PANEL -->
+
   <div class="gear-panel" id="progress-panel">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
       <div style="font-size:20px;font-weight:800;color:#fff;">Progress</div>
@@ -324,147 +319,151 @@ body {
     <div id="progress-filter-row" style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;"></div>
     <div id="progress-list"></div>
   </div>
- 
+
   <!-- EQUIPMENT PANEL -->
+
   <div class="gear-panel" id="gear-panel">
- 
-    <!-- Sub-nav inside gear -->
-    <div class="gear-subnav">
-      <button class="gear-subbtn active" id="gnav-my" onclick="gearNav('my')">My Gear</button>
-      <button class="gear-subbtn" id="gnav-exercises" onclick="gearNav('exercises')">Exercises</button>
-      <button class="gear-subbtn" id="gnav-custom" onclick="gearNav('custom')">+ Custom</button>
+
+```
+<!-- Sub-nav inside gear -->
+<div class="gear-subnav">
+  <button class="gear-subbtn active" id="gnav-my" onclick="gearNav('my')">My Gear</button>
+  <button class="gear-subbtn" id="gnav-exercises" onclick="gearNav('exercises')">Exercises</button>
+  <button class="gear-subbtn" id="gnav-custom" onclick="gearNav('custom')">+ Custom</button>
+</div>
+
+<!-- MY GEAR -->
+<div id="gpanel-my">
+  <div class="gear-notice">
+    <strong>Toggle</strong> on/off to enable or disable a piece of gear.<br>
+    <strong>Swipe left</strong> → red button to permanently delete.<br>
+    <strong>Swipe right</strong> → blue button to edit the name & description.
+  </div>
+
+  <div class="gear-section">
+    <div class="gear-section-title">Lower Body / Hinge</div>
+    <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('sandbag','Sandbag','Squats, lunges, cleans, slams')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('sandbag')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-sandbag">Sandbag</div><div class="gear-item-desc" id="gdesc-sandbag">Squats, lunges, cleans, slams</div></div><label class="toggle"><input type="checkbox" id="gear-sandbag"/><span class="toggle-slider"></span></label></div></div></div>
+    <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('kb','Kettlebells','Swings, cleans, goblet squats')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('kb')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-kb">Kettlebells</div><div class="gear-item-desc" id="gdesc-kb">Swings, cleans, goblet squats</div></div><label class="toggle"><input type="checkbox" id="gear-kb"/><span class="toggle-slider"></span></label></div></div></div>
+    <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('barbell','Barbell + Squat Rack','Back squat, front squat, deadlift, RDL')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('barbell')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-barbell">Barbell + Squat Rack</div><div class="gear-item-desc" id="gdesc-barbell">Back squat, front squat, deadlift, RDL</div></div><label class="toggle"><input type="checkbox" id="gear-barbell"/><span class="toggle-slider"></span></label></div></div></div>
+  </div>
+
+  <div class="gear-section">
+    <div class="gear-section-title">Upper Body</div>
+    <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('db','Dumbbells (70lb)','Press, rows, RDL, curls, raises')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('db')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-db">Dumbbells (70lb)</div><div class="gear-item-desc" id="gdesc-db">Press, rows, RDL, curls, raises</div></div><label class="toggle"><input type="checkbox" id="gear-db"/><span class="toggle-slider"></span></label></div></div></div>
+    <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('pullup','Pull-Up Bar','Pull-ups, hanging variations')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('pullup')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-pullup">Pull-Up Bar</div><div class="gear-item-desc" id="gdesc-pullup">Pull-ups, hanging variations</div></div><label class="toggle"><input type="checkbox" id="gear-pullup"/><span class="toggle-slider"></span></label></div></div></div>
+    <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('rings','Gymnastics Rings','Ring rows, dips, tricep extensions')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('rings')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-rings">Gymnastics Rings</div><div class="gear-item-desc" id="gdesc-rings">Ring rows, dips, tricep extensions</div></div><label class="toggle"><input type="checkbox" id="gear-rings"/><span class="toggle-slider"></span></label></div></div></div>
+    <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('dips','Dip Station / Parallel Bars','Dips, L-sits')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('dips')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-dips">Dip Station / Parallel Bars</div><div class="gear-item-desc" id="gdesc-dips">Dips, L-sits</div></div><label class="toggle"><input type="checkbox" id="gear-dips"/><span class="toggle-slider"></span></label></div></div></div>
+  </div>
+
+  <div class="gear-section">
+    <div class="gear-section-title">High Intensity / Full Body</div>
+    <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('slamball','Slam Ball','Ground slams, squat jumps, chest pass')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('slamball')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-slamball">Slam Ball</div><div class="gear-item-desc" id="gdesc-slamball">Ground slams, squat jumps, chest pass</div></div><label class="toggle"><input type="checkbox" id="gear-slamball"/><span class="toggle-slider"></span></label></div></div></div>
+    <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('battlerope','Battle Rope','Waves, slams, circuits')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('battlerope')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-battlerope">Battle Rope</div><div class="gear-item-desc" id="gdesc-battlerope">Waves, slams, circuits</div></div><label class="toggle"><input type="checkbox" id="gear-battlerope"/><span class="toggle-slider"></span></label></div></div></div>
+    <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('bands','Resistance Bands','Pull-aparts, tricep pushdowns, face pulls')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('bands')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-bands">Resistance Bands</div><div class="gear-item-desc" id="gdesc-bands">Pull-aparts, tricep pushdowns, face pulls</div></div><label class="toggle"><input type="checkbox" id="gear-bands"/><span class="toggle-slider"></span></label></div></div></div>
+    <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('mat','Yoga Mat','Bodyweight movements, core work')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('mat')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-mat">Yoga Mat</div><div class="gear-item-desc" id="gdesc-mat">Bodyweight movements, core work</div></div><label class="toggle"><input type="checkbox" id="gear-mat"/><span class="toggle-slider"></span></label></div></div></div>
+  </div>
+
+  <div class="gear-section">
+    <div class="gear-section-title">Cardio</div>
+    <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('bike','Assault Bike','HIIT, intervals, tabata')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('bike')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-bike">Assault Bike</div><div class="gear-item-desc" id="gdesc-bike">HIIT, intervals, tabata</div></div><label class="toggle"><input type="checkbox" id="gear-bike"/><span class="toggle-slider"></span></label></div></div></div>
+    <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('skierg','SkiErg','Pulling intervals, EMOM circuits')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('skierg')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-skierg">SkiErg</div><div class="gear-item-desc" id="gdesc-skierg">Pulling intervals, EMOM circuits</div></div><label class="toggle"><input type="checkbox" id="gear-skierg"/><span class="toggle-slider"></span></label></div></div></div>
+    <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('treadmill','Treadmill / Running','Sprint intervals, steady state')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('treadmill')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-treadmill">Treadmill / Running</div><div class="gear-item-desc" id="gdesc-treadmill">Sprint intervals, steady state</div></div><label class="toggle"><input type="checkbox" id="gear-treadmill"/><span class="toggle-slider"></span></label></div></div></div>
+    <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('rower','Rowing Machine','Rowing intervals, circuits')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('rower')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-rower">Rowing Machine</div><div class="gear-item-desc" id="gdesc-rower">Rowing intervals, circuits</div></div><label class="toggle"><input type="checkbox" id="gear-rower"/><span class="toggle-slider"></span></label></div></div></div>
+    <div id="custom-gear-rows"></div>
+  </div>
+
+  <button class="gear-save-btn" onclick="saveGear()">✓ Save Changes & Update Workouts</button>
+</div>
+
+<!-- EXERCISES — view & edit exercises per gear -->
+<div id="gpanel-exercises" style="display:none;">
+  <div class="gear-notice">View and edit exercises for each piece of equipment. <strong>Add or remove</strong> exercises and they'll appear in your workouts.</div>
+
+  <div class="gear-section">
+    <div class="gear-section-title" style="margin-bottom:10px;">Filter by Equipment</div>
+    <select id="ex-gear-filter" onchange="renderExerciseList()" style="width:100%;background:#1e2235;border:1.5px solid #252945;border-radius:12px;color:#fff;font-family:inherit;font-size:14px;padding:11px 14px;outline:none;margin-bottom:0;">
+      <option value="all">All Equipment</option>
+      <option value="sandbag">Sandbag</option>
+      <option value="kb">Kettlebells</option>
+      <option value="barbell">Barbell + Squat Rack</option>
+      <option value="db">Dumbbells</option>
+      <option value="pullup">Pull-Up Bar</option>
+      <option value="rings">Gymnastics Rings</option>
+      <option value="dips">Dip Station</option>
+      <option value="slamball">Slam Ball</option>
+      <option value="battlerope">Battle Rope</option>
+      <option value="bands">Resistance Bands</option>
+      <option value="mat">Yoga Mat</option>
+      <option value="custom">Custom Equipment</option>
+    </select>
+  </div>
+
+  <div id="exercise-list"></div>
+</div>
+
+<!-- CUSTOM — add new gear + exercises -->
+<div id="gpanel-custom" style="display:none;">
+  <div class="gear-notice">Add custom equipment and attach exercises to it. They'll be tagged and dropped into the right workout slot automatically.</div>
+
+  <!-- Step 1: Custom gear -->
+  <div class="gear-section">
+    <div class="gear-section-title">Step 1 — Add Custom Equipment</div>
+    <div id="custom-gear-list"></div>
+    <div style="display:flex;gap:8px;margin-top:12px;">
+      <input id="custom-gear-name" type="text" placeholder="e.g. Cable Machine, TRX..." style="flex:1;background:#1e2235;border:1.5px solid #252945;border-radius:12px;color:#fff;font-family:inherit;font-size:14px;padding:11px 14px;outline:none;"/>
+      <button onclick="addCustomGear()" style="background:#6c5ce7;color:#fff;border:none;border-radius:12px;font-family:inherit;font-size:14px;font-weight:700;padding:11px 18px;cursor:pointer;white-space:nowrap;">+ Add</button>
     </div>
- 
-    <!-- MY GEAR -->
-    <div id="gpanel-my">
-      <div class="gear-notice">
-        <strong>Toggle</strong> on/off to enable or disable a piece of gear.<br>
-        <strong>Swipe left</strong> → red button to permanently delete.<br>
-        <strong>Swipe right</strong> → blue button to edit the name & description.
-      </div>
- 
-      <div class="gear-section">
-        <div class="gear-section-title">Lower Body / Hinge</div>
-        <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('sandbag','Sandbag','Squats, lunges, cleans, slams')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('sandbag')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-sandbag">Sandbag</div><div class="gear-item-desc" id="gdesc-sandbag">Squats, lunges, cleans, slams</div></div><label class="toggle"><input type="checkbox" id="gear-sandbag"/><span class="toggle-slider"></span></label></div></div></div>
-        <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('kb','Kettlebells','Swings, cleans, goblet squats')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('kb')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-kb">Kettlebells</div><div class="gear-item-desc" id="gdesc-kb">Swings, cleans, goblet squats</div></div><label class="toggle"><input type="checkbox" id="gear-kb"/><span class="toggle-slider"></span></label></div></div></div>
-        <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('barbell','Barbell + Squat Rack','Back squat, front squat, deadlift, RDL')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('barbell')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-barbell">Barbell + Squat Rack</div><div class="gear-item-desc" id="gdesc-barbell">Back squat, front squat, deadlift, RDL</div></div><label class="toggle"><input type="checkbox" id="gear-barbell"/><span class="toggle-slider"></span></label></div></div></div>
-      </div>
- 
-      <div class="gear-section">
-        <div class="gear-section-title">Upper Body</div>
-        <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('db','Dumbbells (70lb)','Press, rows, RDL, curls, raises')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('db')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-db">Dumbbells (70lb)</div><div class="gear-item-desc" id="gdesc-db">Press, rows, RDL, curls, raises</div></div><label class="toggle"><input type="checkbox" id="gear-db"/><span class="toggle-slider"></span></label></div></div></div>
-        <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('pullup','Pull-Up Bar','Pull-ups, hanging variations')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('pullup')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-pullup">Pull-Up Bar</div><div class="gear-item-desc" id="gdesc-pullup">Pull-ups, hanging variations</div></div><label class="toggle"><input type="checkbox" id="gear-pullup"/><span class="toggle-slider"></span></label></div></div></div>
-        <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('rings','Gymnastics Rings','Ring rows, dips, tricep extensions')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('rings')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-rings">Gymnastics Rings</div><div class="gear-item-desc" id="gdesc-rings">Ring rows, dips, tricep extensions</div></div><label class="toggle"><input type="checkbox" id="gear-rings"/><span class="toggle-slider"></span></label></div></div></div>
-        <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('dips','Dip Station / Parallel Bars','Dips, L-sits')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('dips')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-dips">Dip Station / Parallel Bars</div><div class="gear-item-desc" id="gdesc-dips">Dips, L-sits</div></div><label class="toggle"><input type="checkbox" id="gear-dips"/><span class="toggle-slider"></span></label></div></div></div>
-      </div>
- 
-      <div class="gear-section">
-        <div class="gear-section-title">High Intensity / Full Body</div>
-        <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('slamball','Slam Ball','Ground slams, squat jumps, chest pass')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('slamball')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-slamball">Slam Ball</div><div class="gear-item-desc" id="gdesc-slamball">Ground slams, squat jumps, chest pass</div></div><label class="toggle"><input type="checkbox" id="gear-slamball"/><span class="toggle-slider"></span></label></div></div></div>
-        <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('battlerope','Battle Rope','Waves, slams, circuits')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('battlerope')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-battlerope">Battle Rope</div><div class="gear-item-desc" id="gdesc-battlerope">Waves, slams, circuits</div></div><label class="toggle"><input type="checkbox" id="gear-battlerope"/><span class="toggle-slider"></span></label></div></div></div>
-        <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('bands','Resistance Bands','Pull-aparts, tricep pushdowns, face pulls')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('bands')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-bands">Resistance Bands</div><div class="gear-item-desc" id="gdesc-bands">Pull-aparts, tricep pushdowns, face pulls</div></div><label class="toggle"><input type="checkbox" id="gear-bands"/><span class="toggle-slider"></span></label></div></div></div>
-        <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('mat','Yoga Mat','Bodyweight movements, core work')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('mat')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-mat">Yoga Mat</div><div class="gear-item-desc" id="gdesc-mat">Bodyweight movements, core work</div></div><label class="toggle"><input type="checkbox" id="gear-mat"/><span class="toggle-slider"></span></label></div></div></div>
-      </div>
- 
-      <div class="gear-section">
-        <div class="gear-section-title">Cardio</div>
-        <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('bike','Assault Bike','HIIT, intervals, tabata')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('bike')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-bike">Assault Bike</div><div class="gear-item-desc" id="gdesc-bike">HIIT, intervals, tabata</div></div><label class="toggle"><input type="checkbox" id="gear-bike"/><span class="toggle-slider"></span></label></div></div></div>
-        <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('skierg','SkiErg','Pulling intervals, EMOM circuits')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('skierg')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-skierg">SkiErg</div><div class="gear-item-desc" id="gdesc-skierg">Pulling intervals, EMOM circuits</div></div><label class="toggle"><input type="checkbox" id="gear-skierg"/><span class="toggle-slider"></span></label></div></div></div>
-        <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('treadmill','Treadmill / Running','Sprint intervals, steady state')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('treadmill')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-treadmill">Treadmill / Running</div><div class="gear-item-desc" id="gdesc-treadmill">Sprint intervals, steady state</div></div><label class="toggle"><input type="checkbox" id="gear-treadmill"/><span class="toggle-slider"></span></label></div></div></div>
-        <div class="swipe-row"><div class="swipe-edit" onclick="openGearEditModal('rower','Rowing Machine','Rowing intervals, circuits')"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div><div class="swipe-delete" onclick="deleteBuiltinGear('rower')"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name" id="gname-rower">Rowing Machine</div><div class="gear-item-desc" id="gdesc-rower">Rowing intervals, circuits</div></div><label class="toggle"><input type="checkbox" id="gear-rower"/><span class="toggle-slider"></span></label></div></div></div>
-        <div id="custom-gear-rows"></div>
-      </div>
- 
-      <button class="gear-save-btn" onclick="saveGear()">✓ Save Changes & Update Workouts</button>
+  </div>
+
+  <!-- Step 2: Add exercise -->
+  <div class="gear-section">
+    <div class="gear-section-title">Step 2 — Add an Exercise</div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <input id="ex-name" type="text" placeholder="Exercise name (e.g. Iron Cross)" style="background:#1e2235;border:1.5px solid #252945;border-radius:12px;color:#fff;font-family:inherit;font-size:14px;padding:11px 14px;outline:none;width:100%;"/>
+
+      <select id="ex-gear" style="background:#1e2235;border:1.5px solid #252945;border-radius:12px;color:#fff;font-family:inherit;font-size:14px;padding:11px 14px;outline:none;">
+        <option value="">— Select equipment required —</option>
+        <option value="sandbag">Sandbag</option>
+        <option value="kb">Kettlebells</option>
+        <option value="barbell">Barbell + Squat Rack</option>
+        <option value="db">Dumbbells</option>
+        <option value="pullup">Pull-Up Bar</option>
+        <option value="rings">Gymnastics Rings</option>
+        <option value="dips">Dip Station</option>
+        <option value="slamball">Slam Ball</option>
+        <option value="battlerope">Battle Rope</option>
+        <option value="bands">Resistance Bands</option>
+        <option value="mat">Bodyweight / Mat</option>
+        <option value="custom">Custom Equipment</option>
+      </select>
+
+      <select id="ex-day" style="background:#1e2235;border:1.5px solid #252945;border-radius:12px;color:#fff;font-family:inherit;font-size:14px;padding:11px 14px;outline:none;">
+        <option value="">— Which day does this belong to? —</option>
+        <option value="push">Push Day</option>
+        <option value="pull">Pull Day</option>
+        <option value="arms">Arms Day</option>
+      </select>
+
+      <select id="ex-slot" style="background:#1e2235;border:1.5px solid #252945;border-radius:12px;color:#fff;font-family:inherit;font-size:14px;padding:11px 14px;outline:none;">
+        <option value="">— Which round slot? —</option>
+        <option value="heavy-lower">Heavy Lower (squats, lunges, hinges)</option>
+        <option value="heavy-upper">Heavy Upper (press, rows, pull)</option>
+        <option value="hiit-lower">HIIT Lower (jumps, swings, slams)</option>
+        <option value="hiit-upper">HIIT Upper (push press, raises, curls)</option>
+        <option value="arms-giant">Arms — Giant Set</option>
+        <option value="arms-burnout">Arms — Burnout</option>
+      </select>
+
+      <input id="ex-scheme" type="text" placeholder="Rep scheme (e.g. 3×10–12 or 3×15–20)" style="background:#1e2235;border:1.5px solid #252945;border-radius:12px;color:#fff;font-family:inherit;font-size:14px;padding:11px 14px;outline:none;width:100%;"/>
+
+      <button onclick="addCustomExercise()" style="background:#4ac98a;color:#0e1020;border:none;border-radius:12px;font-family:inherit;font-size:15px;font-weight:700;padding:13px;cursor:pointer;">+ Add Exercise to Workouts</button>
     </div>
- 
-    <!-- EXERCISES — view & edit exercises per gear -->
-    <div id="gpanel-exercises" style="display:none;">
-      <div class="gear-notice">View and edit exercises for each piece of equipment. <strong>Add or remove</strong> exercises and they'll appear in your workouts.</div>
- 
-      <div class="gear-section">
-        <div class="gear-section-title" style="margin-bottom:10px;">Filter by Equipment</div>
-        <select id="ex-gear-filter" onchange="renderExerciseList()" style="width:100%;background:#1e2235;border:1.5px solid #252945;border-radius:12px;color:#fff;font-family:inherit;font-size:14px;padding:11px 14px;outline:none;margin-bottom:0;">
-          <option value="all">All Equipment</option>
-          <option value="sandbag">Sandbag</option>
-          <option value="kb">Kettlebells</option>
-          <option value="barbell">Barbell + Squat Rack</option>
-          <option value="db">Dumbbells</option>
-          <option value="pullup">Pull-Up Bar</option>
-          <option value="rings">Gymnastics Rings</option>
-          <option value="dips">Dip Station</option>
-          <option value="slamball">Slam Ball</option>
-          <option value="battlerope">Battle Rope</option>
-          <option value="bands">Resistance Bands</option>
-          <option value="mat">Yoga Mat</option>
-          <option value="custom">Custom Equipment</option>
-        </select>
-      </div>
- 
-      <div id="exercise-list"></div>
-    </div>
- 
-    <!-- CUSTOM — add new gear + exercises -->
-    <div id="gpanel-custom" style="display:none;">
-      <div class="gear-notice">Add custom equipment and attach exercises to it. They'll be tagged and dropped into the right workout slot automatically.</div>
- 
-      <!-- Step 1: Custom gear -->
-      <div class="gear-section">
-        <div class="gear-section-title">Step 1 — Add Custom Equipment</div>
-        <div id="custom-gear-list"></div>
-        <div style="display:flex;gap:8px;margin-top:12px;">
-          <input id="custom-gear-name" type="text" placeholder="e.g. Cable Machine, TRX..." style="flex:1;background:#1e2235;border:1.5px solid #252945;border-radius:12px;color:#fff;font-family:inherit;font-size:14px;padding:11px 14px;outline:none;"/>
-          <button onclick="addCustomGear()" style="background:#6c5ce7;color:#fff;border:none;border-radius:12px;font-family:inherit;font-size:14px;font-weight:700;padding:11px 18px;cursor:pointer;white-space:nowrap;">+ Add</button>
-        </div>
-      </div>
- 
-      <!-- Step 2: Add exercise -->
-      <div class="gear-section">
-        <div class="gear-section-title">Step 2 — Add an Exercise</div>
-        <div style="display:flex;flex-direction:column;gap:10px;">
-          <input id="ex-name" type="text" placeholder="Exercise name (e.g. Iron Cross)" style="background:#1e2235;border:1.5px solid #252945;border-radius:12px;color:#fff;font-family:inherit;font-size:14px;padding:11px 14px;outline:none;width:100%;"/>
- 
-          <select id="ex-gear" style="background:#1e2235;border:1.5px solid #252945;border-radius:12px;color:#fff;font-family:inherit;font-size:14px;padding:11px 14px;outline:none;">
-            <option value="">— Select equipment required —</option>
-            <option value="sandbag">Sandbag</option>
-            <option value="kb">Kettlebells</option>
-            <option value="barbell">Barbell + Squat Rack</option>
-            <option value="db">Dumbbells</option>
-            <option value="pullup">Pull-Up Bar</option>
-            <option value="rings">Gymnastics Rings</option>
-            <option value="dips">Dip Station</option>
-            <option value="slamball">Slam Ball</option>
-            <option value="battlerope">Battle Rope</option>
-            <option value="bands">Resistance Bands</option>
-            <option value="mat">Bodyweight / Mat</option>
-            <option value="custom">Custom Equipment</option>
-          </select>
- 
-          <select id="ex-day" style="background:#1e2235;border:1.5px solid #252945;border-radius:12px;color:#fff;font-family:inherit;font-size:14px;padding:11px 14px;outline:none;">
-            <option value="">— Which day does this belong to? —</option>
-            <option value="push">Push Day</option>
-            <option value="pull">Pull Day</option>
-            <option value="arms">Arms Day</option>
-          </select>
- 
-          <select id="ex-slot" style="background:#1e2235;border:1.5px solid #252945;border-radius:12px;color:#fff;font-family:inherit;font-size:14px;padding:11px 14px;outline:none;">
-            <option value="">— Which round slot? —</option>
-            <option value="heavy-lower">Heavy Lower (squats, lunges, hinges)</option>
-            <option value="heavy-upper">Heavy Upper (press, rows, pull)</option>
-            <option value="hiit-lower">HIIT Lower (jumps, swings, slams)</option>
-            <option value="hiit-upper">HIIT Upper (push press, raises, curls)</option>
-            <option value="arms-giant">Arms — Giant Set</option>
-            <option value="arms-burnout">Arms — Burnout</option>
-          </select>
- 
-          <input id="ex-scheme" type="text" placeholder="Rep scheme (e.g. 3×10–12 or 3×15–20)" style="background:#1e2235;border:1.5px solid #252945;border-radius:12px;color:#fff;font-family:inherit;font-size:14px;padding:11px 14px;outline:none;width:100%;"/>
- 
-          <button onclick="addCustomExercise()" style="background:#4ac98a;color:#0e1020;border:none;border-radius:12px;font-family:inherit;font-size:15px;font-weight:700;padding:13px;cursor:pointer;">+ Add Exercise to Workouts</button>
-        </div>
-      </div>
-    </div>
- 
+  </div>
+</div>
+```
+
   <!-- GEAR EDIT MODAL -->
+
   <div class="modal-overlay" id="gear-edit-modal">
     <div class="modal-sheet">
       <button class="modal-close" onclick="document.getElementById('gear-edit-modal').classList.remove('show')">✕</button>
@@ -481,827 +480,1038 @@ body {
       <button class="modal-save" onclick="saveGearEdit()">✓ Save Changes</button>
     </div>
   </div>
- 
+
   <!-- EDIT EXERCISE MODAL — outside all panels so always accessible -->
+
   <div class="modal-overlay" id="edit-modal">
     <div class="modal-sheet">
       <button class="modal-close" onclick="document.getElementById('edit-modal').classList.remove('show')">✕</button>
       <div class="modal-title">Edit Exercise</div>
- 
-      <input type="hidden" id="edit-original-name" />
- 
-      <div class="modal-field">
-        <div class="modal-label">Equipment</div>
-        <select class="modal-input" id="edit-gear">
-          <option value="sandbag">Sandbag</option>
-          <option value="kb">Kettlebells</option>
-          <option value="barbell">Barbell + Squat Rack</option>
-          <option value="db">Dumbbells</option>
-          <option value="pullup">Pull-Up Bar</option>
-          <option value="rings">Gymnastics Rings</option>
-          <option value="dips">Dip Station</option>
-          <option value="slamball">Slam Ball</option>
-          <option value="battlerope">Battle Rope</option>
-          <option value="bands">Resistance Bands</option>
-          <option value="mat">Bodyweight / Mat</option>
-          <option value="custom">Custom Equipment</option>
-        </select>
-      </div>
- 
-      <div class="modal-field">
-        <div class="modal-label">Exercise Name</div>
-        <input class="modal-input" id="edit-name" type="text" placeholder="Exercise name" />
-      </div>
- 
-      <div class="modal-field">
-        <div class="modal-label">Rep Scheme</div>
-        <input class="modal-input" id="edit-scheme" type="text" placeholder="e.g. 3–4×10–12" />
-      </div>
- 
-      <div class="modal-field">
-        <div class="modal-label">Day</div>
-        <select class="modal-input" id="edit-day">
-          <option value="push">Push Day</option>
-          <option value="pull">Pull Day</option>
-          <option value="arms">Arms Day</option>
-        </select>
-      </div>
- 
-      <div class="modal-field">
-        <div class="modal-label">Round Slot</div>
-        <select class="modal-input" id="edit-slot">
-          <option value="heavy-lower">Heavy Lower</option>
-          <option value="heavy-upper">Heavy Upper</option>
-          <option value="hiit-lower">HIIT Lower</option>
-          <option value="hiit-upper">HIIT Upper</option>
-          <option value="arms-giant">Arms Giant Set</option>
-          <option value="arms-burnout">Arms Burnout</option>
-        </select>
-      </div>
- 
-      <button class="modal-save" onclick="saveExerciseEdit()">✓ Save Changes</button>
-    </div>
+
+```
+  <input type="hidden" id="edit-original-name" />
+
+  <div class="modal-field">
+    <div class="modal-label">Equipment</div>
+    <select class="modal-input" id="edit-gear">
+      <option value="sandbag">Sandbag</option>
+      <option value="kb">Kettlebells</option>
+      <option value="barbell">Barbell + Squat Rack</option>
+      <option value="db">Dumbbells</option>
+      <option value="pullup">Pull-Up Bar</option>
+      <option value="rings">Gymnastics Rings</option>
+      <option value="dips">Dip Station</option>
+      <option value="slamball">Slam Ball</option>
+      <option value="battlerope">Battle Rope</option>
+      <option value="bands">Resistance Bands</option>
+      <option value="mat">Bodyweight / Mat</option>
+      <option value="custom">Custom Equipment</option>
+    </select>
   </div>
- 
+
+  <div class="modal-field">
+    <div class="modal-label">Exercise Name</div>
+    <input class="modal-input" id="edit-name" type="text" placeholder="Exercise name" />
+  </div>
+
+  <div class="modal-field">
+    <div class="modal-label">Rep Scheme</div>
+    <input class="modal-input" id="edit-scheme" type="text" placeholder="e.g. 3–4×10–12" />
+  </div>
+
+  <div class="modal-field">
+    <div class="modal-label">Day</div>
+    <select class="modal-input" id="edit-day">
+      <option value="push">Push Day</option>
+      <option value="pull">Pull Day</option>
+      <option value="arms">Arms Day</option>
+    </select>
+  </div>
+
+  <div class="modal-field">
+    <div class="modal-label">Round Slot</div>
+    <select class="modal-input" id="edit-slot">
+      <option value="heavy-lower">Heavy Lower</option>
+      <option value="heavy-upper">Heavy Upper</option>
+      <option value="hiit-lower">HIIT Lower</option>
+      <option value="hiit-upper">HIIT Upper</option>
+      <option value="arms-giant">Arms Giant Set</option>
+      <option value="arms-burnout">Arms Burnout</option>
+    </select>
+  </div>
+
+  <button class="modal-save" onclick="saveExerciseEdit()">✓ Save Changes</button>
+</div>
+```
+
+  </div>
+
 </div>
 <script>
- 
+
 // ─── UTILITIES ────────────────────────────────────────────────────────────────
 function rand(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
-function safeId(name) { return name.replace(/[^a-zA-Z0-9]/g,'_'); }
+function safeId(name) { return name.replace(/[^a-zA-Z0-9]/g,’_’); }
 function pickRand(pool, exclude) {
-  const f = pool.filter(e => !exclude || e.name !== exclude.name);
-  return f.length ? rand(f) : rand(pool);
+const f = pool.filter(e => !exclude || e.name !== exclude.name);
+return f.length ? rand(f) : rand(pool);
 }
- 
+
 // ─── WEIGHT LOGGING ───────────────────────────────────────────────────────────
 function loadWeightLog(exName) {
-  const s = localStorage.getItem('forge_wt_' + safeId(exName));
-  return s ? JSON.parse(s) : [];
+const s = localStorage.getItem(‘forge_wt_’ + safeId(exName));
+return s ? JSON.parse(s) : [];
 }
 function saveWeightLog(exName, entries) {
-  localStorage.setItem('forge_wt_' + safeId(exName), JSON.stringify(entries));
+localStorage.setItem(‘forge_wt_’ + safeId(exName), JSON.stringify(entries));
 }
 function logWeight(exName, value) {
-  if (!value || !value.trim()) return;
-  const entries = loadWeightLog(exName);
-  const today = new Date().toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
-  const idx = entries.findIndex(e => e.date === today);
-  if (idx > -1) { entries[idx].weight = value.trim(); }
-  else { entries.push({ date: today, weight: value.trim() }); }
-  if (entries.length > 20) entries.splice(0, entries.length - 20);
-  saveWeightLog(exName, entries);
+if (!value || !value.trim()) return;
+const entries = loadWeightLog(exName);
+const today = new Date().toLocaleDateString(‘en-US’, { month:‘short’, day:‘numeric’, year:‘numeric’ });
+const idx = entries.findIndex(e => e.date === today);
+if (idx > -1) { entries[idx].weight = value.trim(); }
+else { entries.push({ date: today, weight: value.trim() }); }
+if (entries.length > 20) entries.splice(0, entries.length - 20);
+saveWeightLog(exName, entries);
 }
- 
+
 // ─── EQUIPMENT ────────────────────────────────────────────────────────────────
-const ALL_EQUIPMENT = ['sandbag','kb','barbell','db','pullup','rings','dips','slamball','battlerope','bands','mat','bike','skierg','treadmill','rower'];
-const DEFAULT_GEAR  = ['sandbag','kb','db','pullup','rings','dips','slamball','battlerope','bands','mat','bike','skierg'];
-const GEAR_NAMES    = { sandbag:'Sandbag', kb:'Kettlebells', barbell:'Barbell + Squat Rack', db:'Dumbbells', pullup:'Pull-Up Bar', rings:'Gymnastics Rings', dips:'Dip Station', slamball:'Slam Ball', battlerope:'Battle Rope', bands:'Resistance Bands', mat:'Bodyweight / Mat', bike:'Assault Bike', skierg:'SkiErg', treadmill:'Treadmill', rower:'Rowing Machine', custom:'Custom Equipment' };
-const SLOT_LABELS   = { 'heavy-lower':'Heavy Lower', 'heavy-upper':'Heavy Upper', 'hiit-lower':'HIIT Lower', 'hiit-upper':'HIIT Upper', 'arms-giant':'Arms Giant Set', 'arms-burnout':'Arms Burnout' };
- 
-function loadGear() { const s=localStorage.getItem('forge_gear'); return s?JSON.parse(s):[...DEFAULT_GEAR]; }
-function loadCustomGear() { const s=localStorage.getItem('forge_custom_gear'); return s?JSON.parse(s):[]; }
-function saveCustomGearList(list) { localStorage.setItem('forge_custom_gear', JSON.stringify(list)); }
-function loadCustomExercises() { const s=localStorage.getItem('forge_custom_exercises'); return s?JSON.parse(s):[]; }
-function saveCustomExercises(list) { localStorage.setItem('forge_custom_exercises', JSON.stringify(list)); }
-function loadDisabledExercises() { const s=localStorage.getItem('forge_disabled_exercises'); return s?JSON.parse(s):[]; }
-function saveDisabledExercises(list) { localStorage.setItem('forge_disabled_exercises', JSON.stringify(list)); }
-function loadExerciseOverrides() { const s=localStorage.getItem('forge_ex_overrides'); return s?JSON.parse(s):{}; }
-function saveExerciseOverrides(obj) { localStorage.setItem('forge_ex_overrides', JSON.stringify(obj)); }
-function loadGearOverrides() { const s=localStorage.getItem('forge_gear_overrides'); return s?JSON.parse(s):{}; }
-function saveGearOverrides(obj) { localStorage.setItem('forge_gear_overrides', JSON.stringify(obj)); }
-function loadDeletedGear() { const s=localStorage.getItem('forge_deleted_gear'); return s?JSON.parse(s):[]; }
-function saveDeletedGear(list) { localStorage.setItem('forge_deleted_gear', JSON.stringify(list)); }
- 
+const ALL_EQUIPMENT = [‘sandbag’,‘kb’,‘barbell’,‘db’,‘pullup’,‘rings’,‘dips’,‘slamball’,‘battlerope’,‘bands’,‘mat’,‘bike’,‘skierg’,‘treadmill’,‘rower’];
+const DEFAULT_GEAR  = [‘sandbag’,‘kb’,‘db’,‘pullup’,‘rings’,‘dips’,‘slamball’,‘battlerope’,‘bands’,‘mat’,‘bike’,‘skierg’];
+const GEAR_NAMES    = { sandbag:‘Sandbag’, kb:‘Kettlebells’, barbell:‘Barbell + Squat Rack’, db:‘Dumbbells’, pullup:‘Pull-Up Bar’, rings:‘Gymnastics Rings’, dips:‘Dip Station’, slamball:‘Slam Ball’, battlerope:‘Battle Rope’, bands:‘Resistance Bands’, mat:‘Bodyweight / Mat’, bike:‘Assault Bike’, skierg:‘SkiErg’, treadmill:‘Treadmill’, rower:‘Rowing Machine’, custom:‘Custom Equipment’ };
+const SLOT_LABELS   = { ‘heavy-lower’:‘Heavy Lower’, ‘heavy-upper’:‘Heavy Upper’, ‘hiit-lower’:‘HIIT Lower’, ‘hiit-upper’:‘HIIT Upper’, ‘arms-giant’:‘Arms Giant Set’, ‘arms-burnout’:‘Arms Burnout’ };
+
+function loadGear() { const s=localStorage.getItem(‘forge_gear’); return s?JSON.parse(s):[…DEFAULT_GEAR]; }
+function loadCustomGear() { const s=localStorage.getItem(‘forge_custom_gear’); return s?JSON.parse(s):[]; }
+function saveCustomGearList(list) { localStorage.setItem(‘forge_custom_gear’, JSON.stringify(list)); }
+function loadCustomExercises() { const s=localStorage.getItem(‘forge_custom_exercises’); return s?JSON.parse(s):[]; }
+function saveCustomExercises(list) { localStorage.setItem(‘forge_custom_exercises’, JSON.stringify(list)); }
+function loadDisabledExercises() { const s=localStorage.getItem(‘forge_disabled_exercises’); return s?JSON.parse(s):[]; }
+function saveDisabledExercises(list) { localStorage.setItem(‘forge_disabled_exercises’, JSON.stringify(list)); }
+function loadExerciseOverrides() { const s=localStorage.getItem(‘forge_ex_overrides’); return s?JSON.parse(s):{}; }
+function saveExerciseOverrides(obj) { localStorage.setItem(‘forge_ex_overrides’, JSON.stringify(obj)); }
+function loadGearOverrides() { const s=localStorage.getItem(‘forge_gear_overrides’); return s?JSON.parse(s):{}; }
+function saveGearOverrides(obj) { localStorage.setItem(‘forge_gear_overrides’, JSON.stringify(obj)); }
+function loadDeletedGear() { const s=localStorage.getItem(‘forge_deleted_gear’); return s?JSON.parse(s):[]; }
+function saveDeletedGear(list) { localStorage.setItem(‘forge_deleted_gear’, JSON.stringify(list)); }
+
 function hasGear(arr) {
-  const owned = loadGear();
-  const custom = loadCustomGear();
-  return arr.every(e => owned.includes(e) || custom.includes(e) || e==='custom');
+const owned = loadGear();
+const custom = loadCustomGear();
+return arr.every(e => owned.includes(e) || custom.includes(e) || e===‘custom’);
 }
- 
+
 function applyOverride(ex) {
-  const ov = loadExerciseOverrides()[ex.name];
-  if (!ov) return ex;
-  return { ...ex, name:ov.name, scheme:ov.scheme, needs:ov.needs||ex.needs };
+const ov = loadExerciseOverrides()[ex.name];
+if (!ov) return ex;
+return { …ex, name:ov.name, scheme:ov.scheme, needs:ov.needs||ex.needs };
 }
- 
+
 function getPoolWithCustom(day, slot) {
-  const disabled = loadDisabledExercises();
-  const custom = loadCustomExercises().filter(e => e.day===day && e.slot===slot);
-  let base = [];
-  if (day==='push') {
-    if (slot==='heavy-lower') base=PUSH.heavyLower;
-    else if (slot==='heavy-upper') base=PUSH.heavyUpper;
-    else if (slot==='hiit-lower') base=PUSH.hiitLower;
-    else if (slot==='hiit-upper') base=PUSH.hiitUpper;
-  } else if (day==='pull') {
-    if (slot==='heavy-lower') base=PULL.heavyHinge;
-    else if (slot==='heavy-upper') base=PULL.heavyUpper;
-    else if (slot==='hiit-lower') base=PULL.hiitLower;
-    else if (slot==='hiit-upper') base=PULL.hiitUpper;
-  }
-  const overrides = loadExerciseOverrides();
-  const filtered = base.filter(ex => {
-    const ovName = (overrides[ex.name]||{}).name || ex.name;
-    return (!ex.needs || hasGear(ex.needs)) && !disabled.includes(ex.name) && !disabled.includes(ovName);
-  });
-  return [...filtered.map(applyOverride), ...custom.map(e=>({ name:e.name, scheme:e.scheme, badge:e.slot.startsWith('heavy')?'heavy':'hiit', custom:true }))];
+const disabled = loadDisabledExercises();
+const custom = loadCustomExercises().filter(e => e.day===day && e.slot===slot);
+let base = [];
+if (day===‘push’) {
+if (slot===‘heavy-lower’) base=PUSH.heavyLower;
+else if (slot===‘heavy-upper’) base=PUSH.heavyUpper;
+else if (slot===‘hiit-lower’) base=PUSH.hiitLower;
+else if (slot===‘hiit-upper’) base=PUSH.hiitUpper;
+} else if (day===‘pull’) {
+if (slot===‘heavy-lower’) base=PULL.heavyHinge;
+else if (slot===‘heavy-upper’) base=PULL.heavyUpper;
+else if (slot===‘hiit-lower’) base=PULL.hiitLower;
+else if (slot===‘hiit-upper’) base=PULL.hiitUpper;
 }
- 
+const overrides = loadExerciseOverrides();
+const filtered = base.filter(ex => {
+const ovName = (overrides[ex.name]||{}).name || ex.name;
+return (!ex.needs || hasGear(ex.needs)) && !disabled.includes(ex.name) && !disabled.includes(ovName);
+});
+return […filtered.map(applyOverride), …custom.map(e=>({ name:e.name, scheme:e.scheme, badge:e.slot.startsWith(‘heavy’)?‘heavy’:‘hiit’, custom:true }))];
+}
+
 // ─── EXERCISE DATA ────────────────────────────────────────────────────────────
 const PUSH = {
-  heavyLower: [
-    { name:'Sandbag Front Squat',       scheme:'3–4×10–12', badge:'heavy', must:true, needs:['sandbag'] },
-    { name:'Sandbag Back Squat',        scheme:'3–4×10–12', badge:'heavy', must:true, needs:['sandbag'] },
-    { name:'Sandbag Reverse Lunge',     scheme:'3–4×10–12/leg', badge:'heavy', must:true, needs:['sandbag'] },
-    { name:'Sandbag Zercher Squat',     scheme:'3–4×10–12', badge:'heavy', needs:['sandbag'] },
-    { name:'KB Front Rack Squat',       scheme:'3–4×10–12', badge:'heavy', needs:['kb'] },
-    { name:'DB Goblet Squat',           scheme:'3–4×10–12', badge:'heavy', needs:['db'] },
-  ],
-  heavyUpper: [
-    { name:'DB Incline Press',          scheme:'3–4×10–12', badge:'heavy', must:true, needs:['db'] },
-    { name:'DB Flat Chest Press',       scheme:'3–4×10–12', badge:'heavy', must:true, needs:['db'] },
-    { name:'DB Overhead Press',         scheme:'3–4×10–12', badge:'heavy', needs:['db'] },
-    { name:'DB Arnold Press',           scheme:'3–4×10–12', badge:'heavy', needs:['db'] },
-    { name:'Weighted Ring Dips',        scheme:'3–4×10–12', badge:'heavy', needs:['rings'] },
-  ],
-  hiitLower: [
-    { name:'Slam Ball Squat Jumps',         scheme:'3×15–20',     badge:'hiit', needs:['slamball'] },
-    { name:'KB Goblet Squat',               scheme:'3×15–20',     badge:'hiit', needs:['kb'] },
-    { name:'Alternating DB Reverse Lunges', scheme:'3×15–20/leg', badge:'hiit', needs:['db'] },
-    { name:'Jump Squats',                   scheme:'3×15–20',     badge:'hiit', needs:['mat'] },
-    { name:'KB Single Arm Front Squat',     scheme:'3×15–20/side',badge:'hiit', needs:['kb'] },
-    { name:'Cossack Squat',                 scheme:'3×15–20/side',badge:'hiit', needs:['mat'] },
-  ],
-  hiitUpper: [
-    { name:'DB Push Press',              scheme:'3×15–20', badge:'hiit', needs:['db'] },
-    { name:'Ring Tricep Extension',      scheme:'3×15–20', badge:'hiit', needs:['rings'] },
-    { name:'Ring Dips',                  scheme:'3×15–20', badge:'hiit', needs:['rings'] },
-    { name:'DB Lateral Raise',           scheme:'3×15–20', badge:'hiit', needs:['db'] },
-    { name:'DB Front Raise',             scheme:'3×15–20', badge:'hiit', needs:['db'] },
-    { name:'Tyson Push-Ups',             scheme:'3×15–20', badge:'hiit', needs:['mat'] },
-    { name:'Pike Push-Ups',              scheme:'3×15–20', badge:'hiit', needs:['mat'] },
-    { name:'Dive Bomber Push-Ups',       scheme:'3×15–20', badge:'hiit', needs:['mat'] },
-    { name:'Slam Ball Chest Pass (wall)',scheme:'3×15–20', badge:'hiit', needs:['slamball'] },
-    { name:'DB Skull Crushers',          scheme:'3×15–20', badge:'hiit', needs:['db'] },
-  ],
+heavyLower: [
+{ name:‘Sandbag Front Squat’,       scheme:‘3–4×10–12’, badge:‘heavy’, must:true, needs:[‘sandbag’] },
+{ name:‘Sandbag Back Squat’,        scheme:‘3–4×10–12’, badge:‘heavy’, must:true, needs:[‘sandbag’] },
+{ name:‘Sandbag Reverse Lunge’,     scheme:‘3–4×10–12/leg’, badge:‘heavy’, must:true, needs:[‘sandbag’] },
+{ name:‘Sandbag Zercher Squat’,     scheme:‘3–4×10–12’, badge:‘heavy’, needs:[‘sandbag’] },
+{ name:‘KB Front Rack Squat’,       scheme:‘3–4×10–12’, badge:‘heavy’, needs:[‘kb’] },
+{ name:‘DB Goblet Squat’,           scheme:‘3–4×10–12’, badge:‘heavy’, needs:[‘db’] },
+],
+heavyUpper: [
+{ name:‘DB Incline Press’,          scheme:‘3–4×10–12’, badge:‘heavy’, must:true, needs:[‘db’] },
+{ name:‘DB Flat Chest Press’,       scheme:‘3–4×10–12’, badge:‘heavy’, must:true, needs:[‘db’] },
+{ name:‘DB Overhead Press’,         scheme:‘3–4×10–12’, badge:‘heavy’, needs:[‘db’] },
+{ name:‘DB Arnold Press’,           scheme:‘3–4×10–12’, badge:‘heavy’, needs:[‘db’] },
+{ name:‘Weighted Ring Dips’,        scheme:‘3–4×10–12’, badge:‘heavy’, needs:[‘rings’] },
+],
+hiitLower: [
+{ name:‘Slam Ball Squat Jumps’,         scheme:‘3×15–20’,     badge:‘hiit’, needs:[‘slamball’] },
+{ name:‘KB Goblet Squat’,               scheme:‘3×15–20’,     badge:‘hiit’, needs:[‘kb’] },
+{ name:‘Alternating DB Reverse Lunges’, scheme:‘3×15–20/leg’, badge:‘hiit’, needs:[‘db’] },
+{ name:‘Jump Squats’,                   scheme:‘3×15–20’,     badge:‘hiit’, needs:[‘mat’] },
+{ name:‘KB Single Arm Front Squat’,     scheme:‘3×15–20/side’,badge:‘hiit’, needs:[‘kb’] },
+{ name:‘Cossack Squat’,                 scheme:‘3×15–20/side’,badge:‘hiit’, needs:[‘mat’] },
+],
+hiitUpper: [
+{ name:‘DB Push Press’,              scheme:‘3×15–20’, badge:‘hiit’, needs:[‘db’] },
+{ name:‘Ring Tricep Extension’,      scheme:‘3×15–20’, badge:‘hiit’, needs:[‘rings’] },
+{ name:‘Ring Dips’,                  scheme:‘3×15–20’, badge:‘hiit’, needs:[‘rings’] },
+{ name:‘DB Lateral Raise’,           scheme:‘3×15–20’, badge:‘hiit’, needs:[‘db’] },
+{ name:‘DB Front Raise’,             scheme:‘3×15–20’, badge:‘hiit’, needs:[‘db’] },
+{ name:‘Tyson Push-Ups’,             scheme:‘3×15–20’, badge:‘hiit’, needs:[‘mat’] },
+{ name:‘Pike Push-Ups’,              scheme:‘3×15–20’, badge:‘hiit’, needs:[‘mat’] },
+{ name:‘Dive Bomber Push-Ups’,       scheme:‘3×15–20’, badge:‘hiit’, needs:[‘mat’] },
+{ name:‘Slam Ball Chest Pass (wall)’,scheme:‘3×15–20’, badge:‘hiit’, needs:[‘slamball’] },
+{ name:‘DB Skull Crushers’,          scheme:‘3×15–20’, badge:‘hiit’, needs:[‘db’] },
+],
 };
- 
+
 const PULL = {
-  heavyHinge: [
-    { name:'DB RDL',                scheme:'3–4×10–12',      badge:'heavy', must:true, needs:['db'] },
-    { name:'Single Leg DB RDL',     scheme:'3–4×10–12/leg',  badge:'heavy', must:true, needs:['db'] },
-    { name:'Sandbag Clean',         scheme:'3–4×4–6',        badge:'heavy', must:true, needs:['sandbag'] },
-    { name:'Sandbag Shoulder Slam', scheme:'3–4×10 (5/side)',badge:'heavy', must:true, needs:['sandbag'] },
-    { name:'KB Clean',              scheme:'3–4×10–12/side', badge:'heavy', must:true, needs:['kb'] },
-  ],
-  heavyUpper: [
-    { name:'Weighted Pull-Ups',      scheme:'3–4×10–12',     badge:'heavy', must:true, needs:['pullup'] },
-    { name:'DB Bent Over Row',       scheme:'3–4×10–12',     badge:'heavy', must:true, needs:['db'] },
-    { name:'DB Chest Supported Row', scheme:'3–4×10–12',     badge:'heavy', needs:['db'] },
-    { name:'DB Snatch',              scheme:'3–4×6–8/side',  badge:'heavy', needs:['db'] },
-  ],
-  hiitLower: [
-    { name:'KB Swing',               scheme:'3×15–20',       badge:'hiit', needs:['kb'] },
-    { name:'KB Single Arm Swing',    scheme:'3×15–20/side',  badge:'hiit', needs:['kb'] },
-    { name:'Sandbag Rotational Slam',scheme:'3×10 (5/side)', badge:'hiit', needs:['sandbag'] },
-    { name:'KB Deadlift High Pull',  scheme:'3×15–20',       badge:'hiit', needs:['kb'] },
-    { name:'KB Gunslinger',          scheme:'3×15–20/side',  badge:'hiit', needs:['kb'] },
-  ],
-  hiitUpper: [
-    { name:'Ring Row',               scheme:'3×15–20',       badge:'hiit', needs:['rings'] },
-    { name:'DB Face Pulls',          scheme:'3×15–20',       badge:'hiit', needs:['db'] },
-    { name:'Banded Pull-Aparts',     scheme:'3×15–20',       badge:'hiit', needs:['bands'] },
-    { name:'Inverted Row',           scheme:'3×15–20',       badge:'hiit', needs:['pullup'] },
-    { name:'Ring Bicep Curl',        scheme:'3×15–20',       badge:'hiit', needs:['rings'] },
-    { name:'DB Hammer Curl',         scheme:'3×15–20',       badge:'hiit', needs:['db'] },
-  ],
+heavyHinge: [
+{ name:‘DB RDL’,                scheme:‘3–4×10–12’,      badge:‘heavy’, must:true, needs:[‘db’] },
+{ name:‘Single Leg DB RDL’,     scheme:‘3–4×10–12/leg’,  badge:‘heavy’, must:true, needs:[‘db’] },
+{ name:‘Sandbag Clean’,         scheme:‘3–4×4–6’,        badge:‘heavy’, must:true, needs:[‘sandbag’] },
+{ name:‘Sandbag Shoulder Slam’, scheme:‘3–4×10 (5/side)’,badge:‘heavy’, must:true, needs:[‘sandbag’] },
+{ name:‘KB Clean’,              scheme:‘3–4×10–12/side’, badge:‘heavy’, must:true, needs:[‘kb’] },
+],
+heavyUpper: [
+{ name:‘Weighted Pull-Ups’,      scheme:‘3–4×10–12’,     badge:‘heavy’, must:true, needs:[‘pullup’] },
+{ name:‘DB Bent Over Row’,       scheme:‘3–4×10–12’,     badge:‘heavy’, must:true, needs:[‘db’] },
+{ name:‘DB Chest Supported Row’, scheme:‘3–4×10–12’,     badge:‘heavy’, needs:[‘db’] },
+],
+hiitLower: [
+{ name:‘KB Swing’,               scheme:‘3×15–20’,       badge:‘hiit’, needs:[‘kb’] },
+{ name:‘KB Single Arm Swing’,    scheme:‘3×15–20/side’,  badge:‘hiit’, needs:[‘kb’] },
+{ name:‘Sandbag Rotational Slam’,scheme:‘3×10 (5/side)’, badge:‘hiit’, needs:[‘sandbag’] },
+{ name:‘KB Deadlift High Pull’,  scheme:‘3×15–20’,       badge:‘hiit’, needs:[‘kb’] },
+{ name:‘KB Gunslinger’,          scheme:‘3×15–20/side’,  badge:‘hiit’, needs:[‘kb’] },
+],
+hiitUpper: [
+{ name:‘Ring Row’,               scheme:‘3×15–20’,       badge:‘hiit’, needs:[‘rings’] },
+{ name:‘DB Face Pulls’,          scheme:‘3×15–20’,       badge:‘hiit’, needs:[‘db’] },
+{ name:‘Banded Pull-Aparts’,     scheme:‘3×15–20’,       badge:‘hiit’, needs:[‘bands’] },
+{ name:‘Inverted Row’,           scheme:‘3×15–20’,       badge:‘hiit’, needs:[‘pullup’] },
+{ name:‘Ring Bicep Curl’,        scheme:‘3×15–20’,       badge:‘hiit’, needs:[‘rings’] },
+{ name:‘DB Hammer Curl’,         scheme:‘3×15–20’,       badge:‘hiit’, needs:[‘db’] },
+],
 };
- 
+
 const ARMS_PROGRAM = [
-  { label:'Giant Set A — Shoulder Width', exercises:[
-    { name:'DB Lateral Raise',         scheme:'15–20 reps', badge:'must', needs:['db'] },
-    { name:'DB Leaning Lateral Raise', scheme:'15–20/side', badge:'must', needs:['db'] },
-    { name:'DB Upright Row',           scheme:'12–15 reps', badge:'must', needs:['db'] },
-    { name:'10 sec rest, repeat',      scheme:'×3',         badge:'',     needs:[] },
-  ]},
-  { label:'Giant Set B — Rear Delt + Pulling Balance', exercises:[
-    { name:'DB Bent Over Rear Delt Fly', scheme:'15–20 reps', badge:'must', needs:['db'] },
-    { name:'DB Face Pull',               scheme:'15–20 reps', badge:'must', needs:['db'] },
-    { name:'Ring Row — wide grip',       scheme:'12–15 reps', badge:'must', needs:['rings'] },
-    { name:'15 sec rest, repeat',        scheme:'×3',         badge:'',     needs:[] },
-  ]},
-  { label:'Giant Set C — Bicep Width + Peak', exercises:[
-    { name:'DB Wide-Grip Curl (supinated)',      scheme:'12–15 reps', badge:'must', needs:['db'] },
-    { name:'DB Incline Curl (long head stretch)',scheme:'12–15 reps', badge:'must', needs:['db'] },
-    { name:'DB Hammer Curl (brachialis width)',  scheme:'12–15 reps', badge:'must', needs:['db'] },
-    { name:'10 sec rest, repeat',               scheme:'×3',         badge:'',     needs:[] },
-  ]},
-  { label:'Drop Set — Tricep Long Head', exercises:[
-    { name:'DB Overhead Tricep Extension', scheme:'12→10→8 drop wt', badge:'burnout', needs:['db'] },
-    { name:'Skull Crushers',               scheme:'12→10→8 drop wt', badge:'burnout', needs:['db'] },
-    { name:'Tricep Dips (BW)',             scheme:'to failure',       badge:'burnout', needs:['mat'] },
-  ]},
-  { label:'Burnout Finisher — 8 min AMRAP', exercises:[
-    { name:'DB Lateral Raise ×15–20',        scheme:'continuous', badge:'burnout', needs:['db'] },
-    { name:'DB Wide-Grip Curl ×15',          scheme:'continuous', badge:'burnout', needs:['db'] },
-    { name:'DB Hammer Curl ×12',             scheme:'continuous', badge:'burnout', needs:['db'] },
-    { name:'Tricep Push-Down (band) ×15–20', scheme:'continuous', badge:'burnout', needs:['bands'] },
-  ]},
+{ label:‘Giant Set A — Shoulder Width’, exercises:[
+{ name:‘DB Lateral Raise’,         scheme:‘15–20 reps’, badge:‘must’, needs:[‘db’] },
+{ name:‘DB Leaning Lateral Raise’, scheme:‘15–20/side’, badge:‘must’, needs:[‘db’] },
+{ name:‘DB Upright Row’,           scheme:‘12–15 reps’, badge:‘must’, needs:[‘db’] },
+{ name:‘10 sec rest, repeat’,      scheme:‘×3’,         badge:’’,     needs:[] },
+]},
+{ label:‘Giant Set B — Rear Delt + Pulling Balance’, exercises:[
+{ name:‘DB Bent Over Rear Delt Fly’, scheme:‘15–20 reps’, badge:‘must’, needs:[‘db’] },
+{ name:‘DB Face Pull’,               scheme:‘15–20 reps’, badge:‘must’, needs:[‘db’] },
+{ name:‘Ring Row — wide grip’,       scheme:‘12–15 reps’, badge:‘must’, needs:[‘rings’] },
+{ name:‘15 sec rest, repeat’,        scheme:‘×3’,         badge:’’,     needs:[] },
+]},
+{ label:‘Giant Set C — Bicep Width + Peak’, exercises:[
+{ name:‘DB Wide-Grip Curl (supinated)’,      scheme:‘12–15 reps’, badge:‘must’, needs:[‘db’] },
+{ name:‘DB Incline Curl (long head stretch)’,scheme:‘12–15 reps’, badge:‘must’, needs:[‘db’] },
+{ name:‘DB Hammer Curl (brachialis width)’,  scheme:‘12–15 reps’, badge:‘must’, needs:[‘db’] },
+{ name:‘10 sec rest, repeat’,               scheme:‘×3’,         badge:’’,     needs:[] },
+]},
+{ label:‘Drop Set — Tricep Long Head’, exercises:[
+{ name:‘DB Overhead Tricep Extension’, scheme:‘12→10→8 drop wt’, badge:‘burnout’, needs:[‘db’] },
+{ name:‘Skull Crushers’,               scheme:‘12→10→8 drop wt’, badge:‘burnout’, needs:[‘db’] },
+{ name:‘Tricep Dips (BW)’,             scheme:‘to failure’,       badge:‘burnout’, needs:[‘mat’] },
+]},
+{ label:‘Burnout Finisher — 8 min AMRAP’, exercises:[
+{ name:‘DB Lateral Raise ×15–20’,        scheme:‘continuous’, badge:‘burnout’, needs:[‘db’] },
+{ name:‘DB Wide-Grip Curl ×15’,          scheme:‘continuous’, badge:‘burnout’, needs:[‘db’] },
+{ name:‘DB Hammer Curl ×12’,             scheme:‘continuous’, badge:‘burnout’, needs:[‘db’] },
+{ name:‘Tricep Push-Down (band) ×15–20’, scheme:‘continuous’, badge:‘burnout’, needs:[‘bands’] },
+]},
 ];
- 
-// ─── CARDIO POOLS ─────────────────────────────────────────────────────────────
+
+// ─── UPPER DAY DATA ───────────────────────────────────────────────────────────
+const UPPER = {
+heavyPush: [
+{ name:‘DB Incline Press’,       scheme:‘3–4×10–12’, badge:‘heavy’, needs:[‘db’] },
+{ name:‘DB Flat Chest Press’,    scheme:‘3–4×10–12’, badge:‘heavy’, needs:[‘db’] },
+{ name:‘DB Overhead Press’,      scheme:‘3–4×10–12’, badge:‘heavy’, needs:[‘db’] },
+{ name:‘DB Arnold Press’,        scheme:‘3–4×10–12’, badge:‘heavy’, needs:[‘db’] },
+{ name:‘Weighted Ring Dips’,     scheme:‘3–4×10–12’, badge:‘heavy’, needs:[‘rings’] },
+],
+heavyPull: [
+{ name:‘Weighted Pull-Ups’,      scheme:‘3–4×10–12’, badge:‘heavy’, needs:[‘pullup’] },
+{ name:‘DB Bent Over Row’,       scheme:‘3–4×10–12’, badge:‘heavy’, needs:[‘db’] },
+{ name:‘DB Chest Supported Row’, scheme:‘3–4×10–12’, badge:‘heavy’, needs:[‘db’] },
+],
+hiitPush: [
+{ name:‘DB Push Press’,              scheme:‘3×15–20’, badge:‘hiit’, needs:[‘db’] },
+{ name:‘Ring Tricep Extension’,      scheme:‘3×15–20’, badge:‘hiit’, needs:[‘rings’] },
+{ name:‘Ring Dips’,                  scheme:‘3×15–20’, badge:‘hiit’, needs:[‘rings’] },
+{ name:‘DB Lateral Raise’,           scheme:‘3×15–20’, badge:‘hiit’, needs:[‘db’] },
+{ name:‘DB Front Raise’,             scheme:‘3×15–20’, badge:‘hiit’, needs:[‘db’] },
+{ name:‘Tyson Push-Ups’,             scheme:‘3×15–20’, badge:‘hiit’, needs:[‘mat’] },
+{ name:‘Pike Push-Ups’,              scheme:‘3×15–20’, badge:‘hiit’, needs:[‘mat’] },
+{ name:‘Dive Bomber Push-Ups’,       scheme:‘3×15–20’, badge:‘hiit’, needs:[‘mat’] },
+{ name:‘DB Skull Crushers’,          scheme:‘3×15–20’, badge:‘hiit’, needs:[‘db’] },
+{ name:‘Slam Ball Chest Pass (wall)’,scheme:‘3×15–20’, badge:‘hiit’, needs:[‘slamball’] },
+],
+hiitPull: [
+{ name:‘Ring Row’,            scheme:‘3×15–20’,      badge:‘hiit’, needs:[‘rings’] },
+{ name:‘DB Face Pulls’,       scheme:‘3×15–20’,      badge:‘hiit’, needs:[‘db’] },
+{ name:‘Banded Pull-Aparts’,  scheme:‘3×15–20’,      badge:‘hiit’, needs:[‘bands’] },
+{ name:‘Inverted Row’,        scheme:‘3×15–20’,      badge:‘hiit’, needs:[‘pullup’] },
+{ name:‘Ring Bicep Curl’,     scheme:‘3×15–20’,      badge:‘hiit’, needs:[‘rings’] },
+{ name:‘DB Hammer Curl’,      scheme:‘3×15–20’,      badge:‘hiit’, needs:[‘db’] },
+{ name:‘KB Swing’,            scheme:‘3×15–20’,      badge:‘hiit’, needs:[‘kb’] },
+],
+};
+
+// ─── LOWER DAY DATA ───────────────────────────────────────────────────────────
+const LOWER = {
+heavyQuad: [
+{ name:‘Sandbag Front Squat’,   scheme:‘3–4×10–12’,    badge:‘heavy’, needs:[‘sandbag’] },
+{ name:‘Sandbag Back Squat’,    scheme:‘3–4×10–12’,    badge:‘heavy’, needs:[‘sandbag’] },
+{ name:‘Sandbag Reverse Lunge’, scheme:‘3–4×10–12/leg’,badge:‘heavy’, needs:[‘sandbag’] },
+{ name:‘Sandbag Zercher Squat’, scheme:‘3–4×10–12’,    badge:‘heavy’, needs:[‘sandbag’] },
+{ name:‘KB Front Rack Squat’,   scheme:‘3–4×10–12’,    badge:‘heavy’, needs:[‘kb’] },
+{ name:‘DB Goblet Squat’,       scheme:‘3–4×10–12’,    badge:‘heavy’, needs:[‘db’] },
+],
+heavyHinge: [
+{ name:‘DB RDL’,                scheme:‘3–4×10–12’,      badge:‘heavy’, needs:[‘db’] },
+{ name:‘Single Leg DB RDL’,     scheme:‘3–4×10–12/leg’,  badge:‘heavy’, needs:[‘db’] },
+{ name:‘Sandbag Clean’,         scheme:‘3–4×4–6’,        badge:‘heavy’, needs:[‘sandbag’] },
+{ name:‘Sandbag Shoulder Slam’, scheme:‘3–4×10 (5/side)’,badge:‘heavy’, needs:[‘sandbag’] },
+{ name:‘KB Clean’,              scheme:‘3–4×10–12/side’, badge:‘heavy’, needs:[‘kb’] },
+{ name:‘DB Snatch’,             scheme:‘3–4×6–8/side’,   badge:‘heavy’, needs:[‘db’] },
+],
+hiitQuad: [
+{ name:‘Slam Ball Squat Jumps’,         scheme:‘3×15–20’,      badge:‘hiit’, needs:[‘slamball’] },
+{ name:‘KB Goblet Squat’,               scheme:‘3×15–20’,      badge:‘hiit’, needs:[‘kb’] },
+{ name:‘Alternating DB Reverse Lunges’, scheme:‘3×15–20/leg’,  badge:‘hiit’, needs:[‘db’] },
+{ name:‘Jump Squats’,                   scheme:‘3×15–20’,      badge:‘hiit’, needs:[‘mat’] },
+{ name:‘KB Single Arm Front Squat’,     scheme:‘3×15–20/side’, badge:‘hiit’, needs:[‘kb’] },
+{ name:‘Cossack Squat’,                 scheme:‘3×15–20/side’, badge:‘hiit’, needs:[‘mat’] },
+],
+hiitHinge: [
+{ name:‘KB Swing’,               scheme:‘3×15–20’,      badge:‘hiit’, needs:[‘kb’] },
+{ name:‘KB Single Arm Swing’,    scheme:‘3×15–20/side’, badge:‘hiit’, needs:[‘kb’] },
+{ name:‘Sandbag Rotational Slam’,scheme:‘3×10 (5/side)’,badge:‘hiit’, needs:[‘sandbag’] },
+{ name:‘KB Deadlift High Pull’,  scheme:‘3×15–20’,      badge:‘hiit’, needs:[‘kb’] },
+{ name:‘KB Gunslinger’,          scheme:‘3×15–20/side’, badge:‘hiit’, needs:[‘kb’] },
+{ name:‘DB Snatch’,              scheme:‘3×15–20/side’, badge:‘hiit’, needs:[‘db’] },
+],
+};
 function getCardioPush() {
-  const owned = loadGear();
-  const all = [
-    { needs:['bike'], machine:'Assault Bike', protocol:'15 min Tabata Ladder', work:['Rounds 1–3: 20 sec sprint / 10 sec off — ×3','Rounds 4–6: 30 sec sprint / 15 sec off — ×3','Rounds 7–9: 40 sec sprint / 20 sec off — ×3','Rounds 10–11: 50 sec sprint / 25 sec off — ×2','Final: 60 sec all-out to finish']},
-    { needs:['bike','slamball'], machine:'Assault Bike + Slam Ball', protocol:'12 min AMRAP', work:['12 cal Assault Bike sprint','10 Slam Ball ground slams','8 Slam Ball squat + press','Rest 15 sec — repeat']},
-    { needs:['bike'], machine:'Assault Bike', protocol:'10 min EMOM', work:['Minute 1–2: 20 sec all-out / 40 sec easy','Minute 3–4: 30 sec all-out / 30 sec easy','Minute 5–6: 40 sec all-out / 20 sec easy','Minute 7–8: 30 sec all-out / 30 sec easy','Minute 9–10: All-out sprint to finish']},
-    { needs:['bike','battlerope'], machine:'Assault Bike + Battle Rope', protocol:'12 min Circuit', work:['40 sec Assault Bike max effort — 20 sec rest','40 sec Battle Rope alternating waves — 20 sec rest','40 sec Battle Rope slams — 20 sec rest','40 sec Assault Bike standing sprint — 20 sec rest','Repeat 3 rounds']},
-    { needs:['mat'], machine:'Bodyweight', protocol:'15 min AMRAP', work:['15 Burpees','20 Jump Squats','15 Push-Ups','20 Mountain Climbers','Rest 30 sec — repeat']},
-    { needs:['bike','mat'], machine:'Assault Bike + Bodyweight', protocol:'10 min Chipper', work:['20 cal Assault Bike','20 Burpees','20 Jump Squats','20 cal Assault Bike','20 Push-Ups to failure','No rest — move straight through']},
-    { needs:['slamball','mat'], machine:'Slam Ball + Bodyweight', protocol:'12 min AMRAP', work:['10 Slam Ball ground slams','10 Burpees','15 Jump Squats','10 Slam Ball rotational slams (5/side)','Rest 20 sec — repeat']},
-    { needs:['battlerope','mat'], machine:'Battle Rope + Bodyweight', protocol:'12 min Tabata Circuit', work:['40 sec Battle Rope alternating waves — 20 sec rest','40 sec Burpees — 20 sec rest','40 sec Battle Rope slams — 20 sec rest','40 sec Jump Squats — 20 sec rest','40 sec Battle Rope power slams — 20 sec rest','Repeat 2 rounds']},
-  ];
-  return all.filter(b => b.needs.every(n => owned.includes(n)));
+const owned = loadGear();
+const all = [
+{ needs:[‘bike’], machine:‘Assault Bike’, protocol:‘15 min Tabata Ladder’, work:[‘Rounds 1–3: 20 sec sprint / 10 sec off — ×3’,‘Rounds 4–6: 30 sec sprint / 15 sec off — ×3’,‘Rounds 7–9: 40 sec sprint / 20 sec off — ×3’,‘Rounds 10–11: 50 sec sprint / 25 sec off — ×2’,‘Final: 60 sec all-out to finish’]},
+{ needs:[‘bike’,‘slamball’], machine:‘Assault Bike + Slam Ball’, protocol:‘12 min AMRAP’, work:[‘12 cal Assault Bike sprint’,‘10 Slam Ball ground slams’,‘8 Slam Ball squat + press’,‘Rest 15 sec — repeat’]},
+{ needs:[‘bike’], machine:‘Assault Bike’, protocol:‘10 min EMOM’, work:[‘Minute 1–2: 20 sec all-out / 40 sec easy’,‘Minute 3–4: 30 sec all-out / 30 sec easy’,‘Minute 5–6: 40 sec all-out / 20 sec easy’,‘Minute 7–8: 30 sec all-out / 30 sec easy’,‘Minute 9–10: All-out sprint to finish’]},
+{ needs:[‘bike’,‘battlerope’], machine:‘Assault Bike + Battle Rope’, protocol:‘12 min Circuit’, work:[‘40 sec Assault Bike max effort — 20 sec rest’,‘40 sec Battle Rope alternating waves — 20 sec rest’,‘40 sec Battle Rope slams — 20 sec rest’,‘40 sec Assault Bike standing sprint — 20 sec rest’,‘Repeat 3 rounds’]},
+{ needs:[‘mat’], machine:‘Bodyweight’, protocol:‘15 min AMRAP’, work:[‘15 Burpees’,‘20 Jump Squats’,‘15 Push-Ups’,‘20 Mountain Climbers’,‘Rest 30 sec — repeat’]},
+{ needs:[‘bike’,‘mat’], machine:‘Assault Bike + Bodyweight’, protocol:‘10 min Chipper’, work:[‘20 cal Assault Bike’,‘20 Burpees’,‘20 Jump Squats’,‘20 cal Assault Bike’,‘20 Push-Ups to failure’,‘No rest — move straight through’]},
+{ needs:[‘slamball’,‘mat’], machine:‘Slam Ball + Bodyweight’, protocol:‘12 min AMRAP’, work:[‘10 Slam Ball ground slams’,‘10 Burpees’,‘15 Jump Squats’,‘10 Slam Ball rotational slams (5/side)’,‘Rest 20 sec — repeat’]},
+{ needs:[‘battlerope’,‘mat’], machine:‘Battle Rope + Bodyweight’, protocol:‘12 min Tabata Circuit’, work:[‘40 sec Battle Rope alternating waves — 20 sec rest’,‘40 sec Burpees — 20 sec rest’,‘40 sec Battle Rope slams — 20 sec rest’,‘40 sec Jump Squats — 20 sec rest’,‘40 sec Battle Rope power slams — 20 sec rest’,‘Repeat 2 rounds’]},
+];
+return all.filter(b => b.needs.every(n => owned.includes(n)));
 }
- 
+
 function getCardioPull() {
-  const owned = loadGear();
-  const all = [
-    { needs:['skierg','battlerope'], machine:'SkiErg + Battle Rope', protocol:'12 min Circuit', work:['40 sec SkiErg max effort — 20 sec rest','40 sec Battle Rope alternating waves — 20 sec rest','40 sec Battle Rope slams — 20 sec rest','40 sec SkiErg arms only — 20 sec rest','Repeat 3 rounds']},
-    { needs:['skierg','slamball'], machine:'SkiErg + Slam Ball', protocol:'10 min AMRAP', work:['10 Slam Ball ground slams','10 cal SkiErg sprint','5 Slam Ball rotational slams/side','Rest 20 sec — repeat']},
-    { needs:['skierg'], machine:'SkiErg', protocol:'15 min Interval Ladder', work:['Rounds 1–3: 250m hard pull / 45 sec rest','Rounds 4–6: 200m sprint / 30 sec rest','Rounds 7–9: 150m all-out / 20 sec rest','Rounds 10–11: 100m max effort / 15 sec rest','Final: 500m strong finish']},
-    { needs:['skierg','battlerope'], machine:'SkiErg + Battle Rope', protocol:'10 min EMOM', work:['Minute 1–2: SkiErg — 250m hard pull','Minute 3–4: Battle Rope alternating waves — 40 sec','Minute 5–6: SkiErg — arms only 30 sec on / 30 off','Minute 7–8: Battle Rope slams — 40 sec','Minute 9–10: SkiErg all-out 200m to finish']},
-    { needs:['battlerope'], machine:'Battle Rope', protocol:'12 min Tabata', work:['20 sec alternating waves / 10 sec rest — ×4','20 sec double slams / 10 sec rest — ×4','20 sec lateral waves / 10 sec rest — ×4','20 sec power slams / 10 sec rest — ×4']},
-    { needs:['mat'], machine:'Bodyweight', protocol:'15 min Death by Burpees', work:['Minute 1: 5 Burpees','Minute 2: 6 Burpees','Minute 3: 7 Burpees','Continue adding 1 rep each minute','Stop when you cannot finish the minute','Rest remainder — repeat from 5 until time is up']},
-    { needs:['skierg','mat'], machine:'SkiErg + Bodyweight', protocol:'12 min AMRAP', work:['10 cal SkiErg sprint','10 Burpees','15 Mountain Climbers','10 cal SkiErg sprint','Rest 20 sec — repeat']},
-    { needs:['slamball','battlerope'], machine:'Slam Ball + Battle Rope', protocol:'14 min Circuit', work:['45 sec Slam Ball ground slams — 15 sec rest','45 sec Battle Rope alternating waves — 15 sec rest','45 sec Slam Ball rotational slams — 15 sec rest','45 sec Battle Rope power slams — 15 sec rest','45 sec Slam Ball squat + press — 15 sec rest','Repeat 2 rounds']},
-  ];
-  return all.filter(b => b.needs.every(n => owned.includes(n)));
+const owned = loadGear();
+const all = [
+{ needs:[‘skierg’,‘battlerope’], machine:‘SkiErg + Battle Rope’, protocol:‘12 min Circuit’, work:[‘40 sec SkiErg max effort — 20 sec rest’,‘40 sec Battle Rope alternating waves — 20 sec rest’,‘40 sec Battle Rope slams — 20 sec rest’,‘40 sec SkiErg arms only — 20 sec rest’,‘Repeat 3 rounds’]},
+{ needs:[‘skierg’,‘slamball’], machine:‘SkiErg + Slam Ball’, protocol:‘10 min AMRAP’, work:[‘10 Slam Ball ground slams’,‘10 cal SkiErg sprint’,‘5 Slam Ball rotational slams/side’,‘Rest 20 sec — repeat’]},
+{ needs:[‘skierg’], machine:‘SkiErg’, protocol:‘15 min Interval Ladder’, work:[‘Rounds 1–3: 250m hard pull / 45 sec rest’,‘Rounds 4–6: 200m sprint / 30 sec rest’,‘Rounds 7–9: 150m all-out / 20 sec rest’,‘Rounds 10–11: 100m max effort / 15 sec rest’,‘Final: 500m strong finish’]},
+{ needs:[‘skierg’,‘battlerope’], machine:‘SkiErg + Battle Rope’, protocol:‘10 min EMOM’, work:[‘Minute 1–2: SkiErg — 250m hard pull’,‘Minute 3–4: Battle Rope alternating waves — 40 sec’,‘Minute 5–6: SkiErg — arms only 30 sec on / 30 off’,‘Minute 7–8: Battle Rope slams — 40 sec’,‘Minute 9–10: SkiErg all-out 200m to finish’]},
+{ needs:[‘battlerope’], machine:‘Battle Rope’, protocol:‘12 min Tabata’, work:[‘20 sec alternating waves / 10 sec rest — ×4’,‘20 sec double slams / 10 sec rest — ×4’,‘20 sec lateral waves / 10 sec rest — ×4’,‘20 sec power slams / 10 sec rest — ×4’]},
+{ needs:[‘mat’], machine:‘Bodyweight’, protocol:‘15 min Death by Burpees’, work:[‘Minute 1: 5 Burpees’,‘Minute 2: 6 Burpees’,‘Minute 3: 7 Burpees’,‘Continue adding 1 rep each minute’,‘Stop when you cannot finish the minute’,‘Rest remainder — repeat from 5 until time is up’]},
+{ needs:[‘skierg’,‘mat’], machine:‘SkiErg + Bodyweight’, protocol:‘12 min AMRAP’, work:[‘10 cal SkiErg sprint’,‘10 Burpees’,‘15 Mountain Climbers’,‘10 cal SkiErg sprint’,‘Rest 20 sec — repeat’]},
+{ needs:[‘slamball’,‘battlerope’], machine:‘Slam Ball + Battle Rope’, protocol:‘14 min Circuit’, work:[‘45 sec Slam Ball ground slams — 15 sec rest’,‘45 sec Battle Rope alternating waves — 15 sec rest’,‘45 sec Slam Ball rotational slams — 15 sec rest’,‘45 sec Battle Rope power slams — 15 sec rest’,‘45 sec Slam Ball squat + press — 15 sec rest’,‘Repeat 2 rounds’]},
+];
+return all.filter(b => b.needs.every(n => owned.includes(n)));
 }
- 
+
 // ─── RENDERING ────────────────────────────────────────────────────────────────
-const BADGE = { heavy:'<span class="badge badge-heavy">Heavy</span>', hiit:'<span class="badge badge-hiit">HIIT</span>', must:'<span class="badge badge-must">Focus</span>', burnout:'<span class="badge badge-burnout">Burnout</span>', '':'' };
-const DOT   = { push:'#6c5ce7', pull:'#3d9fd4', arms:'#e07840', circuit:'#4ac98a' };
- 
+const BADGE = { heavy:’<span class="badge badge-heavy">Heavy</span>’, hiit:’<span class="badge badge-hiit">HIIT</span>’, must:’<span class="badge badge-must">Focus</span>’, burnout:’<span class="badge badge-burnout">Burnout</span>’, ‘’:’’ };
+const DOT   = { push:’#6c5ce7’, pull:’#3d9fd4’, arms:’#e07840’, upper:’#e84393’, lower:’#27ae60’, circuit:’#4ac98a’ };
+
 function exRow(ex, type) {
-  const sid = safeId(ex.name);
-  const wlog = loadWeightLog(ex.name);
-  const lastW = wlog.length ? wlog[wlog.length-1].weight : '';
-  const safeName = ex.name.replace(/'/g,"\\'").replace(/"/g,'&quot;');
-  return `<div class="ex">
-    <div class="ex-dot" style="background-color:${DOT[type]||DOT.circuit};opacity:0.75"></div>
-    <div class="ex-name" style="flex:1;">${ex.name}${BADGE[ex.badge]||''}</div>
-    <div class="ex-scheme" style="flex-shrink:0;">${ex.scheme}</div>
-    <input class="weight-input" id="w_${sid}" type="text" placeholder="wt/BW" value="${lastW}" onblur="logWeight('${safeName}',this.value)" />
+const sid = safeId(ex.name);
+const wlog = loadWeightLog(ex.name);
+const lastW = wlog.length ? wlog[wlog.length-1].weight : ‘’;
+const safeName = ex.name.replace(/’/g,”\’”).replace(/”/g,’"’);
+return `<div class="ex">
+<div class="ex-dot" style="background-color:${DOT[type]||DOT.circuit};opacity:0.75"></div>
+<div class="ex-name" style="flex:1;">${ex.name}${BADGE[ex.badge]||’’}</div>
+<div class="ex-scheme" style="flex-shrink:0;">${ex.scheme}</div>
+<input class="weight-input" id="w_${sid}" type="text" placeholder="wt/BW" value="${lastW}" onblur="logWeight('${safeName}',this.value)" />
+
   </div>`;
 }
- 
+
 function roundBlock(num, desc, exs, type) {
-  const lc = { push:'#a89cf8', pull:'#7dd0f8', arms:'#f8a87d' }[type];
-  return `<div class="round">
-    <div class="round-head">
-      <div class="round-label" style="color:${lc}">Round ${num}</div>
-      <div class="round-title">${desc}</div>
-      <div class="round-meta">3–4 sets · 60–90 sec rest</div>
-    </div>
-    <div class="round-body">${exs.map(e=>exRow(e,type)).join('')}</div>
+const lc = { push:’#a89cf8’, pull:’#7dd0f8’, arms:’#f8a87d’ }[type];
+return `<div class="round">
+<div class="round-head">
+<div class="round-label" style="color:${lc}">Round ${num}</div>
+<div class="round-title">${desc}</div>
+<div class="round-meta">3–4 sets · 60–90 sec rest</div>
+</div>
+<div class="round-body">${exs.map(e=>exRow(e,type)).join(’’)}</div>
+
   </div>`;
 }
- 
+
 function circuitBlock(type, idx) {
-  const pool = type==='push' ? getCardioPush() : getCardioPull();
-  if (!pool.length) return `<div class="round round-circuit"><div class="round-head"><div class="round-label">Round 5 · Circuit</div><div class="round-title">No cardio equipment available</div><div class="round-meta">Add cardio gear in the Gear tab</div></div></div>`;
-  const b = pool[idx % pool.length];
-  return `<div class="round round-circuit" id="circuit-block">
-    <div class="round-head">
-      <div class="round-label" style="display:flex;align-items:center;justify-content:space-between;">
-        <span>Round 5 · Circuit</span>
-        <button onclick="cycleCardio()" style="background:rgba(74,201,138,0.15);border:1px solid rgba(74,201,138,0.3);border-radius:8px;color:#4ac98a;font-size:11px;font-weight:700;padding:4px 10px;cursor:pointer;">↺ New Cardio</button>
-      </div>
-      <div class="round-title">${b.protocol}</div>
-      <div class="round-meta">Continuous · ${(idx%pool.length)+1} of ${pool.length}</div>
-    </div>
-    <div class="round-body">
-      <div class="circuit-intro">Equipment: <strong>${b.machine}</strong></div>
-      ${b.work.map(w=>`<div class="ex"><div class="ex-dot" style="background-color:#4ac98a;opacity:0.75"></div><div class="ex-name">${w}</div><div class="ex-scheme"></div></div>`).join('')}
-    </div>
+const pool = type===‘push’ ? getCardioPush() : type===‘pull’ ? getCardioPull() : getCardioGeneral();
+if (!pool.length) return `<div class="round round-circuit"><div class="round-head"><div class="round-label">Round 5 · Circuit</div><div class="round-title">No cardio equipment available</div><div class="round-meta">Add cardio gear in the Gear tab</div></div></div>`;
+const b = pool[idx % pool.length];
+return `<div class="round round-circuit" id="circuit-block"> <div class="round-head"> <div class="round-label" style="display:flex;align-items:center;justify-content:space-between;"> <span>Round 5 · Circuit</span> <button onclick="cycleCardio()" style="background:rgba(74,201,138,0.15);border:1px solid rgba(74,201,138,0.3);border-radius:8px;color:#4ac98a;font-size:11px;font-weight:700;padding:4px 10px;cursor:pointer;">↺ New Cardio</button> </div> <div class="round-title">${b.protocol}</div> <div class="round-meta">Continuous · ${(idx%pool.length)+1} of ${pool.length}</div> </div> <div class="round-body"> <div class="circuit-intro">Equipment: <strong>${b.machine}</strong></div> ${b.work.map(w=>`<div class="ex"><div class="ex-dot" style="background-color:#4ac98a;opacity:0.75"></div><div class="ex-name">${w}</div><div class="ex-scheme"></div></div>`).join(’’)}
+</div>
+
   </div>`;
 }
- 
+
 function woHeader(type, title, chips) {
-  const ec={push:'c-push',pull:'c-pull',arms:'c-arms'}[type];
-  const label={push:'Push Day',pull:'Pull Day',arms:'Arms Day'}[type];
-  return `<div class="wo-header-card">
-    <div class="wo-eyebrow ${ec}">${label}</div>
-    <div class="wo-title">${title}</div>
-    <div class="wo-chips">${chips.map(c=>`<div class="wo-chip">${c}</div>`).join('')}</div>
+const ecMap={push:‘c-push’,pull:‘c-pull’,arms:‘c-arms’,upper:‘c-upper’,lower:‘c-lower’};
+const labelMap={push:‘Push Day’,pull:‘Pull Day’,arms:‘Arms Day’,upper:‘Upper Day’,lower:‘Lower Day’};
+const ec=ecMap[type]||‘c-push’, label=labelMap[type]||type;
+return `<div class="wo-header-card"> <div class="wo-eyebrow ${ec}">${label}</div> <div class="wo-title">${title}</div> <div class="wo-chips">${chips.map(c=>`<div class="wo-chip">${c}</div>`).join(’’)}</div>
+
   </div>`;
 }
- 
+
 function rules(type) {
-  const items = type!=='arms'
-    ? [['Heavy sets','3–4 × 10–12'],['HIIT sets','3 × 15–20'],['Set rest','60–90 sec'],['Round rest','2 min']]
-    : [['Moderate','12–15 reps'],['Burnout','15–20 reps'],['Giant set rest','10–15 sec'],['Block rest','90 sec']];
-  return `<div class="rules-card"><div class="rules-title">Rules</div><div class="rules-grid">${items.map(([l,v])=>`<div class="rule-item"><div class="rule-label">${l}</div><div class="rule-value">${v}</div></div>`).join('')}</div></div>`;
+const items = type!==‘arms’
+? [[‘Heavy sets’,‘3–4 × 10–12’],[‘HIIT sets’,‘3 × 15–20’],[‘Set rest’,‘60–90 sec’],[‘Round rest’,‘2 min’]]
+: [[‘Moderate’,‘12–15 reps’],[‘Burnout’,‘15–20 reps’],[‘Giant set rest’,‘10–15 sec’],[‘Block rest’,‘90 sec’]];
+return `<div class="rules-card"><div class="rules-title">Rules</div><div class="rules-grid">${items.map(([l,v])=>`<div class="rule-item"><div class="rule-label">${l}</div><div class="rule-value">${v}</div></div>`).join('')}</div></div>`;
 }
- 
-// ─── BUILD WORKOUTS ───────────────────────────────────────────────────────────
+
+function getCardioGeneral() {
+const owned = loadGear();
+const all = [
+{ needs:[‘bike’], machine:‘Assault Bike’, protocol:‘15 min Tabata Ladder’, work:[‘Rounds 1–3: 20 sec sprint / 10 sec off — ×3’,‘Rounds 4–6: 30 sec sprint / 15 sec off — ×3’,‘Rounds 7–9: 40 sec sprint / 20 sec off — ×3’,‘Final: 60 sec all-out to finish’]},
+{ needs:[‘skierg’], machine:‘SkiErg’, protocol:‘15 min Interval Ladder’, work:[‘Rounds 1–3: 250m hard pull / 45 sec rest’,‘Rounds 4–6: 200m sprint / 30 sec rest’,‘Rounds 7–9: 150m all-out / 20 sec rest’,‘Final: 500m strong finish’]},
+{ needs:[‘bike’,‘battlerope’], machine:‘Assault Bike + Battle Rope’, protocol:‘12 min Circuit’, work:[‘40 sec Assault Bike max effort — 20 sec rest’,‘40 sec Battle Rope waves — 20 sec rest’,‘40 sec Battle Rope slams — 20 sec rest’,‘40 sec Assault Bike sprint — 20 sec rest’,‘Repeat 3 rounds’]},
+{ needs:[‘skierg’,‘slamball’], machine:‘SkiErg + Slam Ball’, protocol:‘10 min AMRAP’, work:[‘10 Slam Ball ground slams’,‘10 cal SkiErg sprint’,‘5 Slam Ball rotational slams/side’,‘Rest 20 sec — repeat’]},
+{ needs:[‘mat’], machine:‘Bodyweight’, protocol:‘15 min AMRAP’, work:[‘15 Burpees’,‘20 Jump Squats’,‘15 Push-Ups’,‘20 Mountain Climbers’,‘Rest 30 sec — repeat’]},
+{ needs:[‘slamball’,‘mat’], machine:‘Slam Ball + Bodyweight’, protocol:‘12 min AMRAP’, work:[‘10 Slam Ball ground slams’,‘10 Burpees’,‘15 Jump Squats’,‘10 Slam Ball rotational slams (5/side)’,‘Rest 20 sec — repeat’]},
+{ needs:[‘battlerope’,‘mat’], machine:‘Battle Rope + Bodyweight’, protocol:‘12 min Circuit’, work:[‘40 sec Battle Rope waves — 20 sec rest’,‘40 sec Burpees — 20 sec rest’,‘40 sec Battle Rope slams — 20 sec rest’,‘40 sec Jump Squats — 20 sec rest’,‘Repeat 3 rounds’]},
+{ needs:[‘bike’,‘mat’], machine:‘Assault Bike + Bodyweight’, protocol:‘10 min Chipper’, work:[‘20 cal Assault Bike’,‘20 Burpees’,‘20 Jump Squats’,‘20 cal Assault Bike’,‘20 Push-Ups to failure’,‘No rest — move straight through’]},
+];
+return all.filter(b => b.needs.every(n => owned.includes(n)));
+}
+
+function filterPool(pool) {
+const disabled = loadDisabledExercises();
+const overrides = loadExerciseOverrides();
+return pool.filter(ex => {
+const ovName = (overrides[ex.name]||{}).name || ex.name;
+return (!ex.needs || hasGear(ex.needs)) && !disabled.includes(ex.name) && !disabled.includes(ovName);
+}).map(applyOverride);
+}
+
+function getArmsCircuits() {
+const owned = loadGear();
+const all = [
+{ needs:[‘db’,‘rings’], name:‘Push/Pull Burner’, protocol:‘10–15 min AMRAP’, work:[
+‘Ring Tricep Extension × 15–20’,
+‘Ring Bicep Curl × 15’,
+‘DB Lateral Raise × 15–20’,
+‘DB Hammer Curl × 12’,
+‘Rest 20 sec — repeat’,
+]},
+{ needs:[‘db’], name:‘Bicep + Tricep Giant Set’, protocol:‘10–15 min AMRAP’, work:[
+‘DB Wide-Grip Curl × 15’,
+‘DB Overhead Tricep Extension × 15’,
+‘DB Hammer Curl × 12’,
+‘DB Skull Crushers × 12’,
+‘Rest 20 sec — repeat’,
+]},
+{ needs:[‘db’,‘rings’], name:‘Superset Circuit’, protocol:‘12 min AMRAP’, work:[
+‘DB Lateral Raise × 20 + Ring Row × 10 — no rest’,
+‘Ring Tricep Extension × 15 + DB Curl × 12 — no rest’,
+‘DB Front Raise × 15 + Ring Bicep Curl × 12 — no rest’,
+‘Rest 30 sec — repeat’,
+]},
+{ needs:[‘db’], name:‘Shoulder Blaster’, protocol:‘10 min AMRAP’, work:[
+‘DB Lateral Raise × 20’,
+‘DB Front Raise × 15’,
+‘DB Upright Row × 15’,
+‘DB Bent Over Rear Delt Fly × 15’,
+‘Rest 20 sec — repeat’,
+]},
+{ needs:[‘db’,‘bands’], name:‘Pump Circuit’, protocol:‘12 min AMRAP’, work:[
+‘DB Curl × 15’,
+‘Band Tricep Pushdown × 20’,
+‘DB Hammer Curl × 12’,
+‘Band Pull-Apart × 20’,
+‘Rest 20 sec — repeat’,
+]},
+{ needs:[‘db’,‘rings’], name:‘Ring + DB Burnout’, protocol:‘10 min AMRAP’, work:[
+‘Ring Dips × 15’,
+‘DB Curl × 15’,
+‘Ring Tricep Extension × 15’,
+‘DB Lateral Raise × 20’,
+‘Rest 20 sec — repeat’,
+]},
+{ needs:[‘db’], name:‘Drop Set Destroyer’, protocol:‘15 min — 3 rounds’, work:[
+‘DB Curl: 12 → drop → 10 → drop → 8’,
+‘DB Overhead Tricep Extension: 12 → 10 → 8’,
+‘DB Lateral Raise: 15 → 12 → 10’,
+‘DB Hammer Curl: 12 → 10 → 8’,
+‘Rest 45 sec between rounds’,
+]},
+{ needs:[‘db’,‘rings’], name:‘Time Under Tension’, protocol:‘12 min AMRAP’, work:[
+‘DB Curl — 4 sec up, 4 sec down × 10’,
+‘Ring Tricep Extension — slow negative × 10’,
+‘Ring Bicep Curl — pause at top × 10’,
+‘DB Skull Crushers — 3 sec negative × 10’,
+‘Rest 30 sec — repeat’,
+]},
+];
+return all.filter(b => b.needs.every(n => owned.includes(n)));
+}
+
+function armsCircuitBlock(idx) {
+const pool = getArmsCircuits();
+if (!pool.length) return `<div class="round round-circuit"><div class="round-head"><div class="round-label">Round 5 · Arms Circuit</div><div class="round-title">No equipment available</div></div></div>`;
+const ci = idx !== undefined ? idx % pool.length : 0;
+const b = pool[ci];
+return `<div class="round round-circuit" id="circuit-block"> <div class="round-head"> <div class="round-label" style="display:flex;align-items:center;justify-content:space-between;"> <span>Round 5 · Arms Circuit</span> <button onclick="cycleCardio()" style="background:rgba(232,67,147,0.15);border:1px solid rgba(232,67,147,0.3);border-radius:8px;color:#f070b0;font-size:11px;font-weight:700;padding:4px 10px;cursor:pointer;">↺ New Circuit</button> </div> <div class="round-title">${b.name} — ${b.protocol}</div> <div class="round-meta">Continuous · ${ci+1} of ${pool.length}</div> </div> <div class="round-body"> ${b.work.map(w=>`<div class="ex"><div class="ex-dot" style="background-color:#e84393;opacity:0.75"></div><div class="ex-name">${w}</div><div class="ex-scheme"></div></div>`).join(’’)}
+</div>
+
+  </div>`;
+}
+
+function legCircuitBlock(idx) {
+const owned = loadGear();
+const all = [
+{ needs:[‘kb’,‘mat’], machine:‘KB + Bodyweight’, protocol:‘12 min AMRAP’, work:[‘15 KB Swings’,‘10 Jump Squats’,‘10 KB Goblet Squats’,‘10 Burpees’,‘Rest 20 sec — repeat’]},
+{ needs:[‘slamball’,‘mat’], machine:‘Slam Ball + Bodyweight’, protocol:‘12 min AMRAP’, work:[‘10 Slam Ball squat + press’,‘15 Jump Squats’,‘10 Slam Ball ground slams’,‘10 Cossack Squats/side’,‘Rest 20 sec — repeat’]},
+{ needs:[‘kb’,‘mat’], machine:‘KB + Bodyweight’, protocol:‘10 min Tabata’, work:[‘20 sec KB Swings / 10 sec rest — ×4’,‘20 sec Jump Squats / 10 sec rest — ×4’,‘20 sec KB Deadlift High Pull / 10 sec rest — ×4’,‘20 sec Burpees / 10 sec rest — ×4’]},
+{ needs:[‘bike’,‘mat’], machine:‘Assault Bike + Bodyweight’, protocol:‘12 min Circuit’, work:[‘12 cal Assault Bike sprint’,‘15 Jump Squats’,‘10 Burpees’,‘10 KB Swings or Slam Ball slams’,‘Rest 15 sec — repeat’]},
+{ needs:[‘mat’], machine:‘Bodyweight’, protocol:‘15 min AMRAP’, work:[‘20 Jump Squats’,‘15 Burpees’,‘20 Mountain Climbers’,‘10 Cossack Squats/side’,‘Rest 30 sec — repeat’]},
+{ needs:[‘skierg’,‘kb’], machine:‘SkiErg + KB’, protocol:‘10 min EMOM’, work:[‘Minute 1–2: 10 cal SkiErg sprint’,‘Minute 3–4: 15 KB Swings’,‘Minute 5–6: 250m SkiErg pull’,‘Minute 7–8: 10 KB Deadlift High Pull’,‘Minute 9–10: All-out SkiErg 200m finish’]},
+];
+const pool = all.filter(b => b.needs.every(n => owned.includes(n)));
+if (!pool.length) return `<div class="round round-circuit"><div class="round-head"><div class="round-label">Round 5 · Circuit</div><div class="round-title">No equipment available</div></div></div>`;
+const b = pool[idx % pool.length];
+return `<div class="round round-circuit" id="circuit-block"> <div class="round-head"> <div class="round-label" style="display:flex;align-items:center;justify-content:space-between;"> <span>Round 5 · Leg Circuit</span> <button onclick="cycleCardio()" style="background:rgba(74,201,138,0.15);border:1px solid rgba(74,201,138,0.3);border-radius:8px;color:#4ac98a;font-size:11px;font-weight:700;padding:4px 10px;cursor:pointer;">↺ New Circuit</button> </div> <div class="round-title">${b.protocol}</div> <div class="round-meta">Continuous · ${(idx%pool.length)+1} of ${pool.length}</div> </div> <div class="round-body"> <div class="circuit-intro">Equipment: <strong>${b.machine}</strong></div> ${b.work.map(w=>`<div class="ex"><div class="ex-dot" style="background-color:#27ae60;opacity:0.75"></div><div class="ex-name">${w}</div><div class="ex-scheme"></div></div>`).join(’’)}
+</div>
+
+  </div>`;
+}
+
+function buildUpper(cardioIdx) {
+const hp  = filterPool(UPPER.heavyPush);
+const hpl = filterPool(UPPER.heavyPull);
+const hiP = filterPool(UPPER.hiitPush);
+const hiPl= filterPool(UPPER.hiitPull);
+const hp1=rand(hp),  hp2=pickRand(hp,hp1);
+const hpl1=rand(hpl),hpl2=pickRand(hpl,hpl1);
+const hiP1=rand(hiP),hiP2=pickRand(hiP,hiP1);
+const hiPl1=rand(hiPl),hiPl2=pickRand(hiPl,hiPl1);
+const ci = cardioIdx !== undefined ? cardioIdx : 0;
+return { lifts: woHeader(‘upper’,‘Push + Pull’,[‘35–45 min’,‘5 rounds’,‘3–4 sets’,‘2 min round rest’])
++’<div class="rounds">’
++roundBlock(1,‘Push Heavy + Push HIIT’,[hp1,hiP1],‘upper’)
++roundBlock(2,‘Pull Heavy + Pull HIIT’,[hpl1,hiPl1],‘upper’)
++roundBlock(3,‘Push Heavy + Pull HIIT’,[hp2,hiPl2],‘upper’)
++roundBlock(4,‘Pull Heavy + Push HIIT’,[hpl2,hiP2],‘upper’)
++armsCircuitBlock(ci)+’</div>’, cardioIdx:ci };
+}
+
+function buildLower(cardioIdx) {
+const hq  = filterPool(LOWER.heavyQuad);
+const hh  = filterPool(LOWER.heavyHinge);
+const hiQ = filterPool(LOWER.hiitQuad);
+const hiH = filterPool(LOWER.hiitHinge);
+const hq1 = rand(hq);
+const zercher=‘Sandbag Zercher Squat’, frontSq=‘Sandbag Front Squat’;
+const hq2pool = hq.filter(e => e.name!==hq1.name && !(hq1.name===frontSq&&e.name===zercher) && !(hq1.name===zercher&&e.name===frontSq));
+const hq2 = hq2pool.length ? rand(hq2pool) : pickRand(hq,hq1);
+const hh1=rand(hh),  hh2=pickRand(hh,hh1);
+const hiQ1=rand(hiQ),hiQ2=pickRand(hiQ,hiQ1);
+const hiH1=rand(hiH),hiH2=pickRand(hiH,hiH1);
+const ci = cardioIdx!==undefined ? cardioIdx : 0;
+return { lifts: woHeader(‘lower’,‘Squat + Hinge’,[‘35–45 min’,‘5 rounds’,‘3–4 sets’,‘2 min round rest’])
++’<div class="rounds">’
++roundBlock(1,‘Leg Heavy + Leg HIIT’,[hq1,hiQ1],‘lower’)
++roundBlock(2,‘Hinge Heavy + Hinge HIIT’,[hh1,hiH1],‘lower’)
++roundBlock(3,‘Leg Heavy + Hinge HIIT’,[hq2,hiH2],‘lower’)
++roundBlock(4,‘Hinge Heavy + Leg HIIT’,[hh2,hiQ2],‘lower’)
++legCircuitBlock(ci)+’</div>’, cardioIdx:ci };
+}
 function buildPush(cardioIdx) {
-  const hl  = getPoolWithCustom('push','heavy-lower');
-  const hu  = getPoolWithCustom('push','heavy-upper');
-  const hiU = getPoolWithCustom('push','hiit-upper');
-  const hiL = getPoolWithCustom('push','hiit-lower');
-  const hl1 = rand(hl);
-  const zercher='Sandbag Zercher Squat', frontSq='Sandbag Front Squat';
-  const hl2pool = hl.filter(e => e.name!==hl1.name && !(hl1.name===frontSq&&e.name===zercher) && !(hl1.name===zercher&&e.name===frontSq));
-  const hl2 = hl2pool.length ? rand(hl2pool) : pickRand(hl,hl1);
-  const hu1=rand(hu), hu2=pickRand(hu,hu1);
-  const hiU1=rand(hiU), hiU2=pickRand(hiU,hiU1);
-  const hiL1=rand(hiL), hiL2=pickRand(hiL,hiL1);
-  const pool=getCardioPush();
-  const ci=cardioIdx!==undefined?cardioIdx:Math.floor(Math.random()*(pool.length||1));
-  return { lifts: woHeader('push','Strength + Power',['35–45 min','5 rounds','3–4 sets','2 min round rest'])
-    +'<div class="rounds">'
-    +roundBlock(1,'Heavy Lower + High Intensity Upper',[hl1,hiU1],'push')
-    +roundBlock(2,'Heavy Upper + High Intensity Lower',[hu1,hiL1],'push')
-    +roundBlock(3,'Heavy Lower + High Intensity Lower',[hl2,hiL2],'push')
-    +roundBlock(4,'Heavy Upper + High Intensity Upper',[hu2,hiU2],'push')
-    +circuitBlock('push',ci)+'</div>', cardioIdx:ci };
+const hl  = getPoolWithCustom(‘push’,‘heavy-lower’);
+const hu  = getPoolWithCustom(‘push’,‘heavy-upper’);
+const hiU = getPoolWithCustom(‘push’,‘hiit-upper’);
+const hiL = getPoolWithCustom(‘push’,‘hiit-lower’);
+
+// Rule: Front Squat and Zercher never together
+const hl1 = rand(hl);
+const zercher=‘Sandbag Zercher Squat’, frontSq=‘Sandbag Front Squat’;
+const hl2pool = hl.filter(e => e.name!==hl1.name && !(hl1.name===frontSq&&e.name===zercher) && !(hl1.name===zercher&&e.name===frontSq));
+const hl2 = hl2pool.length ? rand(hl2pool) : pickRand(hl,hl1);
+
+// Rule: Always include DB Incline Press or DB Flat Chest Press in heavy upper
+const chestMoves = [‘DB Incline Press’,‘DB Flat Chest Press’];
+const chestPool = hu.filter(e => chestMoves.includes(e.name));
+const otherPool = hu.filter(e => !chestMoves.includes(e.name));
+
+let hu1, hu2;
+if (chestPool.length) {
+// Guarantee one chest press — pick it as hu1, pick anything else for hu2
+hu1 = rand(chestPool);
+hu2 = otherPool.length ? rand(otherPool) : pickRand(hu, hu1);
+} else {
+hu1 = rand(hu);
+hu2 = pickRand(hu, hu1);
 }
- 
+
+const hiU1=rand(hiU), hiU2=pickRand(hiU,hiU1);
+const hiL1=rand(hiL), hiL2=pickRand(hiL,hiL1);
+const pool=getCardioPush();
+const ci=cardioIdx!==undefined?cardioIdx:Math.floor(Math.random()*(pool.length||1));
+return { lifts: woHeader(‘push’,‘Strength + Power’,[‘35–45 min’,‘5 rounds’,‘3–4 sets’,‘2 min round rest’])
++’<div class="rounds">’
++roundBlock(1,‘Heavy Lower + High Intensity Upper’,[hl1,hiU1],‘push’)
++roundBlock(2,‘Heavy Upper + High Intensity Lower’,[hu1,hiL1],‘push’)
++roundBlock(3,‘Heavy Lower + High Intensity Lower’,[hl2,hiL2],‘push’)
++roundBlock(4,‘Heavy Upper + High Intensity Upper’,[hu2,hiU2],‘push’)
++circuitBlock(‘push’,ci)+’</div>’, cardioIdx:ci };
+}
+
 function buildPull(cardioIdx) {
-  const hh  = getPoolWithCustom('pull','heavy-lower');
-  const hu  = getPoolWithCustom('pull','heavy-upper');
-  const hiL = getPoolWithCustom('pull','hiit-lower');
-  const hiU = getPoolWithCustom('pull','hiit-upper');
-  const hh1=rand(hh), hh2=pickRand(hh,hh1);
-  const hu1=rand(hu), hu2=pickRand(hu,hu1);
-  const hiL1=rand(hiL), hiL2=pickRand(hiL,hiL1);
-  const hiU1=rand(hiU), hiU2=pickRand(hiU,hiU1);
-  const pool=getCardioPull();
-  const ci=cardioIdx!==undefined?cardioIdx:Math.floor(Math.random()*(pool.length||1));
-  return { lifts: woHeader('pull','Hinge + Pull',['35–45 min','5 rounds','3–4 sets','2 min round rest'])
-    +'<div class="rounds">'
-    +roundBlock(1,'Heavy Hinge + High Intensity Upper',[hh1,hiU1],'pull')
-    +roundBlock(2,'Heavy Upper + High Intensity Lower',[hu1,hiL1],'pull')
-    +roundBlock(3,'Heavy Hinge + High Intensity Lower',[hh2,hiL2],'pull')
-    +roundBlock(4,'Heavy Upper + High Intensity Upper',[hu2,hiU2],'pull')
-    +circuitBlock('pull',ci)+'</div>', cardioIdx:ci };
+const hh  = getPoolWithCustom(‘pull’,‘heavy-lower’);
+const hu  = getPoolWithCustom(‘pull’,‘heavy-upper’);
+const hiL = getPoolWithCustom(‘pull’,‘hiit-lower’);
+const hiU = getPoolWithCustom(‘pull’,‘hiit-upper’);
+const hh1=rand(hh), hh2=pickRand(hh,hh1);
+const hu1=rand(hu), hu2=pickRand(hu,hu1);
+const hiL1=rand(hiL), hiL2=pickRand(hiL,hiL1);
+const hiU1=rand(hiU), hiU2=pickRand(hiU,hiU1);
+const pool=getCardioPull();
+const ci=cardioIdx!==undefined?cardioIdx:Math.floor(Math.random()*(pool.length||1));
+return { lifts: woHeader(‘pull’,‘Hinge + Pull’,[‘35–45 min’,‘5 rounds’,‘3–4 sets’,‘2 min round rest’])
++’<div class="rounds">’
++roundBlock(1,‘Heavy Hinge + High Intensity Upper’,[hh1,hiU1],‘pull’)
++roundBlock(2,‘Heavy Upper + High Intensity Lower’,[hu1,hiL1],‘pull’)
++roundBlock(3,‘Heavy Hinge + High Intensity Lower’,[hh2,hiL2],‘pull’)
++roundBlock(4,‘Heavy Upper + High Intensity Upper’,[hu2,hiU2],‘pull’)
++circuitBlock(‘pull’,ci)+’</div>’, cardioIdx:ci };
 }
- 
+
 function buildArms() {
-  const custom = loadCustomExercises();
-  const cGiant   = custom.filter(e=>e.day==='arms'&&e.slot==='arms-giant');
-  const cBurnout = custom.filter(e=>e.day==='arms'&&e.slot==='arms-burnout');
-  const blocks = ARMS_PROGRAM.map(b => {
-    const base = b.exercises.filter(ex => !ex.needs||hasGear(ex.needs));
-    const extra = b.label.toLowerCase().includes('burnout') ? cBurnout : cGiant;
-    const exs = [...base, ...extra.map(e=>({name:e.name,scheme:e.scheme,badge:'must',custom:true}))];
-    if (!exs.length) return '';
-    return `<div class="round"><div class="round-head"><div class="round-label" style="color:#f8a87d">Block</div><div class="round-title">${b.label}</div></div><div class="round-body">${exs.map(e=>exRow(e,'arms')).join('')}</div></div>`;
-  }).join('');
-  return woHeader('arms','Width + Peak',['~30 min','Giant Sets','Drop Sets','Burnout'])+'<div class="rounds">'+blocks+'</div>';
+const custom = loadCustomExercises();
+const cGiant   = custom.filter(e=>e.day===‘arms’&&e.slot===‘arms-giant’);
+const cBurnout = custom.filter(e=>e.day===‘arms’&&e.slot===‘arms-burnout’);
+const blocks = ARMS_PROGRAM.map(b => {
+const base = b.exercises.filter(ex => !ex.needs||hasGear(ex.needs));
+const extra = b.label.toLowerCase().includes(‘burnout’) ? cBurnout : cGiant;
+const exs = […base, …extra.map(e=>({name:e.name,scheme:e.scheme,badge:‘must’,custom:true}))];
+if (!exs.length) return ‘’;
+return `<div class="round"><div class="round-head"><div class="round-label" style="color:#f8a87d">Block</div><div class="round-title">${b.label}</div></div><div class="round-body">${exs.map(e=>exRow(e,'arms')).join('')}</div></div>`;
+}).join(’’);
+return woHeader(‘arms’,‘Width + Peak’,[‘~30 min’,‘Giant Sets’,‘Drop Sets’,‘Burnout’])+’<div class="rounds">’+blocks+’</div>’;
 }
- 
+
 // ─── STATE ────────────────────────────────────────────────────────────────────
-const counts = { push:parseInt(localStorage.getItem('forge_count_push')||'0'), pull:parseInt(localStorage.getItem('forge_count_pull')||'0'), arms:parseInt(localStorage.getItem('forge_count_arms')||'0') };
-const saved  = { push:localStorage.getItem('forge_saved_push')||null, pull:localStorage.getItem('forge_saved_pull')||null, arms:localStorage.getItem('forge_saved_arms')||null };
-const cardioIdx = { push:parseInt(localStorage.getItem('forge_cardio_push')||'0'), pull:parseInt(localStorage.getItem('forge_cardio_pull')||'0') };
-let activeType = localStorage.getItem('forge_active') || null;
- 
+const counts = { push:parseInt(localStorage.getItem(‘forge_count_push’)||‘0’), pull:parseInt(localStorage.getItem(‘forge_count_pull’)||‘0’), arms:parseInt(localStorage.getItem(‘forge_count_arms’)||‘0’), upper:parseInt(localStorage.getItem(‘forge_count_upper’)||‘0’), lower:parseInt(localStorage.getItem(‘forge_count_lower’)||‘0’) };
+const saved  = { push:localStorage.getItem(‘forge_saved_push’)||null, pull:localStorage.getItem(‘forge_saved_pull’)||null, arms:localStorage.getItem(‘forge_saved_arms’)||null, upper:localStorage.getItem(‘forge_saved_upper’)||null, lower:localStorage.getItem(‘forge_saved_lower’)||null };
+const cardioIdx = { push:parseInt(localStorage.getItem(‘forge_cardio_push’)||‘0’), pull:parseInt(localStorage.getItem(‘forge_cardio_pull’)||‘0’), upper:parseInt(localStorage.getItem(‘forge_cardio_upper’)||‘0’), lower:parseInt(localStorage.getItem(‘forge_cardio_lower’)||‘0’) };
+let activeType = localStorage.getItem(‘forge_active’) || null;
+
 // ─── UI FUNCTIONS ─────────────────────────────────────────────────────────────
 function setTabs(type) {
-  ['push','pull','arms','progress','gear'].forEach(t => {
-    const el=document.getElementById('tab-'+t);
-    if(el) el.className='nav-tab'+(t===type?' active-'+t:'');
-  });
-  const colors={push:'#6c5ce7',pull:'#3d9fd4',arms:'#e07840',progress:'#4ac98a',gear:'#4ac98a'};
-  document.getElementById('go-btn').style.backgroundColor=colors[type]||'#6c5ce7';
+[‘push’,‘pull’,‘arms’,‘upper’,‘lower’,‘progress’,‘gear’].forEach(t => {
+const el=document.getElementById(‘tab-’+t);
+if(el) el.className=‘nav-tab’+(t===type?’ active-’+t:’’);
+});
+const colors={push:’#6c5ce7’,pull:’#3d9fd4’,arms:’#e07840’,upper:’#e84393’,lower:’#27ae60’,progress:’#4ac98a’,gear:’#4ac98a’};
+document.getElementById(‘go-btn’).style.backgroundColor=colors[type]||’#6c5ce7’;
 }
- 
+
 function showWorkout(type, html) {
-  document.getElementById('workout').innerHTML=html;
-  document.getElementById('idle').style.display='none';
-  document.getElementById('gear-panel').classList.remove('show');
-  document.getElementById('progress-panel').classList.remove('show');
-  document.getElementById('workout').classList.remove('show');
-  document.getElementById('workout').style.display='none';
-  void document.getElementById('workout').offsetWidth;
-  document.getElementById('workout').style.display='block';
-  document.getElementById('workout').classList.add('show');
-  setTabs(type);
-  activeType=type;
-  localStorage.setItem('forge_active',type);
-  window.scrollTo({top:0,behavior:'smooth'});
+document.getElementById(‘workout’).innerHTML=html;
+document.getElementById(‘idle’).style.display=‘none’;
+document.getElementById(‘gear-panel’).classList.remove(‘show’);
+document.getElementById(‘progress-panel’).classList.remove(‘show’);
+document.getElementById(‘workout’).classList.remove(‘show’);
+document.getElementById(‘workout’).style.display=‘none’;
+void document.getElementById(‘workout’).offsetWidth;
+document.getElementById(‘workout’).style.display=‘block’;
+document.getElementById(‘workout’).classList.add(‘show’);
+setTabs(type);
+activeType=type;
+localStorage.setItem(‘forge_active’,type);
+window.scrollTo({top:0,behavior:‘smooth’});
 }
- 
+
 function generate(type) {
-  counts[type]++;
-  let result, inner;
-  if (type==='push') { result=buildPush(); cardioIdx.push=result.cardioIdx; localStorage.setItem('forge_cardio_push',cardioIdx.push); inner=result.lifts; }
-  else if (type==='pull') { result=buildPull(); cardioIdx.pull=result.cardioIdx; localStorage.setItem('forge_cardio_pull',cardioIdx.pull); inner=result.lifts; }
-  else if (type==='arms') { inner=buildArms(); }
-  else return;
-  const label=type.charAt(0).toUpperCase()+type.slice(1);
-  const html=inner+rules(type)+`<button class="regen-btn" onclick="regen()">↺ New ${label} Workout</button><div class="session-count">Session #${counts[type]}</div>`;
-  saved[type]=html;
-  localStorage.setItem('forge_saved_'+type,html);
-  localStorage.setItem('forge_count_'+type,counts[type]);
-  showWorkout(type,html);
+counts[type]++;
+let result, inner;
+if (type===‘push’)  { result=buildPush();  cardioIdx.push=result.cardioIdx;  localStorage.setItem(‘forge_cardio_push’,cardioIdx.push);   inner=result.lifts; }
+else if (type===‘pull’)  { result=buildPull();  cardioIdx.pull=result.cardioIdx;  localStorage.setItem(‘forge_cardio_pull’,cardioIdx.pull);   inner=result.lifts; }
+else if (type===‘upper’) { result=buildUpper(); cardioIdx.upper=result.cardioIdx; localStorage.setItem(‘forge_cardio_upper’,cardioIdx.upper); inner=result.lifts; }
+else if (type===‘lower’) { result=buildLower(); cardioIdx.lower=result.cardioIdx; localStorage.setItem(‘forge_cardio_lower’,cardioIdx.lower); inner=result.lifts; }
+else if (type===‘arms’)  { inner=buildArms(); }
+else return;
+const label=type.charAt(0).toUpperCase()+type.slice(1);
+const html=inner+rules(type)+`<button class="regen-btn" onclick="regen()">↺ New ${label} Workout</button><div class="session-count">Session #${counts[type]}</div>`;
+saved[type]=html;
+localStorage.setItem(‘forge_saved_’+type,html);
+localStorage.setItem(‘forge_count_’+type,counts[type]);
+showWorkout(type,html);
 }
- 
+
 function cycleCardio() {
-  if (!activeType||activeType==='arms') return;
-  const pool=activeType==='push'?getCardioPush():getCardioPull();
-  if (!pool.length) return;
-  cardioIdx[activeType]=(cardioIdx[activeType]+1)%pool.length;
-  localStorage.setItem('forge_cardio_'+activeType,cardioIdx[activeType]);
-  const block=document.getElementById('circuit-block');
-  if (block) { const tmp=document.createElement('div'); tmp.innerHTML=circuitBlock(activeType,cardioIdx[activeType]); block.replaceWith(tmp.firstElementChild); }
-  saved[activeType]=document.getElementById('workout').innerHTML;
-  localStorage.setItem('forge_saved_'+activeType,saved[activeType]);
+if (!activeType || activeType===‘arms’) return;
+let poolLen;
+if (activeType===‘push’) poolLen = getCardioPush().length;
+else if (activeType===‘pull’) poolLen = getCardioPull().length;
+else if (activeType===‘upper’) poolLen = getArmsCircuits().length;
+else if (activeType===‘lower’) {
+const owned = loadGear();
+const all = [
+{ needs:[‘kb’,‘mat’] }, { needs:[‘slamball’,‘mat’] }, { needs:[‘kb’,‘mat’] },
+{ needs:[‘bike’,‘mat’] }, { needs:[‘mat’] }, { needs:[‘skierg’,‘kb’] },
+];
+poolLen = all.filter(b => b.needs.every(n => owned.includes(n))).length;
+} else poolLen = getCardioGeneral().length;
+if (!poolLen) return;
+cardioIdx[activeType] = (cardioIdx[activeType]+1) % poolLen;
+localStorage.setItem(‘forge_cardio_’+activeType, cardioIdx[activeType]);
+const block = document.getElementById(‘circuit-block’);
+if (block) {
+const tmp = document.createElement(‘div’);
+if (activeType===‘upper’) tmp.innerHTML = armsCircuitBlock(cardioIdx[activeType]);
+else if (activeType===‘lower’) tmp.innerHTML = legCircuitBlock(cardioIdx[activeType]);
+else tmp.innerHTML = circuitBlock(activeType, cardioIdx[activeType]);
+block.replaceWith(tmp.firstElementChild);
 }
- 
+saved[activeType] = document.getElementById(‘workout’).innerHTML;
+localStorage.setItem(‘forge_saved_’+activeType, saved[activeType]);
+}
+
 function quickCmd(type) {
-  document.getElementById('cmd').value='';
-  document.getElementById('gear-panel').classList.remove('show');
-  document.getElementById('progress-panel').classList.remove('show');
-  if (saved[type]) { showWorkout(type,saved[type]); } else { generate(type); }
+document.getElementById(‘cmd’).value=’’;
+document.getElementById(‘gear-panel’).classList.remove(‘show’);
+document.getElementById(‘progress-panel’).classList.remove(‘show’);
+if (saved[type]) { showWorkout(type,saved[type]); } else { generate(type); }
 }
 function regen() { if (activeType) generate(activeType); }
- 
+
 function handleInput() {
-  const val=document.getElementById('cmd').value.trim().toLowerCase();
-  if (['push','pull','arms'].includes(val)) { generate(val); document.getElementById('cmd').value=''; }
-  else { document.getElementById('cmd').style.borderColor='#f57a4a'; setTimeout(()=>document.getElementById('cmd').style.borderColor='#252945',700); }
+const val=document.getElementById(‘cmd’).value.trim().toLowerCase();
+if ([‘push’,‘pull’,‘arms’,‘upper’,‘lower’].includes(val)) { generate(val); document.getElementById(‘cmd’).value=’’; }
+else { document.getElementById(‘cmd’).style.borderColor=’#f57a4a’; setTimeout(()=>document.getElementById(‘cmd’).style.borderColor=’#252945’,700); }
 }
-document.getElementById('cmd').addEventListener('keydown',e=>{ if(e.key==='Enter') handleInput(); });
- 
-// ─── ZOOM ─────────────────────────────────────────────────────────────────────
-function setZoom(level) {
-  const app=document.querySelector('.app');
-  if (level===1) { app.style.transform=''; app.style.width=''; document.body.style.overflowX=''; }
-  else { app.style.transformOrigin='top left'; app.style.transform=`scale(${level})`; app.style.width=`${100/level}%`; document.body.style.overflowX='hidden'; }
-  ['zoom-1','zoom-2','zoom-3','zoom-4'].forEach(id=>{ const b=document.getElementById(id); if(b) b.classList.remove('zoom-btn-active'); });
-  const idx=[1,1.4,1.8,2.2].indexOf(level);
-  if (idx>-1) { const b=document.getElementById('zoom-'+(idx+1)); if(b) b.classList.add('zoom-btn-active'); }
-  localStorage.setItem('forge_zoom',level);
-}
- 
+document.getElementById(‘cmd’).addEventListener(‘keydown’,e=>{ if(e.key===‘Enter’) handleInput(); });
+
 // ─── PROGRESS PANEL ───────────────────────────────────────────────────────────
 function showProgress() {
-  document.getElementById('workout').style.display='none';
-  document.getElementById('workout').classList.remove('show');
-  document.getElementById('idle').style.display='none';
-  document.getElementById('gear-panel').classList.remove('show');
-  document.getElementById('progress-panel').classList.add('show');
-  setTabs('progress');
-  activeType=null;
-  renderProgressPanel();
-  window.scrollTo({top:0,behavior:'smooth'});
+document.getElementById(‘workout’).style.display=‘none’;
+document.getElementById(‘workout’).classList.remove(‘show’);
+document.getElementById(‘idle’).style.display=‘none’;
+document.getElementById(‘gear-panel’).classList.remove(‘show’);
+document.getElementById(‘progress-panel’).classList.add(‘show’);
+setTabs(‘progress’);
+activeType=null;
+renderProgressPanel();
+window.scrollTo({top:0,behavior:‘smooth’});
 }
- 
+
 function getAllExercisesFlat() {
-  const days=[
-    ...PUSH.heavyLower.map(e=>({...e,day:'push',slot:'heavy-lower'})),
-    ...PUSH.heavyUpper.map(e=>({...e,day:'push',slot:'heavy-upper'})),
-    ...PUSH.hiitLower.map(e=>({...e,day:'push',slot:'hiit-lower'})),
-    ...PUSH.hiitUpper.map(e=>({...e,day:'push',slot:'hiit-upper'})),
-    ...PULL.heavyHinge.map(e=>({...e,day:'pull',slot:'heavy-lower'})),
-    ...PULL.heavyUpper.map(e=>({...e,day:'pull',slot:'heavy-upper'})),
-    ...PULL.hiitLower.map(e=>({...e,day:'pull',slot:'hiit-lower'})),
-    ...PULL.hiitUpper.map(e=>({...e,day:'pull',slot:'hiit-upper'})),
-  ];
-  return [...days, ...loadCustomExercises().map(e=>({...e,custom:true}))];
+const days=[
+…PUSH.heavyLower.map(e=>({…e,day:‘push’,slot:‘heavy-lower’})),
+…PUSH.heavyUpper.map(e=>({…e,day:‘push’,slot:‘heavy-upper’})),
+…PUSH.hiitLower.map(e=>({…e,day:‘push’,slot:‘hiit-lower’})),
+…PUSH.hiitUpper.map(e=>({…e,day:‘push’,slot:‘hiit-upper’})),
+…PULL.heavyHinge.map(e=>({…e,day:‘pull’,slot:‘heavy-lower’})),
+…PULL.heavyUpper.map(e=>({…e,day:‘pull’,slot:‘heavy-upper’})),
+…PULL.hiitLower.map(e=>({…e,day:‘pull’,slot:‘hiit-lower’})),
+…PULL.hiitUpper.map(e=>({…e,day:‘pull’,slot:‘hiit-upper’})),
+];
+return […days, …loadCustomExercises().map(e=>({…e,custom:true}))];
 }
- 
+
 function renderProgressPanel() {
-  const container=document.getElementById('progress-list');
-  const filterRow=document.getElementById('progress-filter-row');
-  const allExs=getAllExercisesFlat();
-  const logged=allExs.filter(e=>loadWeightLog(e.name).length>0);
-  if (!logged.length) {
-    container.innerHTML=`<div class="gear-section"><div class="custom-gear-empty">No weight logged yet. Add weights to your exercises during a workout and they will show up here.</div></div>`;
-    filterRow.innerHTML=''; return;
-  }
-  const activeFilter=window._progressFilter||'all';
-  filterRow.innerHTML=['all','push','pull','arms'].map(d=>`<button onclick="window._progressFilter='${d}';renderProgressPanel()" style="padding:7px 16px;border-radius:50px;font-size:12px;font-weight:700;cursor:pointer;border:none;font-family:inherit;background:${activeFilter===d?'#6c5ce7':'#181b2e'};color:${activeFilter===d?'#fff':'#6b7494'};border:1.5px solid ${activeFilter===d?'#6c5ce7':'#252945'};">${d==='all'?'All':d.charAt(0).toUpperCase()+d.slice(1)}</button>`).join('');
-  const filtered=activeFilter==='all'?logged:logged.filter(e=>e.day===activeFilter);
-  if (!filtered.length) { container.innerHTML=`<div class="gear-section"><div class="custom-gear-empty">No entries for this day yet.</div></div>`; return; }
-  const dc={push:'#a89cf8',pull:'#7dd0f8',arms:'#f8a87d'};
-  container.innerHTML=filtered.map(e=>{
-    const entries=loadWeightLog(e.name);
-    const latest=entries[entries.length-1];
-    const prev=entries.length>1?entries[entries.length-2]:null;
-    const trend=prev?(latest.weight!==prev.weight?(latest.weight>prev.weight?'↑':'↓'):'→'):'';
-    const tc=trend==='↑'?'#4ac98a':trend==='↓'?'#f57a4a':'#6b7494';
-    const safeName=e.name.replace(/'/g,"\\'");
-    return `<div class="progress-entry">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-        <div class="progress-ex-name">${e.name}</div>
-        <span class="progress-tag" style="background:rgba(108,92,231,0.15);color:${dc[e.day]||'#a89cf8'}">${(e.day||'').toUpperCase()}</span>
-      </div>
-      <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px;">
-        <span style="font-size:28px;font-weight:800;color:#fff;">${latest.weight}</span>
-        <span style="font-size:18px;font-weight:700;color:${tc}">${trend}</span>
-        <span style="font-size:12px;color:#6b7494;">${latest.date}</span>
-      </div>
-      <div style="font-size:11px;color:#6b7494;margin-bottom:6px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;">History</div>
-      ${entries.slice().reverse().map(en=>`<div class="progress-log-row"><span class="progress-log-date">${en.date}</span><span class="progress-log-vals">${en.weight}</span></div>`).join('')}
-      <button onclick="clearExerciseProgress('${safeName}');renderProgressPanel()" style="margin-top:10px;background:none;border:none;color:#4a5170;font-size:11px;cursor:pointer;font-family:inherit;text-decoration:underline;">Clear history</button>
-    </div>`;
-  }).join('');
+const container=document.getElementById(‘progress-list’);
+const filterRow=document.getElementById(‘progress-filter-row’);
+const allExs=getAllExercisesFlat();
+const logged=allExs.filter(e=>loadWeightLog(e.name).length>0);
+if (!logged.length) {
+container.innerHTML=`<div class="gear-section"><div class="custom-gear-empty">No weight logged yet. Add weights to your exercises during a workout and they will show up here.</div></div>`;
+filterRow.innerHTML=’’; return;
 }
- 
-function clearExerciseProgress(name) { localStorage.removeItem('forge_wt_'+safeId(name)); }
+const activeFilter=window._progressFilter||‘all’;
+filterRow.innerHTML=[‘all’,‘push’,‘pull’,‘arms’].map(d=>`<button onclick="window._progressFilter='${d}';renderProgressPanel()" style="padding:7px 16px;border-radius:50px;font-size:12px;font-weight:700;cursor:pointer;border:none;font-family:inherit;background:${activeFilter===d?'#6c5ce7':'#181b2e'};color:${activeFilter===d?'#fff':'#6b7494'};border:1.5px solid ${activeFilter===d?'#6c5ce7':'#252945'};">${d==='all'?'All':d.charAt(0).toUpperCase()+d.slice(1)}</button>`).join(’’);
+const filtered=activeFilter===‘all’?logged:logged.filter(e=>e.day===activeFilter);
+if (!filtered.length) { container.innerHTML=`<div class="gear-section"><div class="custom-gear-empty">No entries for this day yet.</div></div>`; return; }
+const dc={push:’#a89cf8’,pull:’#7dd0f8’,arms:’#f8a87d’};
+container.innerHTML=filtered.map(e=>{
+const entries=loadWeightLog(e.name);
+const latest=entries[entries.length-1];
+const prev=entries.length>1?entries[entries.length-2]:null;
+const trend=prev?(latest.weight!==prev.weight?(latest.weight>prev.weight?‘↑’:‘↓’):‘→’):’’;
+const tc=trend===‘↑’?’#4ac98a’:trend===‘↓’?’#f57a4a’:’#6b7494’;
+const safeName=e.name.replace(/’/g,”\’”);
+return `<div class="progress-entry"> <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;"> <div class="progress-ex-name">${e.name}</div> <span class="progress-tag" style="background:rgba(108,92,231,0.15);color:${dc[e.day]||'#a89cf8'}">${(e.day||'').toUpperCase()}</span> </div> <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px;"> <span style="font-size:28px;font-weight:800;color:#fff;">${latest.weight}</span> <span style="font-size:18px;font-weight:700;color:${tc}">${trend}</span> <span style="font-size:12px;color:#6b7494;">${latest.date}</span> </div> <div style="font-size:11px;color:#6b7494;margin-bottom:6px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;">History</div> ${entries.slice().reverse().map(en=>`<div class="progress-log-row"><span class="progress-log-date">${en.date}</span><span class="progress-log-vals">${en.weight}</span></div>`).join('')} <button onclick="clearExerciseProgress('${safeName}');renderProgressPanel()" style="margin-top:10px;background:none;border:none;color:#4a5170;font-size:11px;cursor:pointer;font-family:inherit;text-decoration:underline;">Clear history</button> </div>`;
+}).join(’’);
+}
+
+function clearExerciseProgress(name) { localStorage.removeItem(‘forge_wt_’+safeId(name)); }
 function clearAllProgress() {
-  if (!confirm('Clear all weight history?')) return;
-  getAllExercisesFlat().forEach(e=>localStorage.removeItem('forge_wt_'+safeId(e.name)));
-  renderProgressPanel();
+if (!confirm(‘Clear all weight history?’)) return;
+getAllExercisesFlat().forEach(e=>localStorage.removeItem(‘forge_wt_’+safeId(e.name)));
+renderProgressPanel();
 }
- 
+
 // ─── GEAR TAB ─────────────────────────────────────────────────────────────────
 function saveGear() {
-  const owned=ALL_EQUIPMENT.filter(g=>document.getElementById('gear-'+g)&&document.getElementById('gear-'+g).checked);
-  localStorage.setItem('forge_gear',JSON.stringify(owned));
-  ['push','pull','arms'].forEach(t=>{localStorage.removeItem('forge_saved_'+t);saved[t]=null;});
-  const btn=document.querySelector('.gear-save-btn');
-  btn.textContent='✓ Saved! Workouts updated.'; btn.style.backgroundColor='#3d9fd4';
-  setTimeout(()=>{btn.textContent='✓ Save Changes & Update Workouts';btn.style.backgroundColor='#4ac98a';},2000);
+const owned=ALL_EQUIPMENT.filter(g=>document.getElementById(‘gear-’+g)&&document.getElementById(‘gear-’+g).checked);
+localStorage.setItem(‘forge_gear’,JSON.stringify(owned));
+[‘push’,‘pull’,‘arms’].forEach(t=>{localStorage.removeItem(‘forge_saved_’+t);saved[t]=null;});
+const btn=document.querySelector(’.gear-save-btn’);
+btn.textContent=‘✓ Saved! Workouts updated.’; btn.style.backgroundColor=’#3d9fd4’;
+setTimeout(()=>{btn.textContent=‘✓ Save Changes & Update Workouts’;btn.style.backgroundColor=’#4ac98a’;},2000);
 }
 function loadGearToggles() {
-  const owned=loadGear();
-  ALL_EQUIPMENT.forEach(g=>{const el=document.getElementById('gear-'+g);if(el)el.checked=owned.includes(g);});
+const owned=loadGear();
+ALL_EQUIPMENT.forEach(g=>{const el=document.getElementById(‘gear-’+g);if(el)el.checked=owned.includes(g);});
 }
 function applyGearOverrides() {
-  const ov=loadGearOverrides();
-  Object.entries(ov).forEach(([key,o])=>{
-    const n=document.getElementById('gname-'+key); const d=document.getElementById('gdesc-'+key);
-    if(n&&o.name)n.textContent=o.name; if(d&&o.desc)d.textContent=o.desc;
-  });
+const ov=loadGearOverrides();
+Object.entries(ov).forEach(([key,o])=>{
+const n=document.getElementById(‘gname-’+key); const d=document.getElementById(‘gdesc-’+key);
+if(n&&o.name)n.textContent=o.name; if(d&&o.desc)d.textContent=o.desc;
+});
 }
 function disableBuiltinExercise(name) {
-  const list=loadDisabledExercises(); if(!list.includes(name))list.push(name); saveDisabledExercises(list);
-  ['push','pull','arms'].forEach(t=>{localStorage.removeItem('forge_saved_'+t);saved[t]=null;}); renderExerciseList();
+const list=loadDisabledExercises(); if(!list.includes(name))list.push(name); saveDisabledExercises(list);
+[‘push’,‘pull’,‘arms’].forEach(t=>{localStorage.removeItem(‘forge_saved_’+t);saved[t]=null;}); renderExerciseList();
 }
 function restoreBuiltinExercise(name) {
-  saveDisabledExercises(loadDisabledExercises().filter(n=>n!==name));
-  ['push','pull','arms'].forEach(t=>{localStorage.removeItem('forge_saved_'+t);saved[t]=null;}); renderExerciseList();
+saveDisabledExercises(loadDisabledExercises().filter(n=>n!==name));
+[‘push’,‘pull’,‘arms’].forEach(t=>{localStorage.removeItem(‘forge_saved_’+t);saved[t]=null;}); renderExerciseList();
 }
 function toggleExercise(el, name, currentlyOff) { if(currentlyOff)restoreBuiltinExercise(name);else disableBuiltinExercise(name); }
 function isDisabled(name){return loadDisabledExercises().includes(name);}
- 
+
 function deleteBuiltinGear(gearKey) {
-  if (!confirm('Permanently delete this equipment and all its exercises?')) return;
-  const owned=loadGear().filter(g=>g!==gearKey); localStorage.setItem('forge_gear',JSON.stringify(owned));
-  const deleted=loadDeletedGear(); if(!deleted.includes(gearKey)){deleted.push(gearKey);saveDeletedGear(deleted);}
-  const allExs=getAllExercisesFlat().filter(e=>e.needs&&e.needs.includes(gearKey));
-  const dis=loadDisabledExercises(); allExs.forEach(e=>{if(!dis.includes(e.name))dis.push(e.name);}); saveDisabledExercises(dis);
-  ['push','pull','arms'].forEach(t=>{localStorage.removeItem('forge_saved_'+t);saved[t]=null;});
-  const row=document.querySelector(`[onclick="deleteBuiltinGear('${gearKey}')"]`); if(row)row.closest('.swipe-row').style.display='none';
-  loadGearToggles();
+if (!confirm(‘Permanently delete this equipment and all its exercises?’)) return;
+const owned=loadGear().filter(g=>g!==gearKey); localStorage.setItem(‘forge_gear’,JSON.stringify(owned));
+const deleted=loadDeletedGear(); if(!deleted.includes(gearKey)){deleted.push(gearKey);saveDeletedGear(deleted);}
+const allExs=getAllExercisesFlat().filter(e=>e.needs&&e.needs.includes(gearKey));
+const dis=loadDisabledExercises(); allExs.forEach(e=>{if(!dis.includes(e.name))dis.push(e.name);}); saveDisabledExercises(dis);
+[‘push’,‘pull’,‘arms’].forEach(t=>{localStorage.removeItem(‘forge_saved_’+t);saved[t]=null;});
+const row=document.querySelector(`[onclick="deleteBuiltinGear('${gearKey}')"]`); if(row)row.closest(’.swipe-row’).style.display=‘none’;
+loadGearToggles();
 }
- 
+
 function gearNav(tab) {
-  ['my','exercises','custom'].forEach(t=>{
-    document.getElementById('gpanel-'+t).style.display=t===tab?'block':'none';
-    document.getElementById('gnav-'+t).className='gear-subbtn'+(t===tab?' active':'');
-  });
-  if(tab==='exercises')renderExerciseList();
-  if(tab==='custom'){renderCustomGearList();renderCustomGearDropdown();}
-  if(tab==='my'){renderCustomGearRows();setTimeout(()=>{initSwipeRows();initMouseSwipeRows();},100);}
+[‘my’,‘exercises’,‘custom’].forEach(t=>{
+document.getElementById(‘gpanel-’+t).style.display=t===tab?‘block’:‘none’;
+document.getElementById(‘gnav-’+t).className=‘gear-subbtn’+(t===tab?’ active’:’’);
+});
+if(tab===‘exercises’)renderExerciseList();
+if(tab===‘custom’){renderCustomGearList();renderCustomGearDropdown();}
+if(tab===‘my’){renderCustomGearRows();setTimeout(()=>{initSwipeRows();initMouseSwipeRows();},100);}
 }
- 
+
 function showGear() {
-  document.getElementById('workout').style.display='none'; document.getElementById('workout').classList.remove('show');
-  document.getElementById('idle').style.display='none'; document.getElementById('progress-panel').classList.remove('show');
-  document.getElementById('gear-panel').classList.add('show');
-  setTabs('gear'); activeType=null; loadGearToggles(); renderCustomGearRows(); gearNav('my');
-  setTimeout(()=>{initSwipeRows();initMouseSwipeRows();},100);
-  window.scrollTo({top:0,behavior:'smooth'});
+document.getElementById(‘workout’).style.display=‘none’; document.getElementById(‘workout’).classList.remove(‘show’);
+document.getElementById(‘idle’).style.display=‘none’; document.getElementById(‘progress-panel’).classList.remove(‘show’);
+document.getElementById(‘gear-panel’).classList.add(‘show’);
+setTabs(‘gear’); activeType=null; loadGearToggles(); renderCustomGearRows(); gearNav(‘my’);
+setTimeout(()=>{initSwipeRows();initMouseSwipeRows();},100);
+window.scrollTo({top:0,behavior:‘smooth’});
 }
- 
+
 // ─── EXERCISE LIST ────────────────────────────────────────────────────────────
 function renderExerciseList() {
-  const filter=document.getElementById('ex-gear-filter').value;
-  const container=document.getElementById('exercise-list');
-  const disabled=loadDisabledExercises();
-  let all=getAllExercisesFlat();
-  if(filter!=='all'){if(filter==='custom')all=all.filter(e=>e.custom);else all=all.filter(e=>e.needs&&e.needs.includes(filter));}
-  if(!all.length){container.innerHTML=`<div class="gear-section"><div class="custom-gear-empty">No exercises found.</div></div>`;return;}
-  const grouped={};
-  all.forEach(e=>{const key=(e.needs&&e.needs[0])||'custom';if(!grouped[key])grouped[key]=[];grouped[key].push(e);});
-  container.innerHTML=Object.entries(grouped).map(([gear,exs])=>`
-    <div class="gear-section">
-      <div class="gear-section-title">${GEAR_NAMES[gear]||gear}</div>
-      <div class="swipe-hint">Swipe right to edit · Swipe left to remove</div>
-      ${exs.map(e=>{
-        const ov=loadExerciseOverrides()[e.name];
-        const dn=ov?ov.name:e.name, ds=ov?ov.scheme:(e.scheme||''), dd=ov?ov.day:(e.day||'push'), dsl=ov?ov.slot:(e.slot||'');
-        const off=disabled.includes(e.name)||disabled.includes(dn);
-        const ns=off?'color:#4a5170;':'';
-        const sn=e.name.replace(/'/g,"\\'").replace(/"/g,'&quot;');
-        const sg=(ov?(ov.gear||(e.needs&&e.needs[0])||'db'):(e.needs&&e.needs[0])||'db');
-        const tFn=off?`toggleExercise(this,'${sn}',true)`:`toggleExercise(this,'${sn}',false)`;
-        const dFn=e.custom?`removeCustomExercise('${sn}')`:off?`restoreBuiltinExercise('${sn}');this.closest('.swipe-content').classList.remove('swiped-left','swiped-right')`:`disableBuiltinExercise('${sn}')`;
-        const dL=e.custom?'Delete':off?'Restore':'Remove', dC=off?'#2ecc71':'#c0392b';
-        const eFn=`openEditModal('${sn}','${ds.replace(/'/g,"\\'")}','${dd}','${dsl}','${sg}')`;
-        return `<div class="swipe-row">
-          <div class="swipe-edit" onclick="${eFn}"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div>
-          <div class="swipe-delete" style="background-color:${dC};" onclick="${dFn}"><div class="swipe-delete-x">${off?'↩':'✕'}</div><div class="swipe-delete-label">${dL}</div></div>
-          <div class="swipe-content">
-            <div class="ex-list-item">
-              <div class="ex-list-info">
-                <div class="ex-list-name" style="${ns}">${dn}</div>
-                <div class="ex-list-meta">
-                  <span class="ex-list-tag tag-${dd}">${dd.toUpperCase()}</span>
-                  <span class="ex-list-tag tag-${dsl&&dsl.startsWith('heavy')?'heavy':'hiit'}">${SLOT_LABELS[dsl]||dsl||''}</span>
-                  <span>${ds}</span>
-                </div>
-              </div>
-              <label class="toggle" style="flex-shrink:0;"><input type="checkbox" ${off?'':'checked'} onchange="${tFn}"/><span class="toggle-slider"></span></label>
-            </div>
-          </div>
-        </div>`;
-      }).join('')}
-    </div>`).join('');
-  setTimeout(()=>{initSwipeRows();initMouseSwipeRows();},50);
+const filter=document.getElementById(‘ex-gear-filter’).value;
+const container=document.getElementById(‘exercise-list’);
+const disabled=loadDisabledExercises();
+let all=getAllExercisesFlat();
+if(filter!==‘all’){if(filter===‘custom’)all=all.filter(e=>e.custom);else all=all.filter(e=>e.needs&&e.needs.includes(filter));}
+if(!all.length){container.innerHTML=`<div class="gear-section"><div class="custom-gear-empty">No exercises found.</div></div>`;return;}
+const grouped={};
+all.forEach(e=>{const key=(e.needs&&e.needs[0])||‘custom’;if(!grouped[key])grouped[key]=[];grouped[key].push(e);});
+container.innerHTML=Object.entries(grouped).map(([gear,exs])=>` <div class="gear-section"> <div class="gear-section-title">${GEAR_NAMES[gear]||gear}</div> <div class="swipe-hint">Swipe right to edit · Swipe left to remove</div> ${exs.map(e=>{ const ov=loadExerciseOverrides()[e.name]; const dn=ov?ov.name:e.name, ds=ov?ov.scheme:(e.scheme||''), dd=ov?ov.day:(e.day||'push'), dsl=ov?ov.slot:(e.slot||''); const off=disabled.includes(e.name)||disabled.includes(dn); const ns=off?'color:#4a5170;':''; const sn=e.name.replace(/'/g,"\\'").replace(/"/g,'&quot;'); const sg=(ov?(ov.gear||(e.needs&&e.needs[0])||'db'):(e.needs&&e.needs[0])||'db'); const tFn=off?`toggleExercise(this,’${sn}’,true)`:`toggleExercise(this,’${sn}’,false)`; const dFn=e.custom?`removeCustomExercise(’${sn}’)`:off?`restoreBuiltinExercise(’${sn}’);this.closest(’.swipe-content’).classList.remove(‘swiped-left’,‘swiped-right’)`:`disableBuiltinExercise(’${sn}’)`; const dL=e.custom?'Delete':off?'Restore':'Remove', dC=off?'#2ecc71':'#c0392b'; const eFn=`openEditModal(’${sn}’,’${ds.replace(/’/g,”\’”)}’,’${dd}’,’${dsl}’,’${sg}’)`; return `<div class="swipe-row">
+<div class="swipe-edit" onclick="${eFn}"><div class="swipe-edit-icon">✎</div><div class="swipe-edit-label">Edit</div></div>
+<div class="swipe-delete" style="background-color:${dC};" onclick="${dFn}"><div class="swipe-delete-x">${off?‘↩’:‘✕’}</div><div class="swipe-delete-label">${dL}</div></div>
+<div class="swipe-content">
+<div class="ex-list-item">
+<div class="ex-list-info">
+<div class="ex-list-name" style="${ns}">${dn}</div>
+<div class="ex-list-meta">
+<span class="ex-list-tag tag-${dd}">${dd.toUpperCase()}</span>
+<span class="ex-list-tag tag-${dsl&&dsl.startsWith('heavy')?'heavy':'hiit'}">${SLOT_LABELS[dsl]||dsl||’’}</span>
+<span>${ds}</span>
+</div>
+</div>
+<label class="toggle" style="flex-shrink:0;"><input type=“checkbox” ${off?’’:‘checked’} onchange=”${tFn}”/><span class="toggle-slider"></span></label>
+</div>
+</div>
+</div>`; }).join('')} </div>`).join(’’);
+setTimeout(()=>{initSwipeRows();initMouseSwipeRows();},50);
 }
- 
+
 function removeCustomExercise(name) {
-  saveCustomExercises(loadCustomExercises().filter(e=>e.name!==name));
-  ['push','pull','arms'].forEach(t=>{localStorage.removeItem('forge_saved_'+t);saved[t]=null;});
-  renderExerciseList();
+saveCustomExercises(loadCustomExercises().filter(e=>e.name!==name));
+[‘push’,‘pull’,‘arms’].forEach(t=>{localStorage.removeItem(‘forge_saved_’+t);saved[t]=null;});
+renderExerciseList();
 }
- 
+
 // ─── CUSTOM GEAR ──────────────────────────────────────────────────────────────
 function renderCustomGearList() {
-  const list=loadCustomGear(); const c=document.getElementById('custom-gear-list'); if(!c)return;
-  if(!list.length){c.innerHTML='<div class="custom-gear-empty">No custom equipment yet.</div>';return;}
-  c.innerHTML=list.map((item,i)=>`<div class="swipe-row"><div class="swipe-delete" onclick="removeCustomGear(${i})"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name">${item}</div></div></div></div></div>`).join('');
-  setTimeout(()=>{initSwipeRows();initMouseSwipeRows();},50);
+const list=loadCustomGear(); const c=document.getElementById(‘custom-gear-list’); if(!c)return;
+if(!list.length){c.innerHTML=’<div class="custom-gear-empty">No custom equipment yet.</div>’;return;}
+c.innerHTML=list.map((item,i)=>`<div class="swipe-row"><div class="swipe-delete" onclick="removeCustomGear(${i})"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name">${item}</div></div></div></div></div>`).join(’’);
+setTimeout(()=>{initSwipeRows();initMouseSwipeRows();},50);
 }
 function renderCustomGearRows() {
-  const list=loadCustomGear(); const c=document.getElementById('custom-gear-rows'); if(!c)return;
-  if(!list.length){c.innerHTML='';return;}
-  c.innerHTML=list.map((item,i)=>`<div class="swipe-row"><div class="swipe-delete" onclick="removeCustomGear(${i})"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name">${item}</div><div class="gear-item-desc">Custom equipment</div></div><span style="font-size:11px;color:#4a5170;font-weight:600;text-transform:uppercase;">Custom</span></div></div></div>`).join('');
-  setTimeout(()=>{initSwipeRows();initMouseSwipeRows();},50);
+const list=loadCustomGear(); const c=document.getElementById(‘custom-gear-rows’); if(!c)return;
+if(!list.length){c.innerHTML=’’;return;}
+c.innerHTML=list.map((item,i)=>`<div class="swipe-row"><div class="swipe-delete" onclick="removeCustomGear(${i})"><div class="swipe-delete-x">✕</div><div class="swipe-delete-label">Delete</div></div><div class="swipe-content"><div class="gear-item"><div class="gear-item-left"><div class="gear-item-name">${item}</div><div class="gear-item-desc">Custom equipment</div></div><span style="font-size:11px;color:#4a5170;font-weight:600;text-transform:uppercase;">Custom</span></div></div></div>`).join(’’);
+setTimeout(()=>{initSwipeRows();initMouseSwipeRows();},50);
 }
 function renderCustomGearDropdown() {
-  const sel=document.getElementById('ex-gear'); if(!sel)return;
-  while(sel.options.length>12)sel.remove(12);
-  loadCustomGear().forEach(g=>{const o=document.createElement('option');o.value=g;o.textContent=g;sel.appendChild(o);});
+const sel=document.getElementById(‘ex-gear’); if(!sel)return;
+while(sel.options.length>12)sel.remove(12);
+loadCustomGear().forEach(g=>{const o=document.createElement(‘option’);o.value=g;o.textContent=g;sel.appendChild(o);});
 }
 function addCustomGear() {
-  const inp=document.getElementById('custom-gear-name'); const name=inp.value.trim();
-  if(!name){inp.style.borderColor='#f57a4a';setTimeout(()=>inp.style.borderColor='#252945',700);return;}
-  const list=loadCustomGear(); if(list.includes(name)){inp.value='';return;}
-  list.push(name); saveCustomGearList(list); inp.value=''; renderCustomGearList(); renderCustomGearDropdown();
+const inp=document.getElementById(‘custom-gear-name’); const name=inp.value.trim();
+if(!name){inp.style.borderColor=’#f57a4a’;setTimeout(()=>inp.style.borderColor=’#252945’,700);return;}
+const list=loadCustomGear(); if(list.includes(name)){inp.value=’’;return;}
+list.push(name); saveCustomGearList(list); inp.value=’’; renderCustomGearList(); renderCustomGearDropdown();
 }
 function removeCustomGear(idx) {
-  const list=loadCustomGear(); list.splice(idx,1); saveCustomGearList(list); renderCustomGearList(); renderCustomGearDropdown();
+const list=loadCustomGear(); list.splice(idx,1); saveCustomGearList(list); renderCustomGearList(); renderCustomGearDropdown();
 }
 function addCustomExercise() {
-  const name=document.getElementById('ex-name').value.trim(), gear=document.getElementById('ex-gear').value;
-  const day=document.getElementById('ex-day').value, slot=document.getElementById('ex-slot').value;
-  const scheme=document.getElementById('ex-scheme').value.trim();
-  if(!name||!gear||!day||!slot||!scheme){
-    ['ex-name','ex-gear','ex-day','ex-slot','ex-scheme'].forEach(id=>{const el=document.getElementById(id);if(el&&!el.value.trim()){el.style.borderColor='#f57a4a';setTimeout(()=>el.style.borderColor='#252945',700);}});return;
-  }
-  const list=loadCustomExercises(); if(list.find(e=>e.name===name)){alert('That exercise already exists.');return;}
-  list.push({name,gear,day,slot,scheme,custom:true,needs:[gear]}); saveCustomExercises(list);
-  ['push','pull','arms'].forEach(t=>{localStorage.removeItem('forge_saved_'+t);saved[t]=null;});
-  ['ex-name','ex-scheme'].forEach(id=>document.getElementById(id).value='');
-  ['ex-gear','ex-day','ex-slot'].forEach(id=>document.getElementById(id).selectedIndex=0);
-  const btn=document.querySelector('#gpanel-custom button[onclick="addCustomExercise()"]');
-  if(btn){btn.textContent='✓ Added!';btn.style.background='#3d9fd4';setTimeout(()=>{btn.textContent='+ Add Exercise to Workouts';btn.style.background='#4ac98a';},2000);}
+const name=document.getElementById(‘ex-name’).value.trim(), gear=document.getElementById(‘ex-gear’).value;
+const day=document.getElementById(‘ex-day’).value, slot=document.getElementById(‘ex-slot’).value;
+const scheme=document.getElementById(‘ex-scheme’).value.trim();
+if(!name||!gear||!day||!slot||!scheme){
+[‘ex-name’,‘ex-gear’,‘ex-day’,‘ex-slot’,‘ex-scheme’].forEach(id=>{const el=document.getElementById(id);if(el&&!el.value.trim()){el.style.borderColor=’#f57a4a’;setTimeout(()=>el.style.borderColor=’#252945’,700);}});return;
 }
- 
+const list=loadCustomExercises(); if(list.find(e=>e.name===name)){alert(‘That exercise already exists.’);return;}
+list.push({name,gear,day,slot,scheme,custom:true,needs:[gear]}); saveCustomExercises(list);
+[‘push’,‘pull’,‘arms’].forEach(t=>{localStorage.removeItem(‘forge_saved_’+t);saved[t]=null;});
+[‘ex-name’,‘ex-scheme’].forEach(id=>document.getElementById(id).value=’’);
+[‘ex-gear’,‘ex-day’,‘ex-slot’].forEach(id=>document.getElementById(id).selectedIndex=0);
+const btn=document.querySelector(’#gpanel-custom button[onclick=“addCustomExercise()”]’);
+if(btn){btn.textContent=‘✓ Added!’;btn.style.background=’#3d9fd4’;setTimeout(()=>{btn.textContent=’+ Add Exercise to Workouts’;btn.style.background=’#4ac98a’;},2000);}
+}
+
 // ─── EDIT MODALS ──────────────────────────────────────────────────────────────
 function openEditModal(name, scheme, day, slot, gear) {
-  const ov=loadExerciseOverrides()[name]||{};
-  document.getElementById('edit-original-name').value=name;
-  document.getElementById('edit-name').value=ov.name||name;
-  document.getElementById('edit-scheme').value=ov.scheme||scheme;
-  document.getElementById('edit-day').value=ov.day||day||'push';
-  document.getElementById('edit-slot').value=ov.slot||slot||'heavy-upper';
-  document.getElementById('edit-gear').value=ov.gear||gear||'db';
-  document.getElementById('edit-modal').classList.add('show');
-  document.querySelectorAll('.swipe-content.swiped-left,.swipe-content.swiped-right').forEach(el=>el.classList.remove('swiped-left','swiped-right'));
+const ov=loadExerciseOverrides()[name]||{};
+document.getElementById(‘edit-original-name’).value=name;
+document.getElementById(‘edit-name’).value=ov.name||name;
+document.getElementById(‘edit-scheme’).value=ov.scheme||scheme;
+document.getElementById(‘edit-day’).value=ov.day||day||‘push’;
+document.getElementById(‘edit-slot’).value=ov.slot||slot||‘heavy-upper’;
+document.getElementById(‘edit-gear’).value=ov.gear||gear||‘db’;
+document.getElementById(‘edit-modal’).classList.add(‘show’);
+document.querySelectorAll(’.swipe-content.swiped-left,.swipe-content.swiped-right’).forEach(el=>el.classList.remove(‘swiped-left’,‘swiped-right’));
 }
 function saveExerciseEdit() {
-  const orig=document.getElementById('edit-original-name').value;
-  const nn=document.getElementById('edit-name').value.trim(), ns=document.getElementById('edit-scheme').value.trim();
-  const nd=document.getElementById('edit-day').value, nsl=document.getElementById('edit-slot').value, ng=document.getElementById('edit-gear').value;
-  if(!nn||!ns)return;
-  const custom=loadCustomExercises(); const ci=custom.findIndex(e=>e.name===orig);
-  if(ci>-1){custom[ci]={...custom[ci],name:nn,scheme:ns,day:nd,slot:nsl,gear:ng,needs:[ng]};saveCustomExercises(custom);}
-  else { const ov=loadExerciseOverrides(); ov[orig]={name:nn,scheme:ns,day:nd,slot:nsl,gear:ng,needs:[ng]}; saveExerciseOverrides(ov);
-    if(nn!==orig){const dis=loadDisabledExercises(),was=dis.includes(orig);const upd=dis.filter(n=>n!==orig);if(was)upd.push(nn);saveDisabledExercises(upd);}
-  }
-  ['push','pull','arms'].forEach(t=>{localStorage.removeItem('forge_saved_'+t);saved[t]=null;});
-  document.getElementById('edit-modal').classList.remove('show'); renderExerciseList();
+const orig=document.getElementById(‘edit-original-name’).value;
+const nn=document.getElementById(‘edit-name’).value.trim(), ns=document.getElementById(‘edit-scheme’).value.trim();
+const nd=document.getElementById(‘edit-day’).value, nsl=document.getElementById(‘edit-slot’).value, ng=document.getElementById(‘edit-gear’).value;
+if(!nn||!ns)return;
+const custom=loadCustomExercises(); const ci=custom.findIndex(e=>e.name===orig);
+if(ci>-1){custom[ci]={…custom[ci],name:nn,scheme:ns,day:nd,slot:nsl,gear:ng,needs:[ng]};saveCustomExercises(custom);}
+else { const ov=loadExerciseOverrides(); ov[orig]={name:nn,scheme:ns,day:nd,slot:nsl,gear:ng,needs:[ng]}; saveExerciseOverrides(ov);
+if(nn!==orig){const dis=loadDisabledExercises(),was=dis.includes(orig);const upd=dis.filter(n=>n!==orig);if(was)upd.push(nn);saveDisabledExercises(upd);}
+}
+[‘push’,‘pull’,‘arms’].forEach(t=>{localStorage.removeItem(‘forge_saved_’+t);saved[t]=null;});
+document.getElementById(‘edit-modal’).classList.remove(‘show’); renderExerciseList();
 }
 function openGearEditModal(key, name, desc) {
-  const ov=loadGearOverrides()[key]||{};
-  document.getElementById('gear-edit-key').value=key;
-  document.getElementById('gear-edit-name').value=ov.name||name;
-  document.getElementById('gear-edit-desc').value=ov.desc||desc;
-  document.getElementById('gear-edit-modal').classList.add('show');
-  document.querySelectorAll('.swipe-content.swiped-left,.swipe-content.swiped-right').forEach(el=>el.classList.remove('swiped-left','swiped-right'));
+const ov=loadGearOverrides()[key]||{};
+document.getElementById(‘gear-edit-key’).value=key;
+document.getElementById(‘gear-edit-name’).value=ov.name||name;
+document.getElementById(‘gear-edit-desc’).value=ov.desc||desc;
+document.getElementById(‘gear-edit-modal’).classList.add(‘show’);
+document.querySelectorAll(’.swipe-content.swiped-left,.swipe-content.swiped-right’).forEach(el=>el.classList.remove(‘swiped-left’,‘swiped-right’));
 }
 function saveGearEdit() {
-  const key=document.getElementById('gear-edit-key').value;
-  const nn=document.getElementById('gear-edit-name').value.trim(), nd=document.getElementById('gear-edit-desc').value.trim();
-  if(!nn)return;
-  const ov=loadGearOverrides(); ov[key]={name:nn,desc:nd}; saveGearOverrides(ov);
-  const ne=document.getElementById('gname-'+key),de=document.getElementById('gdesc-'+key);
-  if(ne)ne.textContent=nn; if(de)de.textContent=nd;
-  document.getElementById('gear-edit-modal').classList.remove('show');
+const key=document.getElementById(‘gear-edit-key’).value;
+const nn=document.getElementById(‘gear-edit-name’).value.trim(), nd=document.getElementById(‘gear-edit-desc’).value.trim();
+if(!nn)return;
+const ov=loadGearOverrides(); ov[key]={name:nn,desc:nd}; saveGearOverrides(ov);
+const ne=document.getElementById(‘gname-’+key),de=document.getElementById(‘gdesc-’+key);
+if(ne)ne.textContent=nn; if(de)de.textContent=nd;
+document.getElementById(‘gear-edit-modal’).classList.remove(‘show’);
 }
-document.addEventListener('click',e=>{
-  ['edit-modal','gear-edit-modal'].forEach(id=>{
-    const m=document.getElementById(id); if(m&&m.classList.contains('show')&&e.target===m)m.classList.remove('show');
-  });
+document.addEventListener(‘click’,e=>{
+[‘edit-modal’,‘gear-edit-modal’].forEach(id=>{
+const m=document.getElementById(id); if(m&&m.classList.contains(‘show’)&&e.target===m)m.classList.remove(‘show’);
 });
- 
+});
+
 // ─── SWIPE ────────────────────────────────────────────────────────────────────
 function initSwipeRows() {
-  document.querySelectorAll('.swipe-row').forEach(row=>{
-    const content=row.querySelector('.swipe-content'); if(!content||content._swipeInit)return; content._swipeInit=true;
-    let startX=0,startY=0,dragging=false,moved=false;
-    content.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY;dragging=true;moved=false;},{passive:true});
-    content.addEventListener('touchmove',e=>{if(!dragging)return;const dx=e.touches[0].clientX-startX,dy=e.touches[0].clientY-startY;if(!moved&&Math.abs(dy)>Math.abs(dx)){dragging=false;return;}moved=true;e.preventDefault();},{passive:false});
-    content.addEventListener('touchend',e=>{if(!dragging||!moved)return;dragging=false;const dx=e.changedTouches[0].clientX-startX;
-      document.querySelectorAll('.swipe-content.swiped-left,.swipe-content.swiped-right').forEach(el=>{if(el!==content)el.classList.remove('swiped-left','swiped-right');});
-      if(dx<-40){content.classList.remove('swiped-right');content.classList.add('swiped-left');}
-      else if(dx>40){content.classList.remove('swiped-left');content.classList.add('swiped-right');}
-      else{content.classList.remove('swiped-left','swiped-right');}
-    });
-  });
-  document.addEventListener('touchstart',e=>{if(!e.target.closest('.swipe-row')&&!e.target.closest('#edit-modal')&&!e.target.closest('#gear-edit-modal'))document.querySelectorAll('.swipe-content.swiped-left,.swipe-content.swiped-right').forEach(el=>el.classList.remove('swiped-left','swiped-right'));},{passive:true});
+document.querySelectorAll(’.swipe-row’).forEach(row=>{
+const content=row.querySelector(’.swipe-content’); if(!content||content._swipeInit)return; content._swipeInit=true;
+let startX=0,startY=0,dragging=false,moved=false;
+content.addEventListener(‘touchstart’,e=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY;dragging=true;moved=false;},{passive:true});
+content.addEventListener(‘touchmove’,e=>{if(!dragging)return;const dx=e.touches[0].clientX-startX,dy=e.touches[0].clientY-startY;if(!moved&&Math.abs(dy)>Math.abs(dx)){dragging=false;return;}moved=true;e.preventDefault();},{passive:false});
+content.addEventListener(‘touchend’,e=>{if(!dragging||!moved)return;dragging=false;const dx=e.changedTouches[0].clientX-startX;
+document.querySelectorAll(’.swipe-content.swiped-left,.swipe-content.swiped-right’).forEach(el=>{if(el!==content)el.classList.remove(‘swiped-left’,‘swiped-right’);});
+if(dx<-40){content.classList.remove(‘swiped-right’);content.classList.add(‘swiped-left’);}
+else if(dx>40){content.classList.remove(‘swiped-left’);content.classList.add(‘swiped-right’);}
+else{content.classList.remove(‘swiped-left’,‘swiped-right’);}
+});
+});
+document.addEventListener(‘touchstart’,e=>{if(!e.target.closest(’.swipe-row’)&&!e.target.closest(’#edit-modal’)&&!e.target.closest(’#gear-edit-modal’))document.querySelectorAll(’.swipe-content.swiped-left,.swipe-content.swiped-right’).forEach(el=>el.classList.remove(‘swiped-left’,‘swiped-right’));},{passive:true});
 }
 function initMouseSwipeRows() {
-  document.querySelectorAll('.swipe-row').forEach(row=>{
-    const content=row.querySelector('.swipe-content'); if(!content||content._mouseInit)return; content._mouseInit=true;
-    let startX=0,dragging=false;
-    content.addEventListener('mousedown',e=>{startX=e.clientX;dragging=true;});
-    document.addEventListener('mouseup',e=>{if(!dragging)return;dragging=false;const dx=e.clientX-startX;if(Math.abs(dx)<8)return;
-      document.querySelectorAll('.swipe-content.swiped-left,.swipe-content.swiped-right').forEach(el=>{if(el!==content)el.classList.remove('swiped-left','swiped-right');});
-      if(dx<-40){content.classList.remove('swiped-right');content.classList.add('swiped-left');}
-      else if(dx>40){content.classList.remove('swiped-left');content.classList.add('swiped-right');}
-      else{content.classList.remove('swiped-left','swiped-right');}
-    });
-  });
-}
- 
-// ─── ON LOAD ──────────────────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded',()=>{
-  const inp=document.getElementById('custom-gear-name'); if(inp)inp.addEventListener('keydown',e=>{if(e.key==='Enter')addCustomGear();});
-  const inp2=document.getElementById('ex-name'); if(inp2)inp2.addEventListener('keydown',e=>{if(e.key==='Enter')addCustomExercise();});
+document.querySelectorAll(’.swipe-row’).forEach(row=>{
+const content=row.querySelector(’.swipe-content’); if(!content||content._mouseInit)return; content._mouseInit=true;
+let startX=0,dragging=false;
+content.addEventListener(‘mousedown’,e=>{startX=e.clientX;dragging=true;});
+document.addEventListener(‘mouseup’,e=>{if(!dragging)return;dragging=false;const dx=e.clientX-startX;if(Math.abs(dx)<8)return;
+document.querySelectorAll(’.swipe-content.swiped-left,.swipe-content.swiped-right’).forEach(el=>{if(el!==content)el.classList.remove(‘swiped-left’,‘swiped-right’);});
+if(dx<-40){content.classList.remove(‘swiped-right’);content.classList.add(‘swiped-left’);}
+else if(dx>40){content.classList.remove(‘swiped-left’);content.classList.add(‘swiped-right’);}
+else{content.classList.remove(‘swiped-left’,‘swiped-right’);}
 });
- 
+});
+}
+
+// ─── ON LOAD ──────────────────────────────────────────────────────────────────
+document.addEventListener(‘DOMContentLoaded’,()=>{
+const inp=document.getElementById(‘custom-gear-name’); if(inp)inp.addEventListener(‘keydown’,e=>{if(e.key===‘Enter’)addCustomGear();});
+const inp2=document.getElementById(‘ex-name’); if(inp2)inp2.addEventListener(‘keydown’,e=>{if(e.key===‘Enter’)addCustomExercise();});
+});
+
 loadGearToggles();
 applyGearOverrides();
- 
+
 // Clear old cache if version changed so weight inputs appear
-const forgeVersion='2.0';
-if(localStorage.getItem('forge_version')!==forgeVersion){
-  ['push','pull','arms'].forEach(t=>localStorage.removeItem('forge_saved_'+t));
-  localStorage.setItem('forge_version',forgeVersion);
-  saved.push=null; saved.pull=null; saved.arms=null;
+const forgeVersion=‘2.6’;
+if(localStorage.getItem(‘forge_version’)!==forgeVersion){
+[‘push’,‘pull’,‘arms’,‘upper’,‘lower’].forEach(t=>localStorage.removeItem(‘forge_saved_’+t));
+localStorage.setItem(‘forge_version’,forgeVersion);
+saved.push=null; saved.pull=null; saved.arms=null; saved.upper=null; saved.lower=null;
 }
- 
-// Restore zoom
-const savedZoom=parseFloat(localStorage.getItem('forge_zoom')||'1');
-if(savedZoom!==1)setTimeout(()=>setZoom(savedZoom),50);
- 
+
 // Restore last workout
-const restoredType=localStorage.getItem('forge_active');
+const restoredType=localStorage.getItem(‘forge_active’);
 if(restoredType&&saved[restoredType]){showWorkout(restoredType,saved[restoredType]);}
- 
+
 </script>
 </body>
 </html>

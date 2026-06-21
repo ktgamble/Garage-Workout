@@ -1186,18 +1186,26 @@ function finisherBlock(type, ci) {
 
 function buildPush(cardioIdx) {
   // Round 1: Squat + Rotation
-  const squat = { name:'Sandbag Front Squat', scheme:'5×5', badge:'heavy', needs:['sandbag'],
-    note:'Primary anchor. Add weight each session when all 5 sets feel strong.' };
+  // Squat is the anchor — if no sandbag, fall back to KB Front Rack Squat or DB Goblet Squat
+  const squatOptions = [
+    { name:'Sandbag Front Squat',  scheme:'4×10', badge:'heavy', needs:['sandbag'],
+      note:'Primary anchor. Add weight each session when all 4 sets feel strong.' },
+    { name:'KB Front Rack Squat',  scheme:'4×10', badge:'heavy', needs:['kb'],
+      note:'Add weight each session when all 4 sets feel strong.' },
+    { name:'DB Goblet Squat',      scheme:'4×10', badge:'heavy', needs:['db'],
+      note:'Add weight each session when all 4 sets feel strong.' },
+  ].filter(e => hasGear(e.needs));
+  const squat = squatOptions[0]; // priority order — sandbag first
 
   const rotOptions = [
-    { name:'KB Around the World', scheme:'3×10/side', badge:'hiit', needs:['kb'] },
-    { name:'DB Woodchop',         scheme:'3×10/side', badge:'hiit', needs:['db'] },
-    { name:'Banded Pallof Press', scheme:'3×10/side', badge:'hiit', needs:['bands'] },
-    { name:'KB Halo',             scheme:'3×10/side', badge:'hiit', needs:['kb'] },
+    { name:'KB Around the World', scheme:'4×10/side', badge:'hiit', needs:['kb'] },
+    { name:'DB Woodchop',         scheme:'4×10/side', badge:'hiit', needs:['db'] },
+    { name:'Banded Pallof Press', scheme:'4×10/side', badge:'hiit', needs:['bands'] },
+    { name:'KB Halo',             scheme:'4×10/side', badge:'hiit', needs:['kb'] },
   ].filter(e => hasGear(e.needs));
   const rot = rand(rotOptions);
 
-  // Round 2: Horizontal Push + Jump Squats (always)
+  // Round 2: Horizontal Push + Jump Squats
   const hPushOptions = [
     { name:'DB Incline Press',    scheme:'3×10–12', badge:'heavy', needs:['db'] },
     { name:'DB Flat Chest Press', scheme:'3×10–12', badge:'heavy', needs:['db'] },
@@ -1214,10 +1222,10 @@ function buildPush(cardioIdx) {
   const vPush = rand(vPushOptions);
 
   const tricepOptions = [
-    { name:'Ring Tricep Extension', scheme:'3×15–20', badge:'hiit', needs:['rings'] },
-    { name:'Pike Push-Ups',         scheme:'3×15–20', badge:'hiit', needs:['mat'] },
-    { name:'Dive Bomber Push-Ups',  scheme:'3×15–20', badge:'hiit', needs:['mat'] },
-    { name:'DB Skull Crushers',     scheme:'3×15–20', badge:'hiit', needs:['db'] },
+    { name:'Ring Tricep Extension',        scheme:'3×15–20', badge:'hiit', needs:['rings'] },
+    { name:'Pike Push-Ups',                scheme:'3×15–20', badge:'hiit', needs:['mat'] },
+    { name:'Dive Bomber Push-Ups',         scheme:'3×15–20', badge:'hiit', needs:['mat'] },
+    { name:'DB Skull Crushers',            scheme:'3×15–20', badge:'hiit', needs:['db'] },
   ].filter(e => hasGear(e.needs));
   const tricep = rand(tricepOptions);
 
@@ -1230,19 +1238,23 @@ function buildPush(cardioIdx) {
   const carry = rand(carryOptions);
 
   const armTricepOptions = [
-    { name:'DB Skull Crushers',     scheme:'3×12–15', badge:'hiit', needs:['db'] },
-    { name:'Ring Tricep Extension', scheme:'3×12–15', badge:'hiit', needs:['rings'] },
+    { name:'DB Skull Crushers',            scheme:'3×12–15', badge:'hiit', needs:['db'] },
+    { name:'Ring Tricep Extension',        scheme:'3×12–15', badge:'hiit', needs:['rings'] },
     { name:'DB Overhead Tricep Extension', scheme:'3×12–15', badge:'hiit', needs:['db'] },
-  ].filter(e => hasGear(e.needs) && e.name !== tricep.name);
+  ].filter(e => hasGear(e.needs) && e.name !== (tricep&&tricep.name));
   const armTricep = rand(armTricepOptions);
 
   const pool = getPushFinishers();
   const ci = cardioIdx!==undefined ? cardioIdx : Math.floor(Math.random()*(pool.length||1));
 
+  if (!squat || !rot || !hPush || !vPush || !tricep || !carry || !armTricep) {
+    return { lifts: `<div class="wo-header-card"><div class="wo-title">Not enough gear enabled</div><div class="circuit-intro">Go to the Gear tab and make sure you have at least Dumbbells and a mat toggled on.</div></div>`, cardioIdx:0 };
+  }
+
   return { lifts: woHeader('push','Full Body — Push',['~55 min','4 rounds','15 min finisher'])
     +'<div class="rounds">'
     +pairedBlock(1, 'Squat + Rotation', squat, rot, 'push',
-      'Do all 5 squat sets, rotating with rotation work between each. Legs rest while core works.',
+      'Do all 4 squat sets, rotating with rotation work between each. Legs rest while core works.',
       '2–3 min after squat set · 60 sec after rotation')
     +pairedBlock(2, 'Horizontal Push + Jump Squats', hPush, jump, 'push',
       'Do a push set then immediately jump. Chest rests while legs work.',
@@ -1259,10 +1271,10 @@ function buildPush(cardioIdx) {
 function buildPull(cardioIdx) {
   // Round 1: Hinge + Rotation
   const hingeOptions = [
-    { name:'DB RDL',            scheme:'4×6–8',     badge:'heavy', needs:['db'] },
-    { name:'KB Clean',          scheme:'4×6–8/side',badge:'heavy', needs:['kb'] },
-    { name:'DB Snatch',         scheme:'4×6–8/side',badge:'heavy', needs:['db'] },
-    { name:'Single Leg DB RDL', scheme:'4×6–8/leg', badge:'heavy', needs:['db'] },
+    { name:'DB RDL',            scheme:'4×6–8',      badge:'heavy', needs:['db'] },
+    { name:'KB Clean',          scheme:'4×6–8/side', badge:'heavy', needs:['kb'] },
+    { name:'DB Snatch',         scheme:'4×6–8/side', badge:'heavy', needs:['db'] },
+    { name:'Single Leg DB RDL', scheme:'4×6–8/leg',  badge:'heavy', needs:['db'] },
   ].filter(e => hasGear(e.needs));
   const hinge = rand(hingeOptions);
 
@@ -1274,9 +1286,14 @@ function buildPull(cardioIdx) {
   ].filter(e => hasGear(e.needs));
   const rot = rand(rotOptions);
 
-  // Round 2: Vertical Pull + Vertical Jump (always)
-  const vPull = { name:'Weighted Pull-Ups → Bodyweight Pull-Ups', scheme:'4×6–8', badge:'heavy', needs:['pullup'],
-    note:'Start weighted. Drop to bodyweight when reps fail. Note which set you switch.' };
+  // Round 2: Vertical Pull + Vertical Jump
+  const vPullOptions = [
+    { name:'Weighted Pull-Ups → Bodyweight Pull-Ups', scheme:'4×6–8', badge:'heavy', needs:['pullup'],
+      note:'Start weighted. Drop to bodyweight when reps fail. Note which set you switch.' },
+    { name:'Ring Row',           scheme:'4×10–12', badge:'heavy', needs:['rings'],
+      note:'No pull-up bar — use rings instead. Elevate feet to increase difficulty.' },
+  ].filter(e => hasGear(e.needs));
+  const vPull = vPullOptions[0]; // pull-ups priority
   const jump = { name:'Vertical Jump', scheme:'3×8', badge:'hiit', needs:['mat'] };
 
   // Round 3: Horizontal Pull superset Biceps
@@ -1303,15 +1320,19 @@ function buildPull(cardioIdx) {
   const carry = rand(carryOptions);
 
   const armBicepOptions = [
-    { name:'DB Hammer Curl',        scheme:'3×12–15', badge:'hiit', needs:['db'] },
-    { name:'DB Wide-Grip Curl',     scheme:'3×12–15', badge:'hiit', needs:['db'] },
-    { name:'DB Incline Curl',       scheme:'3×12–15', badge:'hiit', needs:['db'] },
-    { name:'Ring Bicep Curl',       scheme:'3×12–15', badge:'hiit', needs:['rings'] },
-  ].filter(e => hasGear(e.needs) && e.name !== bicep.name);
+    { name:'DB Hammer Curl',   scheme:'3×12–15', badge:'hiit', needs:['db'] },
+    { name:'DB Wide-Grip Curl',scheme:'3×12–15', badge:'hiit', needs:['db'] },
+    { name:'DB Incline Curl',  scheme:'3×12–15', badge:'hiit', needs:['db'] },
+    { name:'Ring Bicep Curl',  scheme:'3×12–15', badge:'hiit', needs:['rings'] },
+  ].filter(e => hasGear(e.needs) && e.name !== (bicep&&bicep.name));
   const armBicep = rand(armBicepOptions);
 
   const pool = getPullFinishers();
   const ci = cardioIdx!==undefined ? cardioIdx : Math.floor(Math.random()*(pool.length||1));
+
+  if (!hinge || !rot || !vPull || !hPull || !bicep || !carry || !armBicep) {
+    return { lifts: `<div class="wo-header-card"><div class="wo-title">Not enough gear enabled</div><div class="circuit-intro">Go to the Gear tab and make sure you have at least Dumbbells and a mat toggled on.</div></div>`, cardioIdx:0 };
+  }
 
   return { lifts: woHeader('pull','Full Body — Pull',['~55 min','4 rounds','15 min finisher'])
     +'<div class="rounds">'
@@ -1658,12 +1679,14 @@ function clearAllProgress() {
 
 // ─── GEAR TAB ─────────────────────────────────────────────────────────────────
 function saveGear() {
-  const owned=ALL_EQUIPMENT.filter(g=>document.getElementById('gear-'+g)&&document.getElementById('gear-'+g).checked);
-  localStorage.setItem('forge_gear',JSON.stringify(owned));
-  ['push','pull','arms'].forEach(t=>{localStorage.removeItem('forge_saved_'+t);saved[t]=null;});
-  const btn=document.querySelector('.gear-save-btn');
-  btn.textContent='✓ Saved! Workouts updated.'; btn.style.backgroundColor='#3d9fd4';
-  setTimeout(()=>{btn.textContent='✓ Save Changes & Update Workouts';btn.style.backgroundColor='#4ac98a';},2000);
+  const owned = ALL_EQUIPMENT.filter(g => document.getElementById('gear-'+g) && document.getElementById('gear-'+g).checked);
+  localStorage.setItem('forge_gear', JSON.stringify(owned));
+  // Clear saved workouts so next generate uses updated gear
+  ['push','pull'].forEach(t => { localStorage.removeItem('forge_saved_'+t); saved[t]=null; });
+  const btn = document.querySelector('.gear-save-btn');
+  btn.textContent = '✓ Saved! Hit Push or Pull to regenerate.';
+  btn.style.backgroundColor = '#3d9fd4';
+  setTimeout(() => { btn.textContent='✓ Save Changes & Update Workouts'; btn.style.backgroundColor='#4ac98a'; }, 3000);
 }
 function loadGearToggles() {
   const owned=loadGear();
@@ -1901,7 +1924,7 @@ loadGearToggles();
 applyGearOverrides();
 
 // Clear old cache if version changed so weight inputs appear
-const forgeVersion='3.6';
+const forgeVersion='3.9';
 if(localStorage.getItem('forge_version')!==forgeVersion){
   ['push','pull','arms','upper','lower'].forEach(t=>localStorage.removeItem('forge_saved_'+t));
   localStorage.setItem('forge_version',forgeVersion);
